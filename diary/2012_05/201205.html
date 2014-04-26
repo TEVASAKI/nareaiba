@@ -1,0 +1,581 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<meta http-equiv="content-style-type" content="text/css">
+	<link rel="stylesheet" href="../mainstyle.css" type="text/css">
+	<link rel="shortcut icon" href="../../favicon.ico">
+	<title>2012年5月からの徒然</title>
+
+	<!-- LapisAnalyze1 start -->
+	<script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+	<!-- LapisAnalyze1 end -->
+
+</head>
+
+<body>
+
+	<!-- LapisAnalyze2 start -->
+	<div id="tracker" style="position:absolute;visibility:hidden;">
+	<script type="text/javascript">sendData();</script>
+	<noscript>
+	<img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+	</noscript>
+	</div>
+	<!-- LapisAnalyze2 end -->
+
+	<p align="right">
+		<a href="#log">▽過去ログ▽</a>
+	</p>
+<!-- header -->
+<dl>
+	<dt>2013年3月17日 NewPC作成！これで勝つる(何に</dt>
+	<dd>
+	<p>
+	さて、前回触れていた通り、新しいパソコンを作成しました。<br>
+	今回の要件としては以下の通り。<br>
+	</p>
+	<p>
+	#<br>
+	・とにかくパワフルである事。<br>
+	・メモリ？アホ程あるからいくらでも使えっ<br>
+	・多少でかくても、メンテしやすいケースである事。<br>
+	・将来の拡張性も確保する事。<br>
+	・グラボは現状では必要無いが、PCIe3.0スロットは備わっている事。<br>
+	・静かである事。<br>
+	・オーバークロックはしない。<br>
+	・ブルーレイディスクはいらん。<br>
+	・バックアップ専用HDDを内蔵する事。<br>
+	#
+	</p>
+	<p>
+	ヨドバシとかドスパラとか歩き回って、店員に聞いたりカタログスペックとか調べて、<br>
+	パワフルにしたいと言いつつもオーバースペックになりすぎない様に気をつけながら、、、<br>
+	以下の構成に落ち着きました。(クリックで拡大)
+	</p>
+	<p>
+	【CPU】(Intel) Corei5 i5-3550<br>
+	<a href="PC_fig/cpu.jpg" target="_blank"><img src="PC_fig/cpu_thumb.jpg" width="160" height="120" alt="Corei5 i5-3550"></a><br>
+	　1) Core-i7 はオーバースペック。<br>
+	　2) オーバークロックはしないので倍率ロックフリーの3570Kは不要。<br>
+	　3) といってK無しの3570にしてもCPUクロックは0.1GHz増えるだけ。<br>
+	　4) K無し3570にしたって内蔵GPUはHD2500のまま。(HD4000なのは3570Kだけ)<br>
+	　5) 後はGPUクロック、キャッシュ、TDP共に同じ性能。<br>
+	　6) って事で、Core-i5シリーズの中で最もコストパフォーマンスが高い、使用用途に合ったアッパーミドルって位置付けなのでこれを選択。<br>
+	　7) <a href="http://ja.wikipedia.org/wiki/Intel_Core_i5" target="_blank">参考リンク</a><br><br>
+	
+	【CPUクーラー】(Scythe) 忍者参リビジョンB SCNJ-3100<br>
+	<a href="PC_fig/fan.jpg" target="_blank"><img src="PC_fig/fan_thumb.jpg" width="160" height="120" alt="SCNJ-3100"></a><br>
+	　・でかいCPUクーラーがいいいい！ということでこれに決定。<br><br>
+	
+	【メモリ】(UMAX) Cetus DCDDR3-16GB-1600<br>
+	<a href="PC_fig/mem2.png" target="_blank"><img src="PC_fig/mem2_thumb.jpg" width="160" height="96" alt="Cetus DDR3-16GB-1600"></a><br>
+	　・これを二組。合計32GBｗ<br><br>
+
+	【マザーボード】 (ASUS) P8B75-V<br>
+	<a href="PC_fig/mb.jpg" target="_blank"><img src="PC_fig/mb_thumb.jpg" width="160" height="124" alt="P8B75-V"></a><br>
+	　・	オーバークロックをしない為、Z77、H77チップセットは不要って事で、B75。<br>
+	「何でも入り」のマザーボードも確かに魅力的ですが、、多分全部の機能は使わないでしょーとｗ<br><br>
+	
+	【HDD.1】(Seagate) ST1000DM003<br>
+	　・システム用です。<br>
+	　　メモリが32Gbyteだとすると、Pagefileも同じだけ作られるので、Cドライブは150GByteにするべきだったorz<br><br>
+	【HDD.2】(Seagate) ST2000DM001<br>
+	<a href="PC_fig/hdd1.jpg" target="_blank"><img src="PC_fig/hdd1_thumb.jpg" width="160" height="120" alt="ST2000DM001"></a><br>
+	　・バックアップ専用です。<br><br>
+	
+	【HDD.3】(WesternDigital) WD5000AAKX<br>
+	<a href="PC_fig/hdd2.jpg" target="_blank"><img src="PC_fig/hdd2_thumb.jpg" width="160" height="120" alt="WD5000AAKX"></a><br>
+	　・仮想マシンやイメージファイル等、容量のでかい奴や仮想関係専用です。<br>
+	　　WindowsXPでも大丈夫な様に、一応非AFT(AdvancedFormatTechnology)です。<br><br>
+
+	【電源】(SilverStone) SST-ST75F-G-E<br>
+	<a href="PC_fig/io.jpg" target="_blank"><img src="PC_fig/io_thumb.jpg" width="160" height="120" alt="SST-ST75F-G-E"></a><br>
+	　・フルプラグイン！80+Gold認証！750W!<br><br>
+	
+	【ケース】(CORSAIR) Obsidian 550D CC-9011015-WW<br>
+	<a href="PC_fig/case.jpg" target="_blank"><img src="PC_fig/case_thumb.jpg" width="160" height="120" alt="Obsidian 550D CC-9011015-WW"></a><br>
+	　・静かで拡張性が高くてスクリューレスでメンテナンスが超ラク。<br>
+	　　天板、側板、前面にエアダクトがあるので解放ケースにでも出来る欲張りな俺にピッタリのケースです。<br><br>
+	
+	【光学ドライブ】(LITEON) IHAS324-27<br>
+	<a href="PC_fig/dvdd.jpg" target="_blank"><img src="PC_fig/dvdd_thumb.jpg" width="160" height="120" alt="IHAS324-27"></a><br>
+	　・安い！そしてDVD-DL(片面2層)書き込み対応！<br><br>
+	
+	【拡張ボード.1】(AREA) SD-PCIPOST-WB<br>
+	<a href="PC_fig/post.gif" target="_blank"><img src="PC_fig/post_thumb.jpg" width="160" height="89" alt="SD-PCIPOST-WB"></a><br>
+	　・空きPCIスロットに差し込むニッチなPOSTカード。<br>
+	　　おまけでブザーも付いているので、起動時にPi!と鳴らせます。<br><br>
+	
+	【拡張ボード.2】(Skydigital) SKYHD CaptureX HDMI 1080p SKY-CXHDMIP<br>
+	<a href="PC_fig/Capturex.jpg" target="_blank"><img src="PC_fig/Capturex_thumb.jpg" width="160" height="120" alt="SKYHD CaptureX HDMI 1080p SKY-CXHDMIP"></a><br>
+	　・VHS to DVDの為に購入。<br>
+	　　変なやっすいキャプチャーコードを使うと、SD画質になってしまうので。<br><br>
+	
+	【OS】Windows7 Professional x86_64<br>
+	<img src="PC_fig/windows7.jpg" width="300" height="200" alt="Windows7"><br>
+	　・まあ、今時のって事で。<br>
+	　　多分ポストXPぐらいの勢いで長く使われ続けられると思う。<br>
+	　　<img src="PC_fig/win8_campaign_thumb.jpg" width="400" height="58" alt="Windows8 Campaign"><br>
+	　　↑こんなキャンペーンもやってたしｗ
+	</p>
+	<p>
+	#<br>
+	全部組み込んで。<br>
+	<img src="PC_fig/completion1.png" width="400" height="240" alt="completion1">
+	</p>
+	<p>
+	#<br>
+	裏面配線をして。<br>
+	<img src="PC_fig/completion2.png" width="240" height="400" alt="completion2">
+	</p>
+	<p>
+	#<br>
+	完成！<br>
+	<img src="PC_fig/completion3.jpg" width="400" height="299" alt="completion3">
+	</p>
+	<p>
+	#<br>
+	最後に旧PCからデータ吸い出して完成でござります。<br>
+	<img src="PC_fig/completion4.png" width="240" height="400" alt="completion4">
+	</p>
+	<p>
+	いやー快適快適。<br>
+	何をやっても「もたつかない、べたつかない、揺るぎない(?」<br>
+	こだわりのパーツ使って組み上げるのは気分がいいですねーｗ
+	</p>
+	<p>
+	それにしても贅沢なオモチャだ（
+	</p>
+	
+	</dd>
+	
+	<dt>2013年01月27日 VirtualBoxへWindows8のインストール</dt>
+	<dd>
+	<p>
+	あけましておめでとうございます。<br>
+	ちょいと色々と前後しますが、取り急ぎ備忘録をば。
+	</p>
+	<p>
+	えー、実は新しいPCを作りまして、Windows7 Professional 64bitも合わせて購入。<br>
+	構成とかはまた記事にするとして、今、なんかWindows8が<a href="https://windowsupgradeoffer.com/ja-JP" target="_blank">1200円で手に入るキャンペーン</a>やってるじゃないですか。<br>
+	で、PCマニア的に取り合えず買っとくかーてな感じで買っておいて、Windows7に上書きインストールもしてみました。<br>
+	いやいやしかしこれは使いにくいっす。<br>
+	バックアップから復旧して使用後10分でやめちゃいました：P
+	</p>
+	<p>
+	しかし、しかしですよ。<br>
+	Windows8は例えProfessionalエディションであってもDVDすら再生出来ないとか。<br>
+	再生する為にはMediacenterの使えるWindows8 pro <strong>Pack</strong> ってのが必要だとか。<br>
+	で、それが<a href="http://windows.microsoft.com/ja-JP/windows-8/feature-packs" target="_blank">2013年01月31日までなら無料で適用出来ちゃうキャンペーン</a>をやっていたので<br>
+	慌てて仮想環境にインストールする必要があったわけです。
+	</p>
+	<p>
+	ダウンロード方法とかISOの作り方は割愛するとして。<br>
+	まずはVirtualBoxに適当に仮想マシンを作成します。<br>
+	ちなみにバージョンは4.2.6 r82876<br>
+	<a href="VB1.png" target="_blank"><img src="VB1_thumb.png" width="320" height="289" alt="Virtualbox config"></a>
+	</p>
+	<p>
+	で、作成しておいたISOから起動して一回インストールする。<br>
+	でもMetroのスタート画面から始まらず、購入時に得たキーはアップグレード版なので<br>
+	新規インストールのアクティベーションも通りません。
+	</p>
+	<p>
+	しかし、そこで諦めてはいけない。<br>
+	そのままもう一度ISOを開き、中にある"setup.exe" を起動し、「環境を引き継いでインストール」を選択します。<br>
+	こうする事によってアップグレード版という扱いになり、アクティベーションが通っちゃうのですｗ
+	</p>
+	<p>
+	次は肝心のMediaCenterエディションの追加。<br>
+	SSをまったく撮ってなかったので文字だけで。
+	</p>
+	<p>
+	1. 先ず、<a href="http://windows.microsoft.com/ja-JP/windows-8/feature-packs" target="_blank">こちらのページ</a>に行ってメールアドレスを送信する。<br>
+	これが中々返信来ないのでご注意。<br>
+	俺の場合4日後に来た。
+	</p>
+	<p>
+	2. MediaCenterを追加する。<br>
+	[Win]+[Pause]を同時押ししてコントロールパネルを開き、「Windowsの新しいエディションで機能を増やす」をクリック。<br>
+	後は画面に従って進めていく。
+	</p>
+	<p>
+	3. 再度ライセンス認証<br>
+	で、もう一回ライセンス認証しないとだめなんだけど、ネット経由では何故か出来なくなっております。<br>
+	「不明なエラー(0xC004C4AA)」て奴ですね。<br>
+	そこで次は電話認証を行います。<br>
+	コマンドプロンプトを開いて、「slui.exe 4」と入力してEnter.<br>
+	出てきた画面の番号に電話して、表示されている54桁(!)の数字を自動音声に従って入力していきます。
+	</p>
+	<p>
+	で、最終的にこんな感じになればOK。<br>
+	<a href="license.png" target="_blank"><img src="license_thumb.png" width="320" height="205" alt="license"></a>
+	</p>
+	<p>
+	なんかパラドックス的ですが、これでアップグレード版でもクリーンインストールが出来ちゃいますよｂ<br>
+	<a href="Win7-VB8.png" target="_blank"><img src="Win7-VB8_thumb.png" width="320" height="198" alt="Windows7上にWindows8が。"></a>
+	</p>
+	<p>
+	なんか駆け足でのご紹介ですが、お試しあれ～<br>
+	あと当局からの介入はお断りいたしますー<br>
+	あ、こら、やめろどこへ連れて行くんだ<br>
+	痛くしない？いや、でも
+	</p>
+	<p>
+	おい！何も見えない！ぎゃああ
+	</p>
+	</dd>
+	
+	
+	<dt>2012年09月25日 UbuntuへのJAVAインストール</dt>
+	<dd>
+	<p>
+	Ubuntu11.10(64bit)でJREとJDKのアップグレード方法が確立したのでご紹介。
+	</p>
+	<p>
+	まずは<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">ここから</a>JDKとJREを拾ってきます。<br>
+	* 現時点での最新版はjdk-7u7-linux-x64.tar.gz　、jre-7u7-linux-x64.tar.gz
+	</p>
+	<p>
+	1. 現在のJAVAバージョンの確認。<br>
+	　<code class="head">　$ java -version</code><br>
+	　→ java version "1.6.0_24"<br>
+	　　 OpenJDK Runtime Environment (IcedTea6 1.11.4) (6b24-1.11.4-1ubuntu0.11.10.1)<br>
+	　　 OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)<br>
+	　あーOoenJDKで対応してるなーてわかります。<br>
+	#
+	</p>
+	<p>
+	2. OpenJDKを正規表現で一括削除(!)<br>
+	　<code class="head">　$ sudo apt-get purge openjdk-\*</code><br>
+	　→ Purg icedtea6-plugin [6b21.2-2ubuntu0.11.10.3]<br>
+	　　 Purg icedtea-plugin [1.2-2ubuntu0.11.10.3]<br>
+	　　 Purg icedtea-6-plugin [1.2-2ubuntu0.11.10.3]<br>
+	　　 Purg icedtea-netx [1.2-2ubuntu0.11.10.3]<br>
+	　　 Purg openjdk-6-jre [6b24-1.11.4-1ubuntu0.11.10.1]<br>
+	　　 Purg icedtea-6-jre-jamvm [6b24-1.11.4-1ubuntu0.11.10.1]<br>
+	　　 Purg icedtea-6-jre-cacao [6b24-1.11.4-1ubuntu0.11.10.1]<br>
+	　　 Purg ca-certificates-java [20110912ubuntu3.2] [openjdk-6-jre-headless:amd64 ]<br>
+	　　 Purg openjdk-6-jre-headless [6b24-1.11.4-1ubuntu0.11.10.1] [openjdk-6-jre-lib:amd64 ]<br>
+	　　 Purg openjdk-6-jre-lib [6b24-1.11.4-1ubuntu0.11.10.1]<br>
+	　* apt-get に "-s" スイッチを付ければシミュレーションしてくれます。<br>
+	　　何が削除されたかを知っておくのも大事。<br>
+	　　ミスった時に戻せるし(<br>
+	#
+	</p>
+	<p>
+	3. 削除されたのを確認。<br>
+	　<code class="head">　$ java -version</code><br>
+	　→ プログラム 'java' は以下のパッケージで見つかりました:<br>
+	　　 * gcj-4.4-jre-headless<br>
+	　　  * gcj-4.6-jre-headless<br>
+	　　 * openjdk-6-jre-headless<br>
+	　　 * gcj-4.5-jre-headless<br>
+	　　 * openjdk-7-jre-headless<br>
+	　　 次の操作を試してください: sudo apt-get install (選択したパッケージ<br>
+	　うむ。削除出来たね。<br>
+	#
+	</p>
+	<p>
+	4. javaフォルダ作成して。<br>
+	　<code class="head">　$ sudo mkdir -p /usr/local/java</code><br>
+	5. そこにコピーする。<br>
+	　<code class="head">　$ sudo -s cp -r jre-7u7-linux-x64.tar.gz /usr/local/java/</code><br>
+	　<code class="head">　$ sudo -s cp -r jdk-7u7-linux-x64.tar.gz /usr/local/java/</code><br>
+	#
+	</p>
+	<p>
+	6. 全ユーザーに実行属性付与。<br>
+	　<code class="head">　$ sudo -s chmod a+x jre-7u7-linux-x64.tar.gz</code><br>
+	　<code class="head">　$ sudo -s chmod a+x jdk-7u7-linux-x64.tar.gz</code><br>
+	#
+	</p>
+	<p>
+	7. アーカイブの展開。<br>
+	　<code class="head">　$ sudo -s tar xvzf jre-7u7-linux-x64.tar.gz</code><br>
+	　<code class="head">　$ sudo -s tar xvzf jdk-7u7-linux-x64.tar.gz</code><br>
+	#
+	</p>
+	<p>
+	8. <strong>"/etc/profile"</strong>の末尾に以下を追記。<br>
+	<code>
+	　　JRE_HOME=/usr/local/java/jre1.7.0_07<br>
+	　　PATH=$PATH:$HOME/bin:$JRE_HOME/bin<br>
+	　　JAVA_HOME=/usr/local/java/jdk1.7.0_07<br>
+	　　PATH=$PATH:$HOME/bin:$JAVA_HOME/bin<br>
+	　　export JRE_HOME<br>
+	　　export JAVA_HOME<br>
+	　　export PATH
+	</code><br>
+	#
+	</p>
+	<p>
+	9. システムに登録していきます。先ずはJREの「java」<br>
+	　<code class="head">　$ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jre1.7.0_07/bin/java" 1　</code><br>
+	#
+	</p>
+	<p>
+	10. 次にJDKの「javac」と「javaws」もデフォルトのんだと教え込む。(登録する。)<br>
+	　<code class="head">　$ sudo update-alternatives --set javac /usr/local/java/jdk1.7.0_07/bin/javac　</code><br>
+	　<code class="head">　$ sudo update-alternatives --set javaws /usr/local/java/jdk1.7.0_07/bin/javaws　</code><br><br>
+	#
+	</p>
+	<p>
+	11. 再起動して、"/etc/profile" の再読み込み。<br>
+	　<code class="head">　# shutdown -r now</code><br>
+	#
+	</p>
+	<p>
+	12. 再起動したらバージョン確認してみましょう。<br>
+	　<code class="head">　$ java -version</code><br>
+	<strong>
+	　→ java version "1.7.0_07"<br>
+	　　 Java(TM) SE Runtime Environment (build 1.7.0_07-b10)<br>
+	　　 Java HotSpot(TM) 64-Bit Server VM (build 23.3-b01, mixed mode)
+	</strong><br>
+	#<br>
+	　<code class="head">　$ javac -version</code><br>
+	<strong>
+	　→ javac 1.7.0_07<br>
+	</strong>
+	</p>
+	<p>
+	これにてインストール完了です。ソソラシドー♪
+	</p>
+	<p>
+	FreeRapidDownloderとかも動くようになりますｂ<br>
+	<a href="java-frd.jpg" target="_blank"><img src="java-frd_thumb.jpg" width="400" height="250" alt="FRD"></a>
+	</p>
+	</dd>
+	
+	
+	<dt>2012年06月11日 WindowsXP の再アクティベーション回避方法。</dt>
+	<dd>
+	<p>
+	XPを何度か再インストールする事があります。<br>
+	で、まあそれによってお決まりの認証手続きが必要になるわけですな。
+	</p>
+	<p>
+	うん、本当に自分で買った奴だからもう勘弁してください。
+	</p>
+	<p>
+	と、いうわけで。以下のファイルを新規インストール時にバックアップを取っておく。<br>
+	<img src="wpa.png" width="425" height="466" alt="wpa.dbl">
+	</p>
+	<p>
+	んで、XPのインストール後、F8を押してセーフモードで起動して上書きして終了。<br>
+	これで再アクティベーションを回避出来ます。
+	</p>
+	<p>
+	中々使えるテクじゃないでしょーか！？(･∀･)<br>
+	機会があれば、一度お試しあれ。
+	</p>
+	</dd>
+	
+	
+	<dt>2012年05月12日 Ubuntu11.10(64bit)でのカーネルコンパイル方法。</dt>
+	<dd>
+	<p>
+	またLinuxネタですが、忘れないうちにメモ。
+	</p>
+	<p>
+	まずは今動作させているカーネルを確認。
+	</p>
+	<code class="head">
+	　$ uname -a　<br>
+	　→ Linux XG41 <strong>3.0.0-17-generic</strong> #30-Ubuntu SMP Thu Mar 8 20:45:39 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
+	</code>
+	<p>
+	ははぁ、3.0.0-17-genericって奴なのね。<br>
+	'generic(一般的な。ノーブランドの。)'　とある様に<br>
+	どんなPC環境に入れられても大丈夫な汎用的なセッティングがされております。
+	</p>
+	<p>
+	数年前は、それこそ俺がLinuxにハマッた2003年頃なんて日本語入力でさえ、、、いや、もうやめましょう。<br>
+	あー、いやでもさ、Dellラップトップドライバとか10G Ethernetとか流石にいらんでしょ。<br>
+	だからさ、カーネルぐらい自分でコンパイルした奴使おうよ！と、いうわけでございます。<br>
+	カーネルチューニングとか大それた事は<span class="delline">出来ません</span>しませんが<br>
+	今現在動いているハード情報だけ有効にしたカーネルを作って気分良く使ってみようZE!って事で作業開始。
+	</p>
+	<p>
+	①<br>
+	　コンパイルに必要なツールをインストール。<br>
+	"qt-dev" "qt4-qmake" "qt4-dev-tools" はmake xconfig で必要みたい。これが無いと動かなかった。<br>
+	make menuconfig  でやるなら不要。
+	</p>
+	<code class="head">
+	　$ sudo apt-get install kernel-package libncurses5 libncurses5-dev qt-dev qt4-qmake qt4-dev-tools　
+	</code>
+	<p>
+	作業ディレクトリを作ってその中で作業します。<br>
+	以後、ずっとユーザー権限でOKっす。
+	</p>
+	<code class="head">
+	　$ mkdir kernel　<br>
+	</code>
+	<code class="head">
+	　$ cd kernel　
+	</code>
+	<p>
+	②<br>
+	　と、いうわけで現在動作しているカーネルソースを取得。<br>
+	ユーザー権限でapt-get出来るなんて知らなかったｗ<br>
+	ここが今回ハマった所。
+	</p>
+	<code class="head">
+	　$ apt-get <strong>source</strong> linux-image-$(uname -r)　<br>
+	</code>
+	<code class="head">
+	　$ cd linux-3.0.0　
+	</code>
+	<p>
+	③<br>
+	　現在動作しているカーネルのコンフィグ情報を、カレントディレクトリに ".config" という名前で保存。
+	</p>
+	<code class="head">
+	　$ cp /boot/config-$(uname -r) .config　
+	</code>
+	<p>
+	".config" の内容をカーネルソースのバージョンに合わせる手続きをします。<br>
+	今回は同じバージョンだから必須じゃないけど、バージョンが異なる時には必要です。<br>
+	取敢えず全部Enter押して進めちゃいましょー（
+	</p>
+	<p>
+	今回は更に、現在動いてるカーネルとハード情報から、最小限の構成を作ってみます。<br>
+	例えばBluetoothを組み込みたかったら、あらかじめPC本体にドングルを差し込んでおくとか。
+	</p>
+	<p>
+	"make oldconfig"　で、そのconfigの内容と拾ってきたソースとの差分を吸収して、<br>
+	"make localmodconfig"　で、現在システムで稼働中のモジュールを調査し、有効化してやるのです。<br>
+	他のモジュール設定は自動で無効になります。<br>
+	5300を超える項目の設定なんて、マトモな人間に出来るわけねーしな('∀`)ｗ
+	</p>
+	<code class="head">
+	　$ make oldconfig　<br>
+	</code>
+	<code class="head">
+	　$ make localmodconfig　
+	</code>
+	<p>
+	④<br>
+	　そ・の・う・え・で☆
+	</p>
+	<code class="head">
+	　$ make menuconfig　
+	</code>
+	か<br>
+	<code class="head">
+	　$ make xconfig　
+	</code>
+	とかで、<strong>わかる所だけ</strong>設定していきます。
+	<p>
+	まずは自分のCPUリソースに合わせた設定。<br>
+	"Processor type and features"　セクション以下の、"Processor family ***"　で設定。<br>
+	つまりこの中の<br>
+	<a href="processor_family1.png" target="_blank"><img src="processor_family1_thumb.png" width="400" height="256" alt="processor_family1"></a><br>
+	これ。<br>
+	<a href="processor_family2.png" target="_blank"><img src="processor_family2_thumb.png" width="400" height="256" alt="processor_family2"></a>
+	</p>
+	<p>
+	次に、Bluetooth機能をモジュールじゃなく、あえて静的に組み込んでみます。<br>
+	<a href="bluetooth.png" target="_blank"><img src="bluetooth_thumb.png" width="400" height="256" alt="Bluetooth"></a>
+	</p>
+	<p>
+	んで、重要な所。<br>
+	今回の様に稼働中のカーネルと同じバージョンをビルドする時は、追加バージョンを英数字で指定してやる必要があります。<br>
+	じゃないとビルドは出来てもインストールに失敗します。
+	</p>
+	<p>
+	設定場所は "General Setup"　セクション以下の、"Local version - append to kernel release"<br>
+	<a href="append_version.png" target="_blank"><img src="append_version_thumb.png" width="400" height="256" alt="append_version"></a><br>
+	<span class="delline">なんかいい名前も思いつかなかったので適当に　"-local"　とだけ指定しました。</span><br>
+	何度も作り直す事も考えられるので、　"-20120611"　とか、日付にするのが吉かも。<br>
+	　※ これがDebianだったら<strong>TEViAn</strong>とかにしてたのになーなんてｗ
+	</p>
+	<p>
+	⑤<br>
+	　で、いよいよコンパイル。
+	</p>
+	<code class="head">
+	　$ make-kpkg clean　<br>
+	</code>
+	<code class="head">
+	　$ CONCURRENCY_LEVEL=4 make-kpkg --rootcmd fakeroot --initrd --revision 0.0.custom linux-image linux-headers　
+	</code>
+	<p>
+	"CONCURRENCY_LEVEL"　で、並列コンパイル数の指定。<br>
+	CPUコア数と同じか、その倍。<br>
+	Core2Duoを使っているなら"4" 、Corei7なら"8" ってな具合に。(<span class="delline">マジかよ</span>)<br>
+	"revision"　で、出来上がるパッケージに通し番号を振ります。ここはまあ、適当に。
+	</p>
+	<p>
+	俺の環境(CPU:Core2Duo E8400 , Memory:DDR3で8Gbyte)で大体15分～20分ぐらいでした。<br>
+	完成後のdebパッケージ名はこんなんになります。↓<br>
+	"linux-image-3.0.22-20120611_0.0.custom_amd64.deb"<br>
+	"linux-headers-3.0.22-20120611_0.0.custom_amd64.deb"
+	</p>
+	<p>
+	⑥<br>
+	　インストール
+	</p>
+	<p>
+	ひとつ上のディレクトリに上記パッケージが出来上がっているはずなので<br>
+	dpkgコマンドで、image→headers の順番でインストーール！！<br>
+	<code class="head">
+	　$ cd ..　<br>
+	</code>
+	<code class="head">
+	　<strong># dpkg -i</strong> linux-image-3.0.22-20120611_0.0.custom_amd64.deb　<br>
+	</code>
+	<code class="head">
+	　<strong># dpkg -i</strong> linux-headers-3.0.22-20120611_0.0.custom_amd64.deb　
+	</code>
+	</p>
+	<p>
+	⑦<br>
+	　なんぞ間違えてそのカーネルで起動出来ない時の為のGrub2設定。
+	</p>
+	<p>
+	<code class="head">
+	　$ sudo update-grub<br>
+	　→ Generating grub.cfg<br>
+	　　 Found linux image: /boot/vmlinuz-3.0.0-****<br>
+	　　 …以下略
+	</code>
+	</p>
+	<p>
+	<strong>/etc/default/grub</strong> を編集。<br>
+	「GRUB_HIDDEN_TIMEOUT」の行をコメントアウト。<br>
+	そして「GRUB_TIMEOUT=5」とかにして、自動起動待ち時間を5秒ぐらいに設定する。<br>
+	これによって、今回作ったカーネルで動かない時とかに<br>
+	一つ前のバージョンのカーネルで起動出来たりするわけですな。
+	</p>
+	<p>
+	Finish!<br>
+	　これで終了です。
+	</p>
+	<p>
+	再起動したら、ほんとにちゃんと入れ替わっているか確認してみましょｂ<br>
+	<code class="head">
+	　$ uname -a　<br>
+	　→ Linux XG41 <strong>3.0.22-20120611</strong> #1 SMP Thu Mar 29 13:48:23 JST 2012 x86_64 x86_64 x86_64 GNU/Linux　
+	</code>
+	</p>
+	<p>
+	お疲れ様でした(･Θ･)b
+	</p>
+	</dd>
+    
+<!-- footer -->
+<hr width="100%">
+
+	<p align="center">
+	<a href="#"><img src="../../After.gif" width="138" height="50" alt="来月へ。" border="0"></a>　　
+	<a href="../../index.html"><img src="../../top.gif" width="105" height="50" alt="TOPへ。" border="0"></a>　　
+	<a href="../2010_07/201007.html" name="log"><img src="../../Before.gif" width="165" height="50" alt="先月へ。" border="0"></a>
+	</p>
+
+</dl>
+</body>
+</html>

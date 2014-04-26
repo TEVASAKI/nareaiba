@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<meta http-equiv="content-style-type" content="text/css">
+	<title>Link</title>
+	<style type="text/css">
+	<!-- 
+	
+	a.link:link 		{ color: #000033; text-decoration: none; }
+	a.link:visited 	{ color: #000033; text-decoration: none; }
+	a.link:active   	{ color: #000033; text-decoration: none; }
+	a.link:hover		{ background-color: #ccffff; }
+	a.link				{ font-weight: bold }
+	
+	 -->
+	</style>
+</head>
+<body>
+<div align="center">
+<table width="100%" cellpadding="12" cellspacing="15" border="1" summary="link">
+<caption><img src="link.gif" width="150" height="69" alt="link"></caption>
+
+	<tr>
+		<td>- <a href="http://blog.livedoor.jp/lemon2060/" target="_blank" class="link">LIMEれもん　ダラダラ日記</a> -</td>
+		<td align="left">
+		NewBrandメンバーで数少ない常識人(何 チャチャさんのブログです。<br>
+		素晴らしい行動力をモロに表す、連日更新される日記が良いです。<br>
+		暫くINしてなくて、現状がわからなければここへゆけっ！
+		</td>
+		<td><img src="Lemon.png" width="124" height="127" alt="LIMEれもん"></td>
+	</tr>
+
+	<tr>
+		<td>- <a href="http://blog.goo.ne.jp/samael2s4" target="_blank" class="link">星月夜にお茶会を…</a> -</td>
+		<td align="left">
+		俺の嫁のブログです。<br>
+		ふにゃふにゃな毎日を過ごし、ゆるゆると日々を楽しんでおります。<br>
+		とかなんとか言いながら、割とハードな狩り方をしてたりしますがｗ
+		</td>
+		<td><img src="Samael.png" width="75" height="78" alt="Samael"></td>
+	</tr>
+
+	<tr>
+		<td>- <a href="http://kamukamu122.blog5.fc2.com/" target="_blank" class="link">かむさんち。</a> -</td>
+		<td align="left">
+		古参のお友達、かむいさんのブログ。<br>
+		こないだ見つけたのでリンクしちゃいます（ぉ<br>
+		こないだ結婚されたようで！おめでたい！<br>
+		新妻！新妻！にいづまあああああ
+		</td>
+		<td><img src="./Kamui1.png" name="img1"  onmouseover="this.src='./Kamui2.png'" onmouseout="this.src='./Kamui1.png'"></td>
+	</tr>
+
+	<tr>
+		<td>- <a href="http://ayaeri.blog91.fc2.com/" target="_blank" class="link">変態ですが何か？</a> -</td>
+		<td align="left">
+		綾乃エリザ様のブログです。<br>
+		俺も変態ですが、彼女も相当変態ですね。<br>
+		どれぐらい変態かは覗いてみればわかるっ
+		</td>
+		<td><img src="./noimg1.jpg" width="124" height="93" alt="Sorry,素敵イメージ無かったっす"></td>
+	</tr>
+
+	<tr>
+		<td>- <a href="http://www.maple-aria.com/" target="_blank" class="link">みらくる☆めいぷる Aria -II-</a> -</td>
+		<td align="left">
+		My Master 月虹姫のサイト。<br>
+		ま、知る人ぞ知るどころか知らない奴はINEEEって勢いの<br>
+		いつもお世話になっておりますってページです。<br>
+		彼女は、無敵です。<br>
+		無敵故に、俺のMasterなのです。<br>
+		Master,命令(order)を下さい。
+		</td>
+		<td><img src="./aria004.png" width="234" height="60" alt="Aria-II-"></td>
+	</tr>
+
+	<tr>
+		<td>- <a href="http://kurei415.bbs.fc2.com/" target="_blank" class="link">ぬーぶら臨時BBS</a> -</td>
+		<td align="left">
+		俺が所属するギルド、NewBrand のBBSらしいっす。<br>
+		さっき見つけた(何<br>
+		過疎化どころのレベルでは無いので、なんだかんだ書き込みしてみようぜ皆！<br>
+		とか言ってみる(´σд`)
+		</td>
+		<td><img src="./noimg1.jpg" width="124" height="93" alt="NoBannerどころか（ぉ"></td>
+	</tr>
+	
+</table>
+<a href="../index.html"><img src="../top.gif" width="100" height="50" alt="おもむろにTOPへ戻る。" border="0"></a>
+</div>
+<div align="right">*<strong>順番は、適当です</strong></div>
+<hr width="100%">
+</body>
+</html>

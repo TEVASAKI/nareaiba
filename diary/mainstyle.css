@@ -1,0 +1,40 @@
+body
+{
+	scrollbar-face-color: #ffffff;
+	scrollbar-highlight-color: #000000;
+	scrollbar-shadow-color: #000000;
+	scrollbar-3dlight-color: #ffffff;
+	scrollbar-track-color: #ffffff;
+	scrollbar-darkshadow-color: #ffffff;
+	scrollbar-arrow-color: #000000;
+	background-color: #ffffff;
+	color: #000033;
+	font-size: 16px;
+/*	font-family: ÇlÇr ÉSÉVÉbÉN; */
+}
+
+dt{
+	background-color: #d6d6ff;
+	Color: #194076;
+	margin-top: 10px;
+	font-weight: bold;
+}
+	
+dd{
+	line-height: 205%;
+}
+
+	.red		{font-size: large; color: #ff0000;}
+	.lred		{font-size: x-large; color: #ff0000;}
+	.iwai		{background-color: #ff0000; color: #ffffff;}
+	.delline	{font-size: 8pt;text-decoration:line-through;}
+	.head		{border-width: 0px 0px 2px 6px; border-style: solid; border-color: #66ffff;}
+	.small		{font-size: x-small;}
+	.xx-small	{font-size: xx-small;}
+	.lt			{text-decoration: line-through;}
+	.code		{background-color: #000000; color: #ffffff;}
+	.code2		{border-style: solid; border-width: 0px 0px 2px 0px; border-color: #66ffff;}
+	a:link 		{ color: #000033; text-decoration: underline; }
+	a:visited 	{ color: #000033; text-decoration: underline; }
+	a:active   	{ color: #000033; text-decoration: underline; }
+	a:hover		{ background-color: #66ffff; }

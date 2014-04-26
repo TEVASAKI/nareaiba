@@ -1,0 +1,563 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="content-style-type" content="text/css">
+	<link rel="stylesheet" href="../mainstyle.css" type="text/css">
+	<link rel="shortcut icon" href="../../favicon.ico">
+	<title>2013年11月からの徒然</title>
+
+	<!-- LapisAnalyze1 start -->
+	<script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+	<!-- LapisAnalyze1 end -->
+
+	<!-- SyntaxHighlighter Read start -->
+	<script type="text/javascript" src="../SyntaxHighlighter/essential/shCore.js"></script>
+	<script type="text/javascript" src="../SyntaxHighlighter/essential/shAutoloader.js"></script>
+	<link type="text/css" rel="stylesheet" href="../SyntaxHighlighter/essential/shCoreFadeToGrey.css">
+	<link type="text/css" rel="stylesheet" href="../SyntaxHighlighter/essential/shThemeFadeToGrey.css">
+	<!-- SyntaxHighlighter Read end -->
+</head>
+
+<body>
+
+	<!-- LapisAnalyze2 start -->
+	<div id="tracker" style="position:absolute;visibility:hidden;">
+	<script type="text/javascript">sendData();</script>
+	<noscript>
+	<img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+	</noscript>
+	</div>
+	<!-- LapisAnalyze2 end -->
+
+	<p align="right">
+		<a href="#log">▽過去ログ▽</a>
+	</p>
+<!-- header -->
+<dl>
+	<dt>2013年11月16日 todoリストを管理したいぞー</dt>
+	<dd>
+	<p>
+	世の中にはやらなきゃいけない事が沢山あり<br>
+	忘れちゃなんねぇ事も沢山あります。<br>
+	それらをタスクとか呼んで、優先度を付けて管理すると色々とはかどるってなもんです。
+	</p>
+	<p>
+	で、それを "todo" と言うらしいですね。<br>
+	今回はそのtodoをどんなデバイスでも一元管理するやり方でございます。<br>
+	単純に3種類ありまして、それぞれWindows用、Linuxとか用、スマホとかのandroid用。
+	</p>
+	<h2>Windows版 todotxt.Net</h2>
+	<a href="(win)list1.jpg" target="_blank"><img src="thumb/(win)list1_thumb.jpg" width="320" height="258" alt="Windows_todo"></a>
+	<ul>
+	<li>
+	<p>
+	まずは<a href="http://benrhughes.github.io/todotxt.net/" target="_blank">リンク先から</a> todotxt.msi をダウンロードしてきます。<br>
+	執筆段階ではVersion 2.2.3.0が最新ぽ。<br>
+	名前の通り、.NETランタイムが必要ですが、適当に入れてください。
+	</p>
+	<p>
+	Optionは以下の通り設定すると幸せになれます。<br>
+	<img src="(win)option.png" width="512" height="369" alt="WindowsOption"><br>
+	特に "Use Ctrl-Enter to create new task" の項なんかは日本語IMEを使う上では外せないと思います。
+	</p>
+	<p>
+	自動アーカイブはあえてやらない。<br>
+	完了したタスクをまた戻すかもしれないし、過去一覧も見たいし<br>
+	そして何よりファイルを分けたくない。
+	</p>
+	<p>
+	操作も実に直感的。殆どマウス使いません。<br>
+	以下は普段使いに必要なキーバインド。
+	</p>
+		<ul>
+		<li>
+		' N '<br> 新規タスク登録開始。Ctrl-Enterを押して登録確定。
+		</li>
+		<li>
+		' D '<br> 登録したタスクを削除。戻せないので要注意。
+		</li>
+		<li>
+		' J , K '<br> カーソルを上下移動。んーVimちっく。
+		</li>
+		<li>
+		' X '<br> タスクの完了と未完了を切り換える。<br>
+		つまり<strong>この操作が"DO"ですね。</strong>
+		</li>
+		<li>
+		' Alt + ↑ '<br> タスクの優先度を上げる。<br>
+		 ex) 優先度B → 優先度A
+		</li>
+		<li>
+		' Alt + ↓ '<br> タスクの優先度を下げる。<br>
+		 ex) 優先度A → 優先度B
+		</li>
+		<li>
+		' U '<br> 登録済みのタスクを更新する。
+		</li>
+		<li>
+		' ? '<br> ヘルプの表示。
+		</li>
+		</ul>
+	<p>
+	注意点としてIMEを全角モードで操作すると挙動がおかしくなります。<br>
+	例えば新規登録のつもりで' N 'を押してから「あそぶ」って打ったつもりが「<strong>な</strong>そぶ」てなったりｗ
+	</p>
+	</li>
+	</ul>
+	
+	<h2>CLI版 (on UbuntuServer 12.10)</h2>
+	<a href="(cui)list1.jpg" target="_blank"><img src="thumb/(cui)list1_thumb.jpg" width="320" height="201" alt="CLI_todo1"></a><br><br>
+	<a href="(cui)list2.jpg" target="_blank"><img src="thumb/(cui)list2_thumb.jpg" width="320" height="201" alt="CLI_todo2"></a>
+	<ul>
+	<li>
+	<p>
+	CentOSとかUbuntuとかDebianとか、LinuxBoxにもInstall出来ます。<br>
+	ってか実体はシェルスクリプトなので、内容を書き換えて実行権限を付けてやれば動きます。
+	</p>
+	<p>
+	まずはCUIのDropboxをInstallします。<br>
+	これが無いと話にならないので(・θ・)
+	</p>
+	<p>
+	デスクトップ環境があるなら、公式からクライアントをダウンロードしてインストールすればよいでしょう。<br>
+	簡単ぷぅ(・ω・)
+	</p>
+	<p>
+	#CUI版 Dropboxのインストール
+	</p>
+	Dropbox のダウンロード &amp; 伸張
+	<pre class="brush: bash; toolbar: false; gutter: false;">
+	$ wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
+	</pre>
+	
+	Dropbox 起動。そして表示されるurlにアクセスして認証を通し、Ctrl + C で終了。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ ~/.dropbox-dist/dropboxd
+	
+	This client is not linked to any account...
+	Please visit https://www.dropbox.com/cli_link?host_id=xxxxyyyyzzzz to link this machine.
+	Client successfully linked, Welcome tevasaki!
+	^C
+	</pre>
+	dropbox.py に実行権限を付けてパスの通ったディレクトリに移動する。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: [1,2];">
+	$ chmod 700 dropbox.py
+	$ sudo mv dropbox.py /usr/local/bin/dropbox
+	[sudo]password for user:
+	</pre>
+	場所の確認。 /usr/local/bin にdropboxという名前で実行ファイルが出来ている。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ ls -l /usr/local/bin/
+	
+	-rwx------ 1 teva teva 111373 Oct 10 05:40 dropbox
+	</pre>
+	
+	スクリプトを起動するも、daemonが無いと怒られるので
+	-i オプションを付けてダウンロード/インストールする。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ dropbox start -i
+	
+	Starting Dropbox...
+	Dropbox is the easiest way to share and store your files online. Want to learn more? Head to https://www.dropbox.com/
+
+	In order to use Dropbox, you must download the proprietary daemon.
+	Note: python-gpgme is not installed, we will not be able to verify binary signatures. [y/n] y
+	Downloading Dropbox... 100%
+	Unpacking Dropbox... 100%
+	Done!
+	</pre>
+	status で同期されているか確認。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ dropbox status
+	
+	Idle
+	</pre>
+	ホーム(/home/user/)にDropbox/ が出来ているので内容を確認。<br>
+	
+	同期除外したいフォルダを登録。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: [1,5,9,13];">
+	$ dropbox exclude add ~/Dropbox/Photos/
+	Excluded:
+	photos
+	
+	$ dropbox exclude add ~/Dropbox/public/
+	Excluded:
+	public
+	
+	$ dropbox exclude add ~/Dropbox/share/
+	Excluded:
+	share
+	
+	$ dropbox exclude add ~/Dropbox/tool/
+	Excluded:
+	tool
+	</pre>
+	
+	同期除外されているかを確認。
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ dropbox exclude list
+	
+	Excluded:
+	photos
+	public
+	share
+	tool
+	</pre>
+
+	完了(・θ・)b
+	</li>
+	</ul>
+
+	<ul>
+	<li>
+	<p>
+	次に肝心のtodo.sh のインストール。<br>
+	<a href="http://todotxt.com/" target="_blank">公式ページ</a>から現時点で最新版の"todo.txt_cli-2.9.tar.gz" をダウンロードして、/home/user/src/todo.txt_cli-2.9 に展開したとします。
+	</p>
+	<pre class="brush: bash; toolbar: false; gutter: false;">
+	# todo.cfg に以下を追記。Dropboxのtodoフォルダですね。
+	export TODO_DIR=${HOME}"/Dropbox/todo"
+
+
+	# bashrc にエイリアスを追加。" t " だけで実行出来る様にする。
+	# -a で自動アーカイブをしない。
+	# -t でタスクに自動で日付を追加する。
+	alias t='todo.sh -a -t'
+
+
+	# PATHを通す為、bashrc 末尾に以下を追記。
+	PATH="$PATH:~/src/todo.txt_cli-2.9"
+
+
+	# shに実行権限を付与。
+	$ chmod +x todo.sh
+	</pre>
+	<p>
+	以下、書式。<br>
+	エイリアスにした' t ' の後に続けて打ち込むだけでOK.
+	</p>
+	<table>
+	 <tr>
+	  <th class="center">コマンド</th><th class="center">実行内容</th>
+	 </tr>
+	 <tr>
+	  <td class="center">add 予定</td><td>"予定" を追加<br>
+					  						@xxx でxxx というコンテキスト名を付ける。<br>
+	  										+yyy でyyy というプロジェクト名を付ける。<br>
+					  						$ t add 予定 @xxx +yyy<br>
+					  						65 2013-11-03 予定 @xxx +yyy<br>
+					  						TODO: 65 added.<br>
+					  						↑この65 というのが通し番号なので、これに対して優先度を付けたり削除したりdoしたり。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">app 65 AAA</td><td>通し番号65 のタスクに"AAA" を追加する。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">replace 65 更新</td><td>通し番号65 のタスクを"更新" に置き換える。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">ls</td><td>予定を全て表示。検索もコレで。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">pri 65 A</td><td>通し番号65 のタスクの優先度をA にする。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">lsp</td><td>優先度の付いたタスクのみ一覧表示。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">do 65</td><td>通し番号65 のタスクを実行済みにする。</td>
+	 </tr>
+	 <tr>
+	  <td class="center">rm 65</td><td>通し番号65 のタスクを削除。元に戻せないので要注意。</td>
+	 </tr>
+	</table>
+
+	done.txt をいじりすぎて、こんな感じに予定をかぶせすぎてしまった時は、、、
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ lv ~/Dropbox/todo/done.txt
+
+	07 x 2013-10-30 2013-10-30 SyntaxHighlighter install @maintain +HP
+	10 x 2013-10-30 2013-10-30 SyntaxHighlighter install @maintain +HP
+	08 x 2013-10-30 2013-10-31 MinGW install @win +Client
+	09 x 2013-10-30 2013-10-31 MinGW install @win +Client
+	11 x 2013-11-11 2013-11-10 Intel Corei3 i3-3220 @ヨドバシカメラ +買い物リスト
+	18 x 2013-11-11 2013-11-10 Intel Corei3 i3-3220 @ヨドバシカメラ +買い物リスト
+	16 x 2013-11-12 2013-11-10 SODIMM DDR3 PC3-10600 @ドスパラ +買い物リスト
+	13 x 2013-11-12 2013-11-10 SODIMM DDR3 PC3-10600 @ドスパラ +買い物リスト
+	15 x 2013-11-12 2013-11-10 たまねぎ @山田商店 +買い物リスト
+	17 x 2013-11-12 2013-11-10 たまねぎ @山田商店 +買い物リスト
+	23 x 2013-11-12 2013-11-10 にんじん @山田商店 +買い物リスト
+	14 x 2013-11-12 2013-11-10 にんじん @山田商店 +買い物リスト
+	25 x 2013-11-03 2013-11-03 CUI ver , dropbox install for todo.txt @linux +Server
+	22 x 2013-11-03 2013-11-03 CUI ver , dropbox install for todo.txt @linux +Server
+	28 x 2013-11-05 2013-11-05 Maple馴れ合い場のUTF-8化とupload @maintain +HP
+	31 x 2013-11-05 2013-11-05 Maple馴れ合い場のUTF-8化とupload @maintain +HP
+	
+	--
+	TODO: 64 of 64 tasks shown
+	</pre>
+	
+	todo.sh のオプション、deduplicate を使うと一気に解決うはおｋ
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">	
+	$ todo.sh deduplicate
+
+	TODO: 19 duplicate task(s) removed
+
+	07 x 2013-10-30 2013-10-30 SyntaxHighlighter install @maintain +HP
+	08 x 2013-10-30 2013-10-31 MinGW install @win +Client
+	11 x 2013-11-11 2013-11-10 Intel Corei3 i3-3220 @ヨドバシカメラ +買い物リスト
+	16 x 2013-11-12 2013-11-10 SODIMM DDR3 PC3-10600 @ドスパラ +買い物リスト
+	15 x 2013-11-12 2013-11-10 たまねぎ @山田商店 +買い物リスト
+	23 x 2013-11-12 2013-11-10 にんじん @山田商店 +買い物リスト
+	25 x 2013-11-03 2013-11-03 CUI ver , dropbox install for todo.txt @linux +Server
+	28 x 2013-11-05 2013-11-05 Maple馴れ合い場のUTF-8化とupload @maintain +HP
+	--
+	TODO: 45 of 45 tasks shown
+	</pre>
+	<p>
+	それと、todo.sh の内容を眺めていて気が付いたんですが、<br>
+	todo.txt.BAK という名前で一世代前のバックアップファイルが作成されるみたいです。<br>
+	素敵ですね。
+	</p>
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ t help
+	</pre>
+	とか打ち込んでヘルプを読んでみましょう。<br>
+	<pre class="brush: bash; toolbar: false; gutter: false; highlight: 1;">
+	$ t shorthelp
+	</pre>
+	の方が見通しがいいです。よく見比べてみましょう。
+	</li>
+	</ul>
+	
+	<h2>Android版 <a href="https://play.google.com/store/apps/details?id=com.todotxt.todotxttouch&hl=ja" target="_blank">Todo.txt</a></h2>
+	<a href="(and)filter1.png" target="_blank"><img src="thumb/(and)filter1_thumb.jpg" width="320" height="512" alt="Android_todo1"></a>　左側をスワイプして、フィルタ表示。<br><br>
+	<a href="(and)filter2.jpg" target="_blank"><img src="thumb/(and)filter2_thumb.jpg" width="320" height="193" alt="Android_todo2"></a>
+	<ul>
+	<li>
+	<p>
+	最後にAndroid版のご紹介。<br>
+	2ドル、、、&yen;200ぐらいの有料アプリですが、いつでも持ち歩くスマホとかタブレットとかに入れておくと<br>
+	上記"買い物リスト" とか、知人から「○月Ｘ日にあそこに集合なー」とかすぐに登録出来ます
+	</p>
+	<p>
+	少しわかりにくいのがフィルタ表示のやり方。<br>
+	左側をスワイプすればメニューが出てきますので、登録したコンテキスト or プロジェクトで抽出出来ます。
+	</p>
+	<p>
+	コンテキストというのが"背景"、"状況"という意味、プロジェクトが計画、企画という意味ですので<br>
+	実際の業務で使うとしたらこんな感じかな？↓
+	</p>
+	<pre class="brush: bash; toolbar: false;">
+	$ t add  HKJ134モジュール @単体テスト +ABC社仮想化システムリプレイス対応
+	$ t add  HK1300フロー @結合テスト +ABC社仮想化システムリプレイス対応
+	$ t add  14：00 先方にて打ち合わせ @meeting +ABC企業仮想化システムリプレイス対応
+	$ t add  11:00 グループ会議 @meeting +新人教育
+	</pre>
+	<p>
+	更にWindowsの.NET版と、Android版のアプリは最初から優先度を付けて登録出来ますので、優先度を付け直す手間がかかりません。<br>
+	登録の段階で "(A) 家賃振込！" みたいな感じで。
+	</p>
+	</li>
+	</ul>
+
+	<h2>
+	まとめ
+	</h2>
+	<p>
+	以上、随分と長い記事になってしまいましたが如何でしょうか？<br>
+	WiMaxとかWi2とかXiとかモバイル通信が容易に確保出来るこの時代、クラウドなんて大層な言葉使わなくても<br>
+	「いつでも、どこでも」同じモノを取り扱える、とても素敵な時代になっているんじゃないでしょーか。<br>
+	少し古い言葉を使うなら「ユビキタス」ですかね：P
+	</p>
+	<p>
+	え？俺はガラケーユーザーの癖になんでこんな記事を書いたのかって？
+	</p>
+	<p>
+	<a href="http://www.google.co.jp/nexus/5/" target="_blank">Nexus5</a>が到着するまでの準備っすよ。じゅ・ん・び(´д`)<br>
+	ゲッコーで注文してしまった大馬鹿者ですので発売から早一ヶ月。<br>
+	<strong>まだ来ません</strong>orz<br>
+	オワリ
+	</p>
+	</dd>
+	
+	
+	<dt id="20131105">2013年11月05日 PC作成依頼が来たので作業ログ</dt>
+	<dd>
+	<p>
+	職場の先輩が新しいPCがほすぃと仰いまして。<br>
+	俺がPCにも詳しいという事をどこからか聞いたらしく、新規作成依頼を出されました。
+	</p>
+	<p>
+	俺もそういうの嫌いじゃないですからね、「はいはー作りますぉー」みたいな。<br>
+	で、今回は簡単ながらその作業ログです。
+	</p>
+	<p>
+	要望としては以下の通り。
+	</p>
+	<ul>
+	<li>普通にネットとか見るだけ。</li>
+	<li>オフィス使いたいっす。</li>
+	<li>ゲームはしません。</li>
+	<li>あ、torrentはするよ。</li>
+	<li>ブルーレイディスクの読み書きもしたいなぁ。</li>
+	<li>勿論省電力で省スペースで静かなのんね☆</li>
+	<li>モニタとマウスとキーボードとOS込みで10万位で収まる？</li>
+	</ul>
+	<p>
+	と、まあこんな感じ。<span class="delline">(割と無茶言うね)</span>
+	</p>
+	<p>
+	うーむ、こりゃ普通のケースでは実現出来ないなって事で<br>
+	再び登場、Shuttle社のベアボーンキット、XH61V！
+	</p>
+	<p>
+	これは、ウチでサーバーとして使っているXG41の後継機種。<br>
+	第3世代LGA1155(TDP65w)まで対応で、USB3.0もサポートしておりますので<br>
+	今回の要件にはピッタリかな、と。
+	</p>
+	<p>
+	XG41は3年間安定してフル稼働している実績もあるし、<br>
+	兄貴分モデルなんだからこれぐらい出来るでしょ！という事で作業開始。
+	</p>
+	<p>
+	<a href="fig-01.jpg" target="_blank"><img src="thumb/fig-01_thumb.jpg" alt="fig01"></a><br>
+	XG41と違ってACアダプタ基盤が無くなっており、スッキリしています。
+	</p>
+	<p>
+	miniPCIスロットも2つ装備しており、mSATA接続のSSDも使えるって事で<br>
+	Plextor社の128GBモデル、PX-128M5Mをシステムドライブとして使用します。<br>
+	<a href="fig-02.jpg" target="_blank"><img src="thumb/fig-02_thumb.jpg" alt="fig02"></a><br>
+	っつーかこんなちっこいチップに128GBもデータが入るんか、、、<br>
+	<a href="fig-03.jpg" target="_blank"><img src="thumb/fig-03_thumb.jpg" alt="fig03"></a><br>
+	</p>
+	<p>
+	メモリモジュールはノートPCとかで使われている204pin SO-DIMMって型式でした。<br>
+	こいつも1枚で8GBよりも、4GB*2のデュアルチャンネルで使った方が速度が良く出るDDR3ですので<br>
+	安定のW3N1333Q-4G*2をチョイス。<br>
+	<a href="fig-04.jpg" target="_blank"><img src="thumb/fig-04_thumb.jpg" alt="fig04"></a><br>
+	</p>
+	<p>
+	ネットの評判では「刺しにくい」「どうやって刺せばいいんだこんなのｗ」って意見もチラホラですが<br>
+	俺にとっては問題じゃなかったです(・θ・)<br>
+	横着しないでちゃんとCPUクーラーを外してからやりゃぁいいんですよ(・θ・)
+	</p>
+	<p>
+	OSは Windows8 64bit無印版をインストールしました。<br>
+	これならばSSDとも相性ばっちり！<br>
+	8.1も出ましたしね。
+	</p>
+	<p>
+	SSDの性質として、全ての領域を使い切らないで物理的に少し余らせておくとパフォーマンスが維持出来るとの事ですので<br>
+	128GB中 9%程引いた 115GB分をCドライブにしてOSをインストールします。<br>
+	Dドライブには、DATA保存用に2.5インチのHDD、1.0TBを丸々割り当てる事とします。
+	</p>
+	<p>
+	あー、CPUはCore i3-3220を選択しました。<br>
+	<a href="fig-05.jpg" target="_blank"><img src="thumb/fig-05_thumb.jpg" alt="fig05"></a><br>
+	消費電力と仮想4coreが最高すぎいぃ<br>
+	画像はピンボケしすぎいぃ
+	</p>
+	<p>
+	で、全部詰め込んでこんな感じに！<br>
+	<a href="fig-06.jpg" target="_blank"><img src="thumb/fig-06_thumb.jpg" alt="fig06"></a><br>
+	見ての通りギュウギュウ詰めですので、SATAケーブルは柔らかいのをお勧めします。<br>
+	5mmの余裕が、、、5mmの余裕がっ！！と叫びながら作業しましたです(・ω・)
+	</p>
+	<p>
+	そしてこっそりと、こんなサインを作って貼り付けておきましたｗ<br>
+	どこに隠したかわかるかなー？なんて。<br>
+	<a href="fig-07.jpg" target="_blank"><img src="thumb/fig-07_thumb.jpg" alt="fig07"></a><br>
+	内訳は以下の通り。
+	</p>
+	<table>
+	 <tr>
+	  <th>メーカー</th><th>型番</th><th>金額</th><th>備考</th>
+	 </tr>
+	 <tr>
+	  <th>Intel</th><td>　Corei3 i3-3220</td><td class="right">&yen;12,700-</td><td class="left">【CPU】3.3GHz , Core2 , Sled4 , HDG2500 , TDP 55W !</td>
+	 </tr>
+	 <tr>
+	  <th>CFD</th><td>　W3N1333Q-4G*2</td><td class="right">&yen;9,680-</td><td class="left">【Mem】安心の襟草。</td>
+	 </tr>
+	 <tr>
+	  <th>Plextor</th><td>　PX-128M5M</td><td class="right">&yen;12,480-</td><td class="left">【SSD】OS install用。128GB , mSATA , 6GB/s (XH61Vでは3GB/sに制限される)</td>
+	 </tr>
+	 <tr>
+	  <th>WesternDigital</th><td>　WD10JPVX</td><td class="right">&yen;8,780-</td><td class="left">【HDD】DATA用。1.0TB , SATA 6.0GB/s , 5400rpm , 8MB cache !</td>
+	 </tr>
+	 <tr>
+	  <th>Pioneer</th><td>　BDR-UD02</td><td class="right">&yen;15,300-</td><td class="left">【BDD】4層(128GB)書込みのBDXL対応！</td>
+	 </tr>
+	 <tr>
+	  <th>BenQ</th><td>　GL2460HM</td><td class="right">&yen;16,980-</td><td class="left">【Monitor】でかい24インチ、綺麗、HDMI！</td>
+	 </tr>
+	 <tr>
+	  <th>Logicool</th><td>　MK270</td><td class="right">&yen;2,480-</td><td class="left">【InputDevice】キーボードとマウスのお安いセット。それでもUnifyingで複数デバイスを楽々無線ペアリング！</td>
+	 </tr>
+	 <tr>	
+	  <th>Shuttle</th><td>　XH61V</td><td class="right">&yen;17,638-</td><td class="left">【Case】ベアボーーン</td>
+	 </tr>
+	 <tr>
+	  <th>Microsoft</th><td>　Windows8 64bit</td><td class="right">&yen;10,680-</td><td class="left">【OS】無印のDSP版。明らかにビジネス用途では使えないよね（</td>
+	 </tr>
+	 <tr>
+	  <th>合計</th><td></td><td class="right">&yen;106,718-</td><td>ちょっと超えちゃった：P</td>
+	 </tr>
+	</table>
+	<p>
+	各種ベンチマークスコアが無い？<br>
+	あー、わざわざ負荷をかけて寿命縮める事もあるまいて。<br>
+	ググれば山のように出てくらー(´σД｀)
+	</p>
+	<p>
+	オフィスには<a href="http://www.documentfoundation.org" target="_blank">LibreOffice 4.1.1.2</a> をインストール。<br>
+	これがあればWordだろうがExcelだろうがPowerPointだろうがDatabaseだろうが、何でも出来るっ
+	</p>
+	<p>
+	torrentクライアントには定番の<a href="http://www.bitcomet.com/" target="_blank">BitComet 1.36 64bit</a> を使用。<br>
+	DLコンテンツやキャッシュの保存場所をDドライブのHDDに指定して、SSDの寿命を延ばします。
+	</p>
+	<p>
+	ブルーレイディスクの読み書きには<a href="http://www.imgburn.com/" target="_blank">ImgBurn 2.5.8.0</a> を使用。<br>
+	最早説明不要のお便利ライティングソフト。
+	</p>
+	<p>
+	それからデスクトップに<a href="http://teamviewer.com" target="_blank">TeamViewer_Client</a>へのショートカットを作り、<br>
+	名前を「何かあったらTEVAがリモートで駆け付けるボタン」って名前にしておきましたｗ<br>
+	これは、通信経路が非常にセキュアなのがミソ。
+	</p>
+	<p>
+	そんなこんなで各種セットアップも済ませて嫁に出す準備が出来た頃、先輩の家へ設置しにゆきました。<br>
+	って、エェｪ(´Д`)ｪェエ<br>
+	<a href="fig-08.jpg" target="_blank"><img src="thumb/fig-08_thumb.jpg" alt="fig08"></a><br>
+	、、、まさかこんな不安定な場所に設置する事になるとは、、、。<br>
+	ぶっ倒れて壊れても無保証ですぜパイセン！( ´;° ;ё;° ;)
+	</p>
+
+<hr width="100%">
+	</dd>   
+    
+<!-- footer -->
+
+	<p align="center">
+	<a href="#"><img src="../../After.gif" width="138" height="50" alt="来月へ。" border="0"></a>　　
+	<a href="../../index.html"><img src="../../top.gif" width="105" height="50" alt="TOPへ。" border="0"></a>　　
+	<a href="../2012_05/201205.html" name="log"><img src="../../Before.gif" width="165" height="50" alt="先月へ。" border="0"></a>
+	</p>
+
+</dl>
+
+	<!-- SyntaxHighlighter Autoloader start -->
+	<script type="text/javascript">
+	SyntaxHighlighter.autoloader
+	(
+		"bash shell		../SyntaxHighlighter/js/shBrushBash.js"
+	);
+	SyntaxHighlighter.all();
+	</script>
+	<!-- SyntaxHighlighter Autoloader end -->
+
+</body>
+</html>
