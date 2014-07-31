@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="stylesheet" href="../markdown-style.css" type="text/css">
+  <link rel="shortcut icon" href="../../favicon.ico">
+
+$for(author-meta)$
+  <meta name="author" content="$author-meta$">
+$endfor$
+
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$">
+$endif$
+
+<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+<style type="text/css">
+  $if(quotes)$
+    q { quotes: "“" "”" "‘" "’"; }
+  $endif$
+
+  $if(highlighting-css)$
+    $highlighting-css$
+  $endif$
+
+  code{white-space: pre;}
+  
+  blockquote {
+    background-color: #ddd;
+    padding: 1em;
+    position: relative;
+    font-style: oblique;
+    z-index: 1;
+    font-size: 80%;
+  }
+
+  blockquote:before {
+    content:"“";
+    font-size: 600%;
+    font-family: "ＭＳ Ｐゴシック",sans-serif;
+    line-height: 1em;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+             }
+</style>
+
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+$for(css)$
+  <link rel="stylesheet" href="$css$">
+$endfor$
+
+$if(math)$
+  $math$
+$endif$
+
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+<!-- LapisAnalyze1 START -->
+<script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+<!-- LapisAnalyze1 END -->
+
+</head>
+<body>
+
+<!-- LapisAnalyze2 start -->
+<div id="tracker" style="position:absolute;visibility:hidden;">
+  <script type="text/javascript">sendData();</script>
+  <noscript>
+    <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+  </noscript>
+</div>
+<!-- LapisAnalyze2 end -->
+
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+<header>
+  <h1 class="title">$title$</h1>
+  $if(subtitle)$
+  <h1 class="subtitle">$subtitle$</h1>
+  $endif$
+  $for(author)$
+  <h2 class="author">$author$</h2>
+  $endfor$
+  $if(date)$
+  <h3 class="date">$date$</h3>
+  $endif$
+</header>
+$endif$
+$if(toc)$
+<nav id="$idprefix$TOC">
+  $toc$
+</nav>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+</body>
+</html>

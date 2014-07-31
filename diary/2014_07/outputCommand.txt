@@ -1,0 +1,14 @@
+# pandoc --template=html5_template.html -o 201407.html 201407.md
+
+
+# pandoc.exe -s -S -f markdown -t html5 --toc -c ../markdown-style.css  -V lang=ja  -V author-meta
+=TEVA  -V pagetitle="Test markdown convert page"  -V title="Test markdown convert page"  -V date-me
+ta="$(date)"  -o output.html test.md
+
+pandoc.exe -f markdown \
+    --template=html5_template.html test.md \
+    -o test.html \
+    -V author-meta=TEVA \
+    -V lang=ja \
+    -V pagetitle="8月の徒然" \
+    -V date-meta="$(date)"

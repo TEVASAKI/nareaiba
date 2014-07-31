@@ -1,0 +1,26 @@
+#!/bin/sh
+base="$HOME/applications/haskell"
+hp_ver="2013.2.0.0"
+ghc_ver="7.6.3"
+hp="haskell-platform-${hp_ver}"
+ghc="ghc-${ghc_ver}"
+ 
+mkdir -p ${base}/src
+cd ${base}/src
+wget http://lambda.haskell.org/platform/download/${hp_ver}/${hp}.tar.gz
+wget http://www.haskell.org/ghc/dist/${ghc_ver}/${ghc}-x86_64-unknown-linux.tar.bz2
+tar xf ${hp}.tar.gz
+tar xf ${ghc}-x86_64-unknown-linux.tar.bz2
+cd ${base}/src/${ghc}/
+./configure --prefix=${base}/${ghc}
+make install
+cd ${base}/src/${hp}/
+export PATH=${base}/${ghc}/bin:$PATH
+./configure --prefix=${base}/${hp}
+make
+make install
+ 
+export PATH=${base}/${hp}/bin:$HOME/.cabal/bin:$PATH
+cabal update
+cabal install cabal-install
+cabal install pandoc
