@@ -2,6 +2,6 @@ pandoc.exe -f markdown \
     --template=html5_template.html \
     test.md \
     -o test.html \
-    -V date-meta="$(date)"
+    -V date-meta="$(date)" \
     -V pagetitle="8月の徒然"
 
