@@ -82,6 +82,8 @@ h2 {
   font-size: 24px;
   border-bottom: 1px solid #cccccc;
   color: black; 
+  background-color: #c0ffee;
+  /*background-color: #d6d6ff;*/
 }
 
 h3 {
