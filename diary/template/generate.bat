@@ -1,6 +1,11 @@
 @echo off
 
-rem echo %1 %2 %3
-rem pandoc.exe -f markdown --template=../template/html5_template.html %1.md -o %2.html -V pagetitle="%3" -V date-meta="$(date)"
+rem %1 : INfile and OUTfile NAME @ Markdown (*.md) to HTML (*.html)
+rem %2 : PageTitle
 
-pandoc.exe -V %1 -f markdown --template=../template/html5_template %2.md -o %3.html -V pagetitle="%4"
+rem USAGE : PROMPT$  generate.bat %1 %2
+rem example : PROMPT$  generate.bat 20141213 12月13日の徒然
+
+rem 要するに、1ページで一日単位。
+
+pandoc.exe -f markdown --template=./html5_template %1.md -o %1.html -V pagetitle="%2"
