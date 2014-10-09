@@ -6,6 +6,9 @@
     <link href="../template/markdown-style.css" rel="stylesheet" type="text/css">
     <link href="../../favicon.ico" rel="shortcut icon">
     <meta content="TEVA" name="author">
+    $if(date-meta)$
+      <meta name="dcterms.date" content="$date-meta$">
+    $endif$
     <title>
       $if(title-prefix)$$title-prefix$ - $endif$$pagetitle$
     </title>
