@@ -1,40 +1,85 @@
-body
-{
-	scrollbar-face-color: #ffffff;
-	scrollbar-highlight-color: #000000;
-	scrollbar-shadow-color: #000000;
-	scrollbar-3dlight-color: #ffffff;
-	scrollbar-track-color: #ffffff;
-	scrollbar-darkshadow-color: #ffffff;
-	scrollbar-arrow-color: #000000;
-	background-color: #ffffff;
-	color: #000033;
-	font-size: 16px;
-/*	font-family: �l�r �S�V�b�N; */
-}
-
-dt{
-	background-color: #d6d6ff;
-	Color: #194076;
-	margin-top: 10px;
-	font-weight: bold;
-}
-	
-dd{
-	line-height: 205%;
-}
-
-	.red		{font-size: large; color: #ff0000;}
-	.lred		{font-size: x-large; color: #ff0000;}
-	.iwai		{background-color: #ff0000; color: #ffffff;}
-	.delline	{font-size: 8pt;text-decoration:line-through;}
-	.head		{border-width: 0px 0px 2px 6px; border-style: solid; border-color: #66ffff;}
-	.small		{font-size: x-small;}
-	.xx-small	{font-size: xx-small;}
-	.lt			{text-decoration: line-through;}
-	.code		{background-color: #000000; color: #ffffff;}
-	.code2		{border-style: solid; border-width: 0px 0px 2px 0px; border-color: #66ffff;}
-	a:link 		{ color: #000033; text-decoration: underline; }
-	a:visited 	{ color: #000033; text-decoration: underline; }
-	a:active   	{ color: #000033; text-decoration: underline; }
-	a:hover		{ background-color: #66ffff; }
+@charset "utf-8";
+
+body
+{
+	scrollbar-face-color: #ffffff;
+	scrollbar-highlight-color: #000000;
+	scrollbar-shadow-color: #000000;
+	scrollbar-3dlight-color: #ffffff;
+	scrollbar-track-color: #ffffff;
+	scrollbar-darkshadow-color: #ffffff;
+	scrollbar-arrow-color: #000000;
+	background-color: #ffffff;
+	color: #000033;
+	font-size: 16px;
+/*	font-family: ＭＳ ゴシック; */
+}
+
+dt{
+	background-color: #d6d6ff;
+	Color: #194076;
+	margin-top: 10px;
+	font-weight: bold;
+}
+	
+dd{
+	line-height: 205%;
+}
+
+/*テーブルの外枠定義*/
+/*none : 線無し(default)*/
+/*solid : 実線*/
+/*double : 二重線*/
+/*groove : 谷型の線*/
+/*ridge : 山型の線*/
+/*inset : 凹型の線*/
+/*outset : 凸型の線*/
+/*dotted : 点線*/
+/*dashed : 破線*/
+
+table {
+	width: 80%;
+	height: 100%;
+	border: 1px #000000 void;
+	}
+	table.center { text-align: center; }
+
+/*行タイトル*/
+th {
+	border: 1px #000000 solid;
+	background-color: #C0FFEE;
+	}
+	th.left { text-align: left; }		/*左寄せ*/
+	th.center { text-align: center; }	/*中央揃え*/
+	th.right { text-align: right; }		/*右寄せ*/
+	th.top { text-align: top; }			/*上揃え*/
+	th.middle { text-align: middle; }	/*中央揃え*/
+	th.bottom { text-align: bottom; }	/*下揃え*/
+	
+/*行要素*/
+td {
+	border: 1px #000000 solid;
+	}
+	td.left { text-align: left; }		/*左寄せ*/
+	td.center { text-align: center; }	/*中央揃え*/
+	td.right { text-align: right; }		/*右寄せ*/
+	td.top { text-align: top; }			/*上揃え*/
+	td.middle { text-align: middle; }	/*中央揃え*/
+	td.bottom { text-align: bottom; }	/*下揃え*/
+	
+	
+	.red		{font-size: large; color: #ff0000;}
+	.lred		{font-size: x-large; color: #ff0000;}
+	.iwai		{background-color: #ff0000; color: #ffffff;}
+	.delline	{font-size: 8pt;text-decoration:line-through;}
+	.head		{border-width: 0px 0px 2px 6px; border-style: solid; border-color: #66ffff;}
+	.small		{font-size: x-small;}
+	.xx-small	{font-size: xx-small;}
+	.lt			{text-decoration: line-through;}
+	.code		{background-color: #000000; color: #ffffff;}
+	.code2		{border-style: solid; border-width: 0px 0px 2px 0px; border-color: #66ffff;}
+	a:link 		{ color: #000033; text-decoration: underline; }
+	a:visited 	{ color: #000033; text-decoration: underline; }
+	a:active   	{ color: #000033; text-decoration: underline; }
+	a:hover		{ background-color: #66ffff; }
+	
