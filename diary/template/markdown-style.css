@@ -235,6 +235,29 @@ dl {
     margin-bottom: 0
   }
 
+/*
+blockquote {
+  background-color: #dddddd;
+  padding: 1em;
+  position: relative;
+  font-style: oblique;
+  z-index: 1;
+  font-size: 90%;
+}
+
+blockquote:before {
+  content:"“";
+  font-size: 600%;
+  font-family: "ＭＳ Ｐゴシック",sans-serif;
+  line-height: 1em;
+  color: #ffffff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+*/
+
 blockquote {
   border-left: 4px solid #dddddd;
   padding: 0 15px;
