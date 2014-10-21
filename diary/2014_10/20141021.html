@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+    <link href="../template/markdown-style.css" rel="stylesheet" type="text/css">
+    <link href="../../favicon.ico" rel="shortcut icon">
+    <meta content="TEVA" name="author">
+          <meta name="dcterms.date" content="2014/10/21 20:16">
+        <title>
+      20141021
+    </title>
+  </head>
+  <body>
+    <style rel="stylesheet" type="text/css">
+              table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+        margin: 0; padding: 0; vertical-align: baseline; border: none; }
+      table.sourceCode { width: 100%; line-height: 100%; }
+      td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+      td.sourceCode { padding-left: 5px; }
+      code > span.kw { color: #007020; font-weight: bold; }
+      code > span.dt { color: #902000; }
+      code > span.dv { color: #40a070; }
+      code > span.bn { color: #40a070; }
+      code > span.fl { color: #40a070; }
+      code > span.ch { color: #4070a0; }
+      code > span.st { color: #4070a0; }
+      code > span.co { color: #60a0b0; font-style: italic; }
+      code > span.ot { color: #007020; }
+      code > span.al { color: #ff0000; font-weight: bold; }
+      code > span.fu { color: #06287e; }
+      code > span.er { color: #ff0000; font-weight: bold; }
+        </style>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+                <!-- LapisAnalyze1 START -->
+    <script charset="UTF-8" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" type="text/javascript"></script>
+    <!-- LapisAnalyze1 END -->
+    <!-- LapisAnalyze2 start -->
+    <div id="tracker" style="position:absolute;visibility:hidden;">
+      <script type="text/javascript">
+        sendData();
+      </script>
+      <noscript>
+        <img alt="tracker" height="0" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0">
+      </noscript>
+    </div>
+    <!-- LapisAnalyze2 end -->
+                <h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
+<p>初投稿です、宜しくお願いします(・θ・)</p>
+<h3>出会いと動機</h3>
+<p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
+<p>んで冒頭のMarkdown形式について調べていたら、Haskellで書かれたパーサー <strong>Pandoc</strong> の存在を<a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">sky_y</a>さんの投稿で知った訳ですね。</p>
+<p>ええ、勿論飛びつきましたよ私だって健全な男の子ですもの。</p>
+<h3>準備</h3>
+<p>環境はWindows7 pro 64bit<br />環境変数とか色々面倒くさいので、<a href="https://chocolatey.org/">Chocolatey</a> でHaskellプラットフォームとpandocをば。</p>
+<h4 id="chocolatey-">Chocolatey のインストール</h4>
+<p>以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。</p>
+<pre class="bat"><code>@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
+<h4 id="haskell-platformgkasgow-haskell-compilerghc-">Haskell Platform(Gkasgow Haskell Compiler(GHC)) のインストール</h4>
+<p><code>choco install xxx</code> の略である <code>cinst</code> を使います。</p>
+<pre class="bat"><code>cinst HaskellPlatform</code></pre>
+<p>これで Haskell パッケージ管理コマンド cabal がインストール出来ます。</p>
+<h4 id="haskell-platform-pandoc-">Haskell Platform のアップデートとPandoc のインストール</h4>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">cabal update
+cabal install cabal<span class="fu">-</span>install
+cabal install <span class="fu">-</span>fhighlighting pandoc</code></pre>
+<p>ここは滅茶苦茶時間かかりますが、辛抱強くお待ち下さい。<br />(<code>-fhighlighting</code> オプションは要らないかもしれないけど)<br />コマンドプロンプトで、<code>pandoc -v</code> と入力して、バージョン表示されればok.</p>
+<p><code>cinst pandoc</code> でもインストール出来ますが、これだとバージョンが1.11.1 になってしまいますので、、。</p>
+<h3>テンプレートの作成</h3>
+<p>以下のコマンドで、html5テンプレートを作成しておきます。</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">pandoc <span class="fu">-</span><span class="dt">D</span> html5 <span class="fu">&gt;</span> html5_template<span class="fu">.</span>html</code></pre>
+<p>んでそれを元に不要な部分を削って、自分のページで使いたいヘッダとかCSS とか色々指定しつつ<br />読みやすいように体裁を整えたのが以下。</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../template/markdown-style.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;../../favicon.ico&quot;</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> content=</span><span class="st">&quot;TEVA&quot;</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="kw">&gt;</span>
+    $if(date-meta)$
+      <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;dcterms.date&quot;</span><span class="ot"> content=</span><span class="st">&quot;$date-meta$&quot;</span><span class="kw">&gt;</span>
+    $endif$
+    <span class="kw">&lt;title&gt;</span>
+      $if(title-prefix)$$title-prefix$ - $endif$$pagetitle$
+    <span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="kw">&lt;style</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>
+    $if(quotes)$
+    $endif$
+    $if(highlighting-css)$
+      $highlighting-css$
+    $endif$
+    <span class="kw">&lt;/style&gt;</span>
+    <span class="co">&lt;!--[if lt IE 9]&gt;</span>
+<span class="co">    &lt;script src=&quot;http://www.xxx.yyy/js&quot;&gt;&lt;/script&gt;</span>
+<span class="co">    &lt;![endif]--&gt;</span>
+    $for(css)$
+    <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+    $endfor$
+    $if(math)$ 
+      $math$
+    $endif$
+    $for(header-includes)$
+      $header-includes$ 
+    $endfor$ 
+    <span class="co">&lt;!-- LapisAnalyze1 START --&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> charset=</span><span class="st">&quot;UTF-8&quot;</span><span class="ot"> src=</span><span class="st">&quot;http://www.xxx.yyy/js&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="co">&lt;!-- LapisAnalyze1 END --&gt;</span>
+    <span class="co">&lt;!-- LapisAnalyze2 start --&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;tracker&quot;</span><span class="ot"> style=</span><span class="st">&quot;position:absolute;visibility:hidden;&quot;</span><span class="kw">&gt;</span>
+      <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;</span>
+        <span class="fu">sendData</span>();
+      &lt;<span class="ot">/script&gt;</span>
+<span class="ot">      &lt;noscript&gt;</span>
+<span class="ot">        &lt;img alt=&quot;tracker&quot; height=&quot;0&quot; src=&quot;http://www.xxx.yyy/php/img&quot; width=&quot;0&quot; height=&quot;0&quot;&gt;</span>
+<span class="ot">      &lt;/noscript</span>&gt;
+    &lt;<span class="ot">/div&gt;</span>
+<span class="ot">    &lt;!-- LapisAnalyze2 end --&gt;</span>
+<span class="ot">    $for</span><span class="fl">(</span><span class="ot">include-before</span><span class="fl">)</span><span class="ot">$ </span>
+<span class="ot">      $include-before$</span>
+<span class="ot">    $endfor$</span>
+<span class="ot">    $if</span><span class="fl">(</span><span class="ot">title</span><span class="fl">)</span><span class="ot">$</span>
+<span class="ot">      &lt;header&gt;</span>
+<span class="ot">        &lt;h1 class=&quot;title&quot;&gt;</span>
+<span class="ot">          $title$</span>
+<span class="ot">        &lt;/h1</span>&gt;
+        <span class="fu">$if</span>(subtitle)$
+          &lt;h1 <span class="kw">class</span>=<span class="st">&quot;subtitle&quot;</span>&gt;
+            $subtitle$
+          &lt;<span class="ot">/h1&gt;</span>
+<span class="ot">        $endif$</span>
+<span class="ot">        $for</span><span class="fl">(</span><span class="ot">author</span><span class="fl">)</span><span class="ot">$</span>
+<span class="ot">          &lt;h2 class=&quot;author&quot;&gt;</span>
+<span class="ot">            $author$</span>
+<span class="ot">          &lt;/h2</span>&gt;
+        $endfor$
+        <span class="fu">$if</span>(date)$
+          &lt;h3 <span class="kw">class</span>=<span class="st">&quot;date&quot;</span>&gt;
+            $date$
+          &lt;<span class="ot">/h3&gt;</span>
+<span class="ot">        $endif$</span>
+<span class="ot">      &lt;/header</span>&gt;
+    $endif$
+    <span class="fu">$if</span>(toc)$
+      &lt;nav id=<span class="st">&quot;$idprefix$TOC&quot;</span>&gt;
+        $toc$
+      &lt;<span class="ot">/nav&gt;</span>
+<span class="ot">    $endif$</span>
+<span class="ot">    $body$</span>
+<span class="ot">    $for</span><span class="fl">(</span><span class="ot">include-after</span><span class="fl">)</span><span class="ot">$</span>
+<span class="ot">      $include-after$</span>
+<span class="ot">    $endfor$</span>
+<span class="ot">  &lt;/body</span>&gt;
+&lt;<span class="ot">/html&gt;</span></code></pre>
+<p>ページのFavicon とかCSS は直接埋め込んでしまえばちゃんと読みに行ってくれます(・∀・)<br />gitHubっぽいCSS をちょいと変更した物を使わせていただいております。<br /><a href="https://gist.github.com/TEVASAKI/9c9da230a6a9f2cda9ce">ここに置いてあります。</a></p>
+<h3>バッチでラクをする。</h3>
+<p>んで、Vimなりなんなりでmd 形式のマークダウン文章を作った後、<br />右クリックの送るメニューから一発変換出来るシェルってかバッチを作ります。</p>
+<p><a href="http://www5d.biglobe.ne.jp/~yggsoft/">YGGDRASILL SOFT!!</a> で公開されていた、gendoc というバッチを参考にさせていただきました！ありがとうございます。</p>
+<pre class="bat"><code>@echo off
+
+rem - - - - - - - - - - - - - - - - - - -
+rem This script is forked by &#39;gendoc&#39;.
+rem Thanks by YGGDRASILL SOFT!!
+rem http://www5d.biglobe.ne.jp/~yggsoft/
+rem - - - - - - - - - - - - - - - - - - -
+
+rem BAT option      : ~d          ドライブレター
+rem                 : ~p          パス名
+rem                 : ~n          ファイル名
+rem                 : ~x          拡張子
+rem                 : ~t          ファイルの日付と時刻
+
+rem pandoc option   : --template  テンプレート指定。このシェルと同じ場所に置いておく必要がある
+rem                 : -f          入力形式指定
+rem                 : -o          出力名指定 , 第二引数に入力ファイル名
+rem                 : -V          テンプレート内のHaskell 引数指定
+
+rem SendTo &quot;%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk&quot;
+
+rem 生成されるHTMLは同じ場所に作られるので、テンプレート内のcssは相対パス指定で。
+
+
+if exist &quot;%~d1%~p1%~n1%~x1&quot; (
+  set F=%~d1%~p1%~n1
+) else (
+  echo 処理できるファイルがありません - 「%~d1%~p1%~n1%~x1」
+  pause
+  goto :EOF
+)
+
+pandoc --template &quot;%~d0%~p0¥html5_template.html&quot; -f markdown -o &quot;%F%.html&quot; &quot;%F%%~x1&quot;  -V pagetitle=&quot;%~n1&quot; -V date-meta=&quot;%~t1&quot;
+if errorlevel 1 (
+  echo pandocの処理に失敗しました
+  pause
+  goto :EOF
+)
+
+rem てゆーか、コメント内に引数の&quot;%~d&quot; とか書いていたら解釈されるんですが、、、
+rem これバグじゃねーの</code></pre>
+<p>んで、これをSendTo &quot;%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk&quot; に作成して<br />対象のマークダウンファイル上で送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
+<h3>課題</h3>
+<p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p>
+<h3>あると便利なもの</h3>
+<ul>
+<li><p>Rapid Environment Editor</p>
+<ul>
+<li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
+</ul></li>
+</ul>
+      </body>
+</html>
