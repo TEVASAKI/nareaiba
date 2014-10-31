@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+    <link href="../template/markdown-style.css" rel="stylesheet" type="text/css">
+    <link href="../../favicon.ico" rel="shortcut icon">
+    <meta content="TEVA" name="author">
+          <meta name="dcterms.date" content="2014/10/31 22:09">
+        <title>
+      20141031
+    </title>
+  </head>
+  <body>
+    <style rel="stylesheet" type="text/css">
+              table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+        margin: 0; padding: 0; vertical-align: baseline; border: none; }
+      table.sourceCode { width: 100%; line-height: 100%; }
+      td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+      td.sourceCode { padding-left: 5px; }
+      code > span.kw { color: #007020; font-weight: bold; }
+      code > span.dt { color: #902000; }
+      code > span.dv { color: #40a070; }
+      code > span.bn { color: #40a070; }
+      code > span.fl { color: #40a070; }
+      code > span.ch { color: #4070a0; }
+      code > span.st { color: #4070a0; }
+      code > span.co { color: #60a0b0; font-style: italic; }
+      code > span.ot { color: #007020; }
+      code > span.al { color: #ff0000; font-weight: bold; }
+      code > span.fu { color: #06287e; }
+      code > span.er { color: #ff0000; font-weight: bold; }
+        </style>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+                <!-- LapisAnalyze1 START -->
+    <script charset="UTF-8" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" type="text/javascript"></script>
+    <!-- LapisAnalyze1 END -->
+    <!-- LapisAnalyze2 start -->
+    <div id="tracker" style="position:absolute;visibility:hidden;">
+      <script type="text/javascript">
+        sendData();
+      </script>
+      <noscript>
+        <img alt="tracker" height="0" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0">
+      </noscript>
+    </div>
+    <!-- LapisAnalyze2 end -->
+                <h1 id="usbesxi5.5-">USBメモリにESXi5.5 のインストーラを作成する</h1>
+<h2>用意するもの</h2>
+<p>4GBと8GBのUSBメモリを2つ用意して、CentOS6.5 を使って作成します。<br />再帰的に同じメモリにインストール出来ればそれでいいんですが、なんか出来なくなっていた様ですので。</p>
+<h2 id="to">TO</h2>
+<p>Shuttle社のベアボーンキットである、XG41をホストマシンとして<br />USB(4GB) からブートするESXiサーバーを作成します。</p>
+<h2 id="do">DO</h2>
+<h3 id="nic-">NIC のドライバを手に入れる</h3>
+<p>蟹チップだったので以下のエラーが<br />※ SS消失<br /><code>Realtek 8168 NIC in ESXi 5.5 not detected by default</code></p>
+<p>そこで、ESXi-Customizer を使ってドライバ組込みのISOファイルを作成する。</p>
+<ul>
+<li><p>ESXi-Customizer</p>
+<ul>
+<li><a href="http://www.v-front.de/p/esxi-customizer.html">VMware Front Experience</a></li>
+</ul></li>
+<li><p>ドライバ 【VMware_bootbank_net-r8168_8.013.00-3vmw.510.0.0.799733】 (下記のうちどれかからGET)</p>
+<ul>
+<li><a href="http://www.vladan.fr/realtek-8169-nics-not-detected-under-esxi-5-5/">ESX virtualization</a></li>
+<li><a href="http://www.tinkertry.com/install-esxi-5-5-with-realtek-8111-or-8168-nic/">TinkerTry IT @ home</a></li>
+<li><a href="http://miketabor.com/add-realtek-r8168-to-esxi-5-5/">Mike Tabor</a></li>
+</ul></li>
+</ul>
+<p>で、<code>ESXi-Customizer.cmd</code> を実行して、オリジナルのESXiイメージとドライバを選択して。<br />出力先の名前を決めて完了。</p>
+<h3 id="usbboot">USBメモリのフォーマットとBootフラグの設定</h3>
+<p>CD-R ドライブが付いていないので、BootableなUSBメモリを作る。<br />以降の作業は作業用Linuxホストにて行います。<br />なんかsyslinux が必要なので。</p>
+<h4 id="usb">USBメモリ内にパーティションを作成</h4>
+<p><code># fdisk -l</code></p>
+<blockquote>
+<p>ディスク /dev/sda: 21.5 GB, 21474836480 バイト <strong>← これはOSの入ったHDD</strong><br />ヘッド 255, セクタ 63, シリンダ 2610<br />Units = シリンダ数 of 16065 * 512 = 8225280 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x000bf29c</p>
+<p>-------- 省略 --------</p>
+<p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト <strong>← これがUSBメモリ</strong><br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
+</blockquote>
+<p>/dev/sdb がUSBメモリだとする。</p>
+<ol>
+<li><code># fdisk /dev/sdb/</code></li>
+</ol>
+<ul>
+<li>d ← パーティションを削除</li>
+<li><p>n ← パーティションを作成</p>
+<ul>
+<li>p ← Primary を選択</li>
+<li>1 ← パーティションNoを指定。1番。</li>
+<li>Enter ← シリンダ指定。デフォルトの1。</li>
+<li>Enter ← 最終シリンダ指定。デフォルト。</li>
+</ul></li>
+<li><p>t ← パーティションのタイプ指定</p>
+<ul>
+<li>c ← FAT32 を示す<code>c</code> を指定</li>
+</ul></li>
+<li><p>a ← Bootable 指定</p>
+<ul>
+<li>1 ← 1番パーティションを指定</li>
+</ul></li>
+<li><p>p ← パーティション設定を確認</p></li>
+</ul>
+<blockquote>
+<p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト<br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
+<p>デバイス ブート 始点 終点 ブロック Id システム<br />/dev/sdb1 * 1 1022 3928537 c W95 FAT32 (LBA)</p>
+</blockquote>
+<p>、、、OKですね(・∀・)<br />では、wを押下して書き込みます。</p>
+<ul>
+<li>w ← 設定を書き込む。</li>
+</ul>
+<h4 id="fat32-">FAT32 でフォーマット</h4>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># mkfs.vfat -F 32 -n ESXi-Installer /dev/sdb1</span></code></pre>
+<h3 id="syslinux-">syslinux とか</h3>
+<h4>組込み。</h4>
+<p>syslinux でブート用のシステムをUSBメモリに組み込む。<br />そんで、ブート用のMBRを書き込む。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># syslinux /dev/sdb1</span>
+<span class="co"># dd if=/usr/share/syslinux/mbr.bin of=/dev/sdb bs=440 count=1</span></code></pre>
+<h4 id="esxiusb">ESXiインストーラの中身をUSBメモリにコピー</h4>
+<p>イメージファイルをそのままマウントして、中身を全部コピーする。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># mkdir /mnt/usb</span>
+<span class="co"># mount /dev/sdb1 /mnt/usb</span>
+<span class="co"># mount -o loop /home/USER/iso/ESXi-xxx.iso /media</span>
+<span class="co"># cp -r /media -T /mnt/usb</span></code></pre>
+<h4 id="syslinux.cfg-">syslinux.cfg の作成</h4>
+<p>コピーしたUSB内のisolinux.cfg からsyslinux.cfg をコピーし、中身をちょいと修正</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># cd /mnt/usb</span>
+<span class="co"># cp isolinux.cfg syslinux.cfg</span>
+<span class="co"># vi syslinux.cfg</span></code></pre>
+<blockquote>
+<p>DEFAULT mboot.c32 ← <strong>ここをmenu32.c32 からmboot.c32 に書き換える</strong><br />MENU TITLE ESXi-5.5.0-20140302001-standard Boot Menu<br />NOHALT 1<br />PROMPT 0<br />TIMEOUT 80<br />LABEL install<br /> KERNEL mboot.c32<br /> APPEND -c boot.cfg<br /> MENU LABEL ESXi-5.5.0-20140302001-standard ^Installer<br />LABEL hddboot<br /> LOCALBOOT 0x80<br /> MENU LABEL ^Boot from local disk<br />LABEL comment0<br /> MENU LABEL<br />LABEL comment1<br /> MENU LABEL +------------------------------------------------------+<br />LABEL comment2<br /> MENU LABEL | Customized by ESXi-Customizer 2.7.2 |<br />LABEL comment3<br /> MENU LABEL | <a href="http://esxi-customizer.v-front.de" class="uri">http://esxi-customizer.v-front.de</a> |<br />LABEL comment4<br /> MENU LABEL +------------------------------------------------------+</p>
+</blockquote>
+<h3>後始末</h3>
+<p>USB メモリとイメージをumountしておく。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># umount /mnt/usb</span>
+<span class="co"># umount /media</span></code></pre>
+<h2 id="esxi-">ESXi のインストール</h2>
+<p>完成した4GBのUSBメモリをXG41にぶっ刺し、そこからブートする。<br />後はインストーラに従って、8GBのUSBメモリを指定してESXiをインストールすればOK!<br /><img src="img001.png" title="ESXi on XG41" alt="サマリー" /></p>
+<p>素敵ですやん(・∀・)</p>
+<p>以上です。</p>
+      </body>
+</html>
