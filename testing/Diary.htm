@@ -1,15 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <meta name="generator" content="Responsive Web Css (www.responsivewebcss.com)" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Stylesheet" href="Diary.css" />
   </head>
   <body>
-    <div id='root'>
-      <div class='box' id='box1'></div>
+    <!-- Flip in left MENU-->
+    <nav id="flipIn">
+      <div class="content">
+        <div class="front">Flip menu</div>
+        <div class="back">
+          <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>six</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Call Flip menu -->
+    <div class="container">
+      <div class="containerOverlay">
+        <a href="#"></a>
+      </div>
+      <!-- Call Flip menu -->
+
+      <h2 id="pandocでmarkdown-からhtml5へテンプレート指定で思った通りの書式にするラクをする">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
+      <h3 id="出会いと動機">出会いと動機</h3>
+      <p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
+      <p>んで冒頭のMarkdown形式について調べていたら、Haskellで書かれたパーサー <strong>Pandoc</strong> の存在を<a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">sky_y</a>さんの投稿で知った訳ですね。</p>
+      <p>ええ、勿論飛びつきましたよ私だって健全な男の子ですもの。</p>
+      <h3 id="準備">準備</h3>
+      <p>環境はWindows7 pro 64bit<br />環境変数とか色々面倒くさいので、<a href="https://chocolatey.org/">Chocolatey</a> でHaskellプラットフォームとpandocをば。</p>
+      <h4 id="chocolatey-のインストール">Chocolatey のインストール</h4>
+      <p>以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。</p>
+      <pre class="bat"><code>@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
+      <h4 id="haskell-platformgkasgow-haskell-compilerghc-のインストール">Haskell Platform(Gkasgow Haskell Compiler(GHC)) のインストール</h4>
+      <p><code>choco install xxx</code> の略である <code>cinst</code> を使います。</p>
+      <pre class="bat"><code>cinst HaskellPlatform</code></pre>
+      <p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p>
+      <h3 id="あると便利なもの">あると便利なもの</h3>
+      <ul>
+        <li>Rapid Environment Editor
+          <ul>
+            <li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
+          </ul></li>
+      </ul>
+      <hr />
+
+      <!-- これがFlipボタン -->
+      <a href="#flipIn" class="button">他の日記を見る</a>
+      <!-- これがFlipボタン -->
     </div>
   </body>
 </html>
