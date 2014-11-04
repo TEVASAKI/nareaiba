@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .box { float: left; }
 #root { max-width: 1200px; margin: 0 auto; }
 
@@ -6,61 +8,61 @@
 
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* Tablet Portrait (768px) */
 @media only screen and (min-width: 321px) and (max-width: 1024px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* Phone Landscape (480px) */
 @media only screen and (min-width: 321px) and (max-width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* Phone Portrait (320px) */
 @media only screen and (max-width: 320px) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPad 3 & 4 Landscape */
 @media only screen and (width: 481px) and (width: 1024px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPad 3 & 4 Portrait */
 @media only screen and (width: 481px) and (width: 1024px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 2G-3GS Landscape */
 @media only screen and (width: 481px) and (width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 2G-3Gs Portrait */
 @media only screen and (width: 481px) and (width: 480px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 4/4S Landscape */
 @media only screen and (width: 569px) and (width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 4/4S Portrait */
 @media only screen and (width: 569px) and (width: 480px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 5 Landscape */
 @media only screen and (width: px) and (width: 568px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
 /* iPhone 5 Portrait */
 @media only screen and (width: px) and (width: 568px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+  #box1 { width: 100%; }
 }
 
