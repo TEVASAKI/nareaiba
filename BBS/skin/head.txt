@@ -1,0 +1,103 @@
+<?$dat='
+<html>
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=Shift_JIS">
+<title>'.$title1.'</title>
+<style type="text/css">
+<!--
+
+a {text-decoration: none; }
+
+a:LINK {text-decoration: none; color: #00CCCC ; font-weight: bold ; }
+
+a:VISITED {text-decoration: none; color: #FF9933 ; font-weight: bold ; }
+
+a:HOVER { background-color:#CCCCFF; text-decoration: none; color: #6633CC ; font-weight:bold; }
+
+td{ font-size: 10pt; }
+
+hr{ color : #ffffff ; }
+
+input,textarea{ color: #9966FF ;  border-top : 2px solid ; border-bottom : 2px solid ; border-left : 2px solid ; border-right : 2px solid ;font-size:10pt;background-color:#ffffff; }
+
+body{ scrollbar-3d-light-color : white ; scrollbar-arrow-color : #6633cc ; scrollbar-base-color :#6633cc ; scrollbar-dark-shadow-color : #003399 ; scrollbar-face-color : #CCCCFF ; scrollbar-highlight-color : #ffffff ;  scrollbar-shadow-color : #6633cc ; }
+
+-->
+</style>
+</head>
+<body bgcolor=#ffffff text=#6633cc link=#00CCCC >
+<!--body-->
+<div align="center">
+<center>
+  <form method="post" action="'.$PHP_SELF.'">
+	<input type="hidden" name="mode" value="regi">
+	<table border="0" cellspacing="0" cellpadding="1" width="300">
+	<tr> 
+	<td align="center" COLSPAN="2">
+<font size=5 face=Verdana color=#6655ff><b>'.足跡BBS.'</b></font>   <!-- BBSタイトル。-->
+	<img src="" width="1" height="10"></td>
+	</tr>
+	<tr> 
+	<td COLSPAN="2">&nbsp;</td>
+	</tr>
+	<tr> 
+	<td  align="right">NAME: </td>  
+<td align="center">
+	<input type="text" size="45" name="name"  value="'.$c_name.'">
+	</td>
+	</tr>
+	<tr> 
+	<td align="right">MAIL: </td>
+<td align="center">
+	<input type="text" size="45" name="email" value="'.$c_email.'">
+	</td>
+	</tr>
+	<tr> 
+	<td align="right">URL: </td>
+<td align="center">
+<!--	<input type="text" size="45" name="url"   value="http://'.$c_url.'"> -->
+	<input type="text" size="45" name="url"   value="'.$c_url.'">
+	</td>
+	</tr>
+	<tr> 
+	<td  align="right">TITLE: </td>
+<td align="center">
+	<input type="text" size="45" name="sub" value="">
+	</td>
+	</tr>
+	<tr>
+	<td align="right"><div align="right">MESSAGE:</td>
+<td align="right">
+	<textarea name="com" rows="10" cols="45"></textarea>
+	</td>
+	</tr>
+	<tr>
+	<td align="right">COLOR:</td>
+<td align="right">
+<input type=radio name=color value="6633cc" checked style="background-color: #ffffFF; border: 0px"><font color=6633cc>■</font>
+<input type=radio name=color value="0066FF" style="background-color: #ffffff; border: 0px"><font color=0000FF>■</font>
+<input type=radio name=color value="3399FF" style="background-color: #ffffFF; border: 0px"><font color=3399FF>■</font>
+<input type=radio name=color value="CC3300" style="background-color: #ffffFF; border: 0px"><font color=CC3300>■</font>
+<input type=radio name=color value="FF9933" style="background-color: #ffffFF; border: 0px"><font color=FF9933>■</font>
+<input type=radio name=color value="FF33CC" style="background-color: #ffffFF; border: 0px"><font color=FF33CC>■</font>
+<input type=radio name=color value="009900" style="background-color: #ffffFF; border: 0px"><font color=009900>■</font>
+<input type=radio name=color value="000000" style="background-color: #ffffFF; border: 0px"><font color=000000>■</font>
+<input type=radio name=color value="0000CC" style="background-color: #ffffFF; border: 0px"><font color=0000CC>■</font>
+  </td></tr>
+ <tr> 
+  <td  align="right">PASS:</td>
+  <td align="right">
+<input type="password" name="pwd" size="6" value="'.$c_pwd.'">
+ </td>
+</tr>
+<tr>
+ <td align="right" COLSPAN="2">
+<input type="submit" value=" submit "><input type=reset value="clear">
+ </td>
+</tr></center>
+<tr> 
+<td>+<a href='.HOME.'>Home</a>+</td>
+</tr>
+</table></div>
+</form><br>
+';?>

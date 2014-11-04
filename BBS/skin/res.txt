@@ -1,0 +1,7 @@
+<?$dat.='
+<table width="400" border="0" cellspacing="1" cellpadding="2">
+<tr><td bgcolor="#ececff">'.$rc.': <font color="'.$color.'">'.$name.'  <FONT SIZE="1">'.$now.'</FONT></font><br>
+<font color="'.$color.'">'.$com.'</font>
+</td></tr>
+</table>
+';?>
