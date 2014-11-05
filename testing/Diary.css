@@ -3,8 +3,14 @@
 /* Flip in left */
 
 * {
+  /* -webkit: chrome */
+  /* -moz: firefox */
+  /* -o: opera */
+  /* -ms: ie */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -17,13 +23,25 @@ body {
 }
 .container {
   position: absolute;
-  z-index: 3;
-  width: 75%;
-  min-height: 100%;
-  /*padding: 30px 50px; /*ボタンの位置30px 50px*/*/
+  z-index: 2;
+  width: 100%;
+  min-height: 80%;
+  padding: 20px 20%; /*Box内のボタンの位置30px 50px*/
   /*background: #4481AA;*/
   -webkit-transition: -webkit-transform 0.5s;
   -webkit-backface-visibility: hidden;
+  /**/
+  -moz-transition: -moz-transform 0.5s;
+  -moz-backface-visibility: hidden;
+  /**/
+  -o-transition: -o-transform 0.5s;
+  -o-backface-visibility: hidden;
+  /**/
+  -ms-transition: -ms-transform 0.5s;
+  -ms-backface-visibility: hidden;
+  /**/
+  transition: transform 0.5s;
+  backface-visibility: hidden;
 }
 .containerOverlay {
   display:none;
@@ -45,14 +63,14 @@ h1 {
 }
 .button {
   display: block;
-  float: right;
-  clear: right;
+  float: left;
+  clear: left;
   margin-bottom: 16px;
   padding: 0 10px; /*ボタン内部の空間指定 0 10px*/
   background: #2A6791;
   color: #fff;
   border-bottom: 2px solid #154464;
-  border-radius: 2px;
+  border-radius: 6px;
   text-decoration: none;
   line-height: 40px;
 }
@@ -66,8 +84,30 @@ nav {
   -webkit-transition: -webkit-transform 0.5s;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
+  /**/
+  -moz-transform: translate3d(-100%, 0, 0);
+  -moz-transition: -moz-transform 0.5s;
+  -moz-backface-visibility: hidden;
+  -moz-perspective: 1000;
+  /**/
+  -o-transform: translate3d(-100%, 0, 0);
+  -o-transition: -o-transform 0.5s;
+  -o-backface-visibility: hidden;
+  -o-perspective: 1000;
+  /**/
+  -ms-transform: translate3d(-100%, 0, 0);
+  -ms-transition: -ms-transform 0.5s;
+  -ms-backface-visibility: hidden;
+  -ms-perspective: 1000;
+  /**/
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+  perspective: 1000;
+  /**/
 
-  width: 30%;
+  width: 30%; /*パネルのサイズ*/
+  max-height: 100%;
   background: #2A6791;
 }
 nav ul {
@@ -83,6 +123,10 @@ nav li {
 nav:target {
   z-index: 3;
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 nav:target ~ .container .containerOverlay {
   display: block;
@@ -93,12 +137,32 @@ nav:target ~ .container .containerOverlay {
   z-index: 4;
   -webkit-transform: translate3d(-100%, 0, 0);
   -webkit-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -moz-transform: translate3d(-100%, 0, 0);
+  -moz-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -o-transform: translate3d(-100%, 0, 0);
+  -o-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -ms-transform: translate3d(-100%, 0, 0);
+  -ms-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  transform: translate3d(-100%, 0, 0);
+  perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
 }
 #flipIn:target .content {
   -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 #flipIn:target ~ .container {
   -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  -o-transform: translate3d(30%, 0, 0);
+  -ms-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
 }
 #flipIn .content {
   position: relative;
@@ -106,6 +170,22 @@ nav:target ~ .container .containerOverlay {
   -webkit-transition: all .5s;
   -webkit-transform-style: preserve-3d;
   -webkit-transform-origin: 100% 50%;
+  /**/
+  -moz-transition: all .5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transform-origin: 100% 50%;
+  /**/
+  -o-transition: all .5s;
+  -o-transform-style: preserve-3d;
+  -o-transform-origin: 100% 50%;
+  /**/
+  -ms-transition: all .5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transform-origin: 100% 50%;
+  /**/
+  transition: all .5s;
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
 }
 .front, .back {
   position:absolute;
@@ -113,6 +193,10 @@ nav:target ~ .container .containerOverlay {
   bottom: 0;
   left:0;
   -webkit-backface-visibility:hidden;
+  -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -ms-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
 .back {
   width: 100%;
@@ -120,4 +204,8 @@ nav:target ~ .container .containerOverlay {
   background: #2A6791;
   z-index:800;
   -webkit-transform:rotateY(-180deg);
+  -moz-transform:rotateY(-180deg);
+  -o-transform:rotateY(-180deg);
+  -ms-transform:rotateY(-180deg);
+  transform:rotateY(-180deg);
 }
