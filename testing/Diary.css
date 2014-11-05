@@ -92,7 +92,7 @@ nav:target ~ .container .containerOverlay {
 #flipIn {
   z-index: 4;
   -webkit-transform: translate3d(-100%, 0, 0);
-  -webkit-perspective: 1200;
+  -webkit-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
 }
 #flipIn:target .content {
   -webkit-transform: rotateY(-180deg);
