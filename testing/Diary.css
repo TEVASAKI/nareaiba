@@ -1,66 +1,211 @@
-.box { float: left; }
-#root { max-width: 1200px; margin: 0 auto; }
+@charset "utf-8";
 
-#box1 { width: 90%; }
+/* Flip in left */
 
-
-/* Laptop/Tablet (1024px) */
-@media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+* {
+  /* -webkit: chrome */
+  /* -moz: firefox */
+  /* -o: opera */
+  /* -ms: ie */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Tablet Portrait (768px) */
-@media only screen and (min-width: 321px) and (max-width: 1024px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  background: #4481AA; /*背景色*/
+  color: #fff;
+  font: normal 300 16px/1.5 "Open Sans", sans-serif;
+}
+.container {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  min-height: 80%;
+  padding: 20px 20%; /*Box内のボタンの位置30px 50px*/
+  /*background: #4481AA;*/
+  -webkit-transition: -webkit-transform 0.5s;
+  -webkit-backface-visibility: hidden;
+  /**/
+  -moz-transition: -moz-transform 0.5s;
+  -moz-backface-visibility: hidden;
+  /**/
+  -o-transition: -o-transform 0.5s;
+  -o-backface-visibility: hidden;
+  /**/
+  -ms-transition: -ms-transform 0.5s;
+  -ms-backface-visibility: hidden;
+  /**/
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+}
+.containerOverlay {
+  display:none;
+  background: rgba(0,0,0,.3);
+}
+.containerOverlay,
+.containerOverlay a {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-/* Phone Landscape (480px) */
-@media only screen and (min-width: 321px) and (max-width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+
+/* Type and Buttons */
+h1 {
+  font-weight: 300;
+}
+.button {
+  display: block;
+  float: left;
+  clear: left;
+  margin-bottom: 16px;
+  padding: 0 10px; /*ボタン内部の空間指定 0 10px*/
+  background: #2A6791;
+  color: #fff;
+  border-bottom: 2px solid #154464;
+  border-radius: 6px;
+  text-decoration: none;
+  line-height: 40px;
 }
 
-/* Phone Portrait (320px) */
-@media only screen and (max-width: 320px) {
-	#box1 { width: 100%; }
+/* Nav */
+nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -webkit-transition: -webkit-transform 0.5s;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  /**/
+  -moz-transform: translate3d(-100%, 0, 0);
+  -moz-transition: -moz-transform 0.5s;
+  -moz-backface-visibility: hidden;
+  -moz-perspective: 1000;
+  /**/
+  -o-transform: translate3d(-100%, 0, 0);
+  -o-transition: -o-transform 0.5s;
+  -o-backface-visibility: hidden;
+  -o-perspective: 1000;
+  /**/
+  -ms-transform: translate3d(-100%, 0, 0);
+  -ms-transition: -ms-transform 0.5s;
+  -ms-backface-visibility: hidden;
+  -ms-perspective: 1000;
+  /**/
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+  perspective: 1000;
+  /**/
+
+  width: 30%; /*パネルのサイズ*/
+  max-height: 100%;
+  background: #2A6791;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;;
+}
+nav li {
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #225679;
+}
+nav:target {
+  z-index: 3;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+nav:target ~ .container .containerOverlay {
+  display: block;
 }
 
-/* iPad 3 & 4 Landscape */
-@media only screen and (width: 481px) and (width: 1024px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+/* Flip in */
+#flipIn {
+  z-index: 4;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -webkit-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -moz-transform: translate3d(-100%, 0, 0);
+  -moz-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -o-transform: translate3d(-100%, 0, 0);
+  -o-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  -ms-transform: translate3d(-100%, 0, 0);
+  -ms-perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
+  /**/
+  transform: translate3d(-100%, 0, 0);
+  perspective: 1200;    /* 要素にtransform効果を適用する時の奥行き*/
 }
-
-/* iPad 3 & 4 Portrait */
-@media only screen and (width: 481px) and (width: 1024px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+#flipIn:target .content {
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
-
-/* iPhone 2G-3GS Landscape */
-@media only screen and (width: 481px) and (width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+#flipIn:target ~ .container {
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  -o-transform: translate3d(30%, 0, 0);
+  -ms-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
 }
-
-/* iPhone 2G-3Gs Portrait */
-@media only screen and (width: 481px) and (width: 480px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+#flipIn .content {
+  position: relative;
+  min-height: 100%; /*flipしてくる領域の高さ*/
+  -webkit-transition: all .5s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: 100% 50%;
+  /**/
+  -moz-transition: all .5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transform-origin: 100% 50%;
+  /**/
+  -o-transition: all .5s;
+  -o-transform-style: preserve-3d;
+  -o-transform-origin: 100% 50%;
+  /**/
+  -ms-transition: all .5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transform-origin: 100% 50%;
+  /**/
+  transition: all .5s;
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
 }
-
-/* iPhone 4/4S Landscape */
-@media only screen and (width: 569px) and (width: 480px) and (orientation: landscape) {
-	#box1 { width: 100%; }
+.front, .back {
+  position:absolute;
+  top:0;
+  bottom: 0;
+  left:0;
+  -webkit-backface-visibility:hidden;
+  -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -ms-backface-visibility:hidden;
+  backface-visibility:hidden;
 }
-
-/* iPhone 4/4S Portrait */
-@media only screen and (width: 569px) and (width: 480px) and (orientation: portrait) {
-	#box1 { width: 100%; }
+.back {
+  width: 100%;
+  min-height: 100%;
+  background: #2A6791;
+  z-index:800;
+  -webkit-transform:rotateY(-180deg);
+  -moz-transform:rotateY(-180deg);
+  -o-transform:rotateY(-180deg);
+  -ms-transform:rotateY(-180deg);
+  transform:rotateY(-180deg);
 }
-
-/* iPhone 5 Landscape */
-@media only screen and (width: px) and (width: 568px) and (orientation: landscape) {
-	#box1 { width: 100%; }
-}
-
-/* iPhone 5 Portrait */
-@media only screen and (width: px) and (width: 568px) and (orientation: portrait) {
-	#box1 { width: 100%; }
-}
-

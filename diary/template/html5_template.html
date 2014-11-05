@@ -14,16 +14,18 @@
     </title>
   </head>
   <body>
-    <style rel="stylesheet" type="text/css">
-    $if(quotes)$
-    $endif$
-    $if(highlighting-css)$
-      $highlighting-css$
-    $endif$
-    </style>
-    <!--[if lt IE 9]>
+    <!--
+      <style rel="stylesheet" type="text/css">
+      $if(quotes)$
+      $endif$
+      $if(highlighting-css)$
+        $highlighting-css$
+      $endif$
+      </style>
+    -->
+    <!-- [if lt IE 9] -->
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- [endif] -->
     $for(css)$
     <link href="$css$" rel="stylesheet">
     $endfor$

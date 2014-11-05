@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 body {
   font-family: Helvetica, arial, sans-serif;
   font-size: 14px;
@@ -17,11 +19,11 @@ body {
  }
 
 a {
-  color: #4183C4
+  color: #4183C4;
 }
 
 a.absent {
-  color: #cc0000
+  color: #cc0000;
 }
 
 a.anchor {
@@ -61,32 +63,32 @@ h6:hover a.anchor {
 
 h1 tt,
 h1 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h2 tt,
 h2 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h3 tt,
 h3 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h4 tt,
 h4 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h5 tt,
 h5 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h6 tt,
 h6 code {
-  font-size: inherit
+  font-size: inherit;
 }
 
 h1 {
@@ -106,11 +108,11 @@ h3 {
 }
 
 h4 {
-  font-size: 16px
+  font-size: 16px;
 }
 
 h5 {
-  font-size: 14px
+  font-size: 14px;
 }
 
 h6 {
@@ -126,7 +128,7 @@ dl,
 li,
 table,
 pre {
-  margin: 15px 0
+  margin: 15px 0;
 }
 
 hr {
@@ -176,30 +178,30 @@ h3 p,
 h4 p,
 h5 p,
 h6 p {
-  margin-top: 0
+  margin-top: 0;
 }
 
 li p.first {
-  display: inline-block
+  display: inline-block;
 }
 
 ul,
 ol {
-  padding-left: 30px
+  padding-left: 30px;
 }
 
  ul :first-child,
  ol :first-child {
-   margin-top: 0
+   margin-top: 0;
  }
 
  ul :last-child,
  ol :last-child {
-   margin-bottom: 0
+   margin-bottom: 0;
  }
 
 dl {
-  padding: 0
+  padding: 0;
 }
 
  dl dt {
@@ -211,15 +213,15 @@ dl {
  }
 
  dl dt:first-child {
-   padding: 0
+   padding: 0;
  }
 
  dl dt > :first-child {
-   margin-top: 0
+   margin-top: 0;
  }
 
  dl dt > :last-child {
-   margin-bottom: 0
+   margin-bottom: 0;
  }
 
  dl dd {
@@ -228,11 +230,11 @@ dl {
  }
 
   dl dd > :first-child {
-    margin-top: 0
+    margin-top: 0;
   }
 
   dl dd > :last-child {
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 
 /*
@@ -265,15 +267,15 @@ blockquote {
 }
 
  blockquote > :first-child {
-   margin-top: 0
+   margin-top: 0;
  }
 
  blockquote > :last-child {
-   margin-bottom: 0
+   margin-bottom: 0;
  }
 
 table {
-  padding: 0
+  padding: 0;
 }
 
  table tr {
@@ -284,7 +286,7 @@ table {
  }
 
  table tr:nth-child(2n) {
-   background-color: #f8f8f8
+   background-color: #f8f8f8;
  }
 
  table tr th {
@@ -304,16 +306,16 @@ table {
 
   table tr th :first-child,
   table tr td :first-child {
-    margin-top: 0
+    margin-top: 0;
   }
 
   table tr th :last-child,
   table tr td :last-child {
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 
 img {
-  max-width: 100%
+  max-width: 100%;
 }
 
 span.frame {
@@ -387,7 +389,7 @@ span.float-left {
 }
 
  span.float-left span {
-   margin: 13px 0 0
+   margin: 13px 0 0;
  }
 
 span.float-right {
@@ -447,3 +449,4 @@ pre {
    background-color: transparent;
    border: none;
  }
+
