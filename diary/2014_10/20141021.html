@@ -6,34 +6,36 @@
     <link href="../template/markdown-style.css" rel="stylesheet" type="text/css">
     <link href="../../favicon.ico" rel="shortcut icon">
     <meta content="TEVA" name="author">
-          <meta name="dcterms.date" content="2014/11/05 03:01">
+          <meta name="dcterms.date" content="2014/11/06 07:01">
         <title>
       20141021
     </title>
   </head>
   <body>
-    <style rel="stylesheet" type="text/css">
-              table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-        margin: 0; padding: 0; vertical-align: baseline; border: none; }
-      table.sourceCode { width: 100%; line-height: 100%; }
-      td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-      td.sourceCode { padding-left: 5px; }
-      code > span.kw { color: #007020; font-weight: bold; }
-      code > span.dt { color: #902000; }
-      code > span.dv { color: #40a070; }
-      code > span.bn { color: #40a070; }
-      code > span.fl { color: #40a070; }
-      code > span.ch { color: #4070a0; }
-      code > span.st { color: #4070a0; }
-      code > span.co { color: #60a0b0; font-style: italic; }
-      code > span.ot { color: #007020; }
-      code > span.al { color: #ff0000; font-weight: bold; }
-      code > span.fu { color: #06287e; }
-      code > span.er { color: #ff0000; font-weight: bold; }
-        </style>
-    <!--[if lt IE 9]>
+    <!--
+      <style rel="stylesheet" type="text/css">
+                    table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+          margin: 0; padding: 0; vertical-align: baseline; border: none; }
+        table.sourceCode { width: 100%; line-height: 100%; }
+        td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+        td.sourceCode { padding-left: 5px; }
+        code > span.kw { color: #007020; font-weight: bold; }
+        code > span.dt { color: #902000; }
+        code > span.dv { color: #40a070; }
+        code > span.bn { color: #40a070; }
+        code > span.fl { color: #40a070; }
+        code > span.ch { color: #4070a0; }
+        code > span.st { color: #4070a0; }
+        code > span.co { color: #60a0b0; font-style: italic; }
+        code > span.ot { color: #007020; }
+        code > span.al { color: #ff0000; font-weight: bold; }
+        code > span.fu { color: #06287e; }
+        code > span.er { color: #ff0000; font-weight: bold; }
+            </style>
+    -->
+    <!-- [if lt IE 9] -->
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- [endif] -->
                 <!-- LapisAnalyze1 START -->
     <script charset="UTF-8" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" type="text/javascript"></script>
     <!-- LapisAnalyze1 END -->
@@ -47,13 +49,21 @@
       </noscript>
     </div>
     <!-- LapisAnalyze2 end -->
-                <h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
+                <h2 id="section">2014/10/21</h2>
+<h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
 <h3>出会いと動機</h3>
 <p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
 <p>んで冒頭のMarkdown形式について調べていたら、Haskellで書かれたパーサー <strong>Pandoc</strong> の存在を<a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">sky_y</a>さんの投稿で知った訳ですね。</p>
 <p>ええ、勿論飛びつきましたよ私だって健全な男の子ですもの。</p>
 <h3>準備</h3>
 <p>環境はWindows7 pro 64bit<br />環境変数とか色々面倒くさいので、<a href="https://chocolatey.org/">Chocolatey</a> でHaskellプラットフォームとpandocをば。</p>
+<h4>あると便利なもの</h4>
+<ul>
+<li><p>Rapid Environment Editor</p>
+<ul>
+<li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
+</ul></li>
+</ul>
 <h4 id="chocolatey-">Chocolatey のインストール</h4>
 <p>以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。</p>
 <pre class="bat"><code>@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
@@ -203,14 +213,6 @@ rem これバグじゃねーの</code></pre>
 <p>んで、これをSendTo &quot;%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk&quot; に作成して<br />対象のマークダウンファイル上で送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
 <h3>課題</h3>
 <p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p>
-<h3>あると便利なもの</h3>
-<ul>
-<li><p>Rapid Environment Editor</p>
-<ul>
-<li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
-</ul></li>
-</ul>
 <hr />
-<p><img src="../../After.gif" alt="来月へ" /></p>
       </body>
 </html>
