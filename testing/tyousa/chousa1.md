@@ -24,6 +24,7 @@ Qiitaを始めとして、Markdown書式絶好調な世の中ですが
 
 #### Chocolatey のインストール
 以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。
+
 ```bat
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 ```
@@ -31,6 +32,7 @@ Qiitaを始めとして、Markdown書式絶好調な世の中ですが
 
 #### Haskell Platform(Gkasgow Haskell Compiler(GHC)) のインストール
 `choco install xxx` の略である `cinst` を使います。
+
 ```bat
 cinst HaskellPlatform
 ```
@@ -38,7 +40,8 @@ cinst HaskellPlatform
 
 
 #### Haskell Platform のアップデートとPandoc のインストール
-```Haskell
+
+```haskell
 cabal update
 cabal install cabal-install
 cabal install -fhighlighting pandoc
@@ -53,6 +56,7 @@ cabal install -fhighlighting pandoc
 ### テンプレートの作成
 
 以下のコマンドで、html5テンプレートを作成しておきます。
+
 ```haskell
 pandoc -D html5 > html5_template.html
 ```
