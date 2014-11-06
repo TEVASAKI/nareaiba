@@ -19,7 +19,7 @@ rem               : -V          テンプレート内のHaskell 引数指定
 
 rem SendTo "%APPDATA%\Microsoft\Windows\SendTo\gendoc.lnk"
 
-rem 生成されるHTMLは同じ場所に作られるので、テンプレート内のcssは相対パス指定で。
+rem 生成されるHTMLは同じ場所に作られるので、cssは相対パス指定で。
 
 
 if exist "%~d1%~p1%~n1%~x1" (
@@ -30,7 +30,7 @@ if exist "%~d1%~p1%~n1%~x1" (
   goto :EOF
 )
 
-pandoc --template "%~d0%~p0\html5_template.html" -c "%~d0%~p0\markdown-style.css" -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o "%F%.html" "%F%%~x1"  -V pagetitle="%~n1" -V date-meta="%~t1"
+pandoc --template "%~d0%~p0\html5_template.html" -c "../template/markdown-style.css" -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o "%F%.html" "%F%%~x1"  -V pagetitle="%~n1" -V date-meta="%~t1"
 if errorlevel 1 (
   echo pandocの処理に失敗しました
   pause
