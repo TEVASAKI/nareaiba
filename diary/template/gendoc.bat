@@ -16,10 +16,11 @@ rem pandoc option : --template  テンプレート指定。このシェルと同じ場所に置いてお
 rem               : -f          入力形式指定
 rem               : -o          出力名指定 , 第二引数に入力ファイル名
 rem               : -V          テンプレート内のHaskell 引数指定
+rem               : -c          CSS の指定
 
 rem SendTo "%APPDATA%\Microsoft\Windows\SendTo\gendoc.lnk"
 
-rem 生成されるHTMLは同じ場所に作られるので、cssは相対パス指定で。
+rem 生成されるHTMLは同じ場所に作られるので、cssはmdから見た相対パス指定で。
 
 
 if exist "%~d1%~p1%~n1%~x1" (
