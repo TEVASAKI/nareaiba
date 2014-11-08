@@ -2,21 +2,29 @@
 
 body {
   font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: white;
-  padding: 30px;
+  /*background-color: white;*/
+  /*padding: 30px;*/
+  /*text-align: center;*/
 }
 
- body > *:first-child {
-   margin-top: 0 !important;
- }
+body > *:first-child {
+  margin-top: 0 !important;
+}
 
- body > *:last-child {
-   margin-bottom: 0 !important;
- }
+body > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+div#wrapper {
+  width: 98%;
+  margin: 0 auto;
+  /*text-align: left;*/
+  /*border-right: dashed 5px #c0ffee;*/
+}
 
 a {
   color: #4183C4;
@@ -149,10 +157,10 @@ body > h1:first-child {
   padding-top: 0;
 }
 
- body > h1:first-child + h2 {
-   margin-top: 0;
-   padding-top: 0;
- }
+body > h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
 
 body > h3:first-child,
 body > h4:first-child,
@@ -190,129 +198,129 @@ ol {
   padding-left: 30px;
 }
 
- ul :first-child,
- ol :first-child {
-   margin-top: 0;
- }
+ul :first-child,
+ol :first-child {
+  margin-top: 0;
+}
 
- ul :last-child,
- ol :last-child {
-   margin-bottom: 0;
- }
+ul :last-child,
+ol :last-child {
+  margin-bottom: 0;
+}
 
 dl {
   padding: 0;
 }
 
- dl dt {
-   font-size: 14px;
-   font-weight: bold;
-   font-style: italic;
-   padding: 0;
-   margin: 15px 0 5px;
- }
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
 
- dl dt:first-child {
-   padding: 0;
- }
+dl dt:first-child {
+  padding: 0;
+}
 
- dl dt > :first-child {
-   margin-top: 0;
- }
+dl dt > :first-child {
+  margin-top: 0;
+}
 
- dl dt > :last-child {
-   margin-bottom: 0;
- }
+dl dt > :last-child {
+  margin-bottom: 0;
+}
 
- dl dd {
-   margin: 0 0 15px;
-   padding: 0 15px;
- }
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
 
-  dl dd > :first-child {
-    margin-top: 0;
-  }
+dl dd > :first-child {
+  margin-top: 0;
+}
 
-  dl dd > :last-child {
-    margin-bottom: 0;
-  }
+dl dd > :last-child {
+  margin-bottom: 0;
+}
 
 /*
 blockquote {
-  background-color: #dddddd;
-  padding: 1em;
-  position: relative;
-  font-style: oblique;
-  z-index: 1;
-  font-size: 90%;
+background-color: #dddddd;
+padding: 1em;
+position: relative;
+font-style: oblique;
+z-index: 1;
+font-size: 90%;
 }
 
 blockquote:before {
-  content:"“";
-  font-size: 600%;
-  font-family: "ＭＳ Ｐゴシック",sans-serif;
-  line-height: 1em;
-  color: #ffffff;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
+content:"“";
+font-size: 600%;
+font-family: "ＭＳ Ｐゴシック",sans-serif;
+line-height: 1em;
+color: #ffffff;
+position: absolute;
+left: 0;
+top: 0;
+z-index: -1;
 }
-*/
+ */
 
 blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
+  border-left: 6px solid #dddddd;
+  padding: 0 20px;
   color: #777777;
 }
 
- blockquote > :first-child {
-   margin-top: 0;
- }
+blockquote > :first-child {
+  margin-top: 0;
+}
 
- blockquote > :last-child {
-   margin-bottom: 0;
- }
+blockquote > :last-child {
+  margin-bottom: 0;
+}
 
 table {
   padding: 0;
 }
 
- table tr {
-   border-top: 1px solid #cccccc;
-   background-color: white;
-   margin: 0;
-   padding: 0;
- }
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
 
- table tr:nth-child(2n) {
-   background-color: #f8f8f8;
- }
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
 
- table tr th {
-   font-weight: bold;
-   border: 1px solid #cccccc;
-   text-align: left;
-   margin: 0;
-   padding: 6px 13px;
- }
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
 
- table tr td {
-   border: 1px solid #cccccc;
-   text-align: left;
-   margin: 0;
-   padding: 6px 13px;
- }
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
 
-  table tr th :first-child,
-  table tr td :first-child {
-    margin-top: 0;
-  }
+table tr th :first-child,
+table tr td :first-child {
+  margin-top: 0;
+}
 
-  table tr th :last-child,
-  table tr td :last-child {
-    margin-bottom: 0;
-  }
+table tr th :last-child,
+table tr td :last-child {
+  margin-bottom: 0;
+}
 
 img {
   max-width: 100%;
@@ -323,27 +331,27 @@ span.frame {
   overflow: hidden;
 }
 
- span.frame > span {
-   border: 1px solid #dddddd;
-   display: block;
-   float: left;
-   overflow: hidden;
-   margin: 13px 0 0;
-   padding: 7px;
-   width: auto;
- }
+span.frame > span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
 
- span.frame span img {
-   display: block;
-   float: left;
- }
+span.frame span img {
+  display: block;
+  float: left;
+}
 
- span.frame span span {
-   clear: both;
-   color: #333333;
-   display: block;
-   padding: 5px 0 0;
- }
+span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
 
 span.align-center {
   display: block;
@@ -351,17 +359,17 @@ span.align-center {
   clear: both;
 }
 
- span.align-center > span {
-   display: block;
-   overflow: hidden;
-   margin: 13px auto 0;
-   text-align: center;
- }
+span.align-center > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
 
- span.align-center span img {
-   margin: 0 auto;
-   text-align: center;
- }
+span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
 
 span.align-right {
   display: block;
@@ -369,17 +377,17 @@ span.align-right {
   clear: both;
 }
 
- span.align-right > span {
-   display: block;
-   overflow: hidden;
-   margin: 13px 0 0;
-   text-align: right;
- }
+span.align-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
 
- span.align-right span img {
-   margin: 0;
-   text-align: right;
- }
+span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
 
 span.float-left {
   display: block;
@@ -388,9 +396,9 @@ span.float-left {
   float: left;
 }
 
- span.float-left span {
-   margin: 13px 0 0;
- }
+span.float-left span {
+  margin: 13px 0 0;
+}
 
 span.float-right {
   display: block;
@@ -399,12 +407,12 @@ span.float-right {
   float: right;
 }
 
- span.float-right > span {
-   display: block;
-   overflow: hidden;
-   margin: 13px auto 0;
-   text-align: right;
- }
+span.float-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
 
 code,
 tt {
@@ -444,9 +452,27 @@ pre {
   border-radius: 3px;
 }
 
- pre code,
- pre tt {
-   background-color: transparent;
-   border: none;
- }
+pre code,
+pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+/**/
+.css-button{
+  height: 50px;
+  width: 130px;
+  padding: 0;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: 'Arial';
+  font-size: 30px;
+  background-color: #2D5B7F;
+  border-width: 4px;
+  border-style: dashed;
+  border-color: #5AB6FF;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px 0px #15648D;
+  text-shadow: 4px 3px 0px #528ECC;
+}
 
