@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-          <meta name="dcterms.date" content="2014/11/07 11:05">
-        <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="dcterms.date" content="2014/11/09 08:18">
+    <link rel="shortcut icon" href="../../favicon.ico">
     <title>20141021</title>
     <style type="text/css">code{white-space: pre;}</style>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-              <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+    
+    <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
@@ -29,29 +30,31 @@ code > span.ot { color: #007020; }
 code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }</style>
-              <link rel="stylesheet" href="../template/markdown-style.css">
-            
+    <link rel="stylesheet" href="../template/markdown-style.css">
+    
+    
     <!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 -->
     <link rel="stylesheet" href="../template/highlight/styles/sunburst.css">
     <script src="../template/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <!-- -->
+    <!-- /# -->
 
-    <!-- LapisAnalyze1 start -->
+    <!-- LapisAnalyze1 Start -->
     <script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
-    <!-- LapisAnalyze1 end -->
+    <!-- LapisAnalyze1 End -->
   </head>
   <body>
-    <!-- LapisAnalyze2 start -->
+    <!-- LapisAnalyze2 Start -->
     <div id="tracker" style="position:absolute;visibility:hidden;">
       <script type="text/javascript">sendData();</script>
       <noscript>
         <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
       </noscript>
     </div>
-    <!-- LapisAnalyze2 end -->
+    <!-- LapisAnalyze2 End -->
 
-                <h2 id="section">2014/10/21</h2>
+    <div id="wrapper">
+                        <h2 id="section">2014/10/21</h2>
 <h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
 <h3>出会いと動機</h3>
 <p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
@@ -165,8 +168,8 @@ cabal install <span class="fu">-</span>fhighlighting pandoc</code></pre>
 <span class="ot">  &lt;/body</span>&gt;
 &lt;<span class="ot">/html&gt;</span></code></pre>
 <p>ページのFavicon とかCSS は直接埋め込んでしまえばちゃんと読みに行ってくれます(・∀・)<br />ここではgitHubっぽいCSS をちょいと変更した物を使わせていただいております。<br /><a href="https://gist.github.com/TEVASAKI/9c9da230a6a9f2cda9ce">ここに置いてあります。</a></p>
-<p><a href="https://highlightjs.org/">Highlight.js</a> は、Pandoc が本来持つSyntax ハイライト機能を使うのであるなら不要です。</p>
-<p><a href="https://highlightjs.org/static/test.html">テーマ一覧はこちら。</a></p>
+<p><a href="https://highlightjs.org/">Highlight.js</a> の<a href="https://highlightjs.org/static/test.html">テーマ一覧はこちら。</a></p>
+<p>Pandoc が本来持つSyntax ハイライト機能を使うのであるなら、このスクリプトは不要です。</p>
 <h3>バッチでラクをする。</h3>
 <p>んで、Vimなりなんなりでmd 形式のマークダウン文章を作った後、<br />右クリックの送るメニューから一発変換出来るシェルってかバッチを作ります。</p>
 <p><a href="http://www5d.biglobe.ne.jp/~yggsoft/">YGGDRASILL SOFT!!</a> で公開されていた、gendoc というバッチを参考にさせていただきました！ありがとうございます。</p>
@@ -216,8 +219,15 @@ rem てゆーか、コメント内に引数の&quot;%~d&quot; とか書いてい
 rem これバグじゃねーの</code></pre>
 <p><code>-V</code> オプションで、渡したい項目を指定する様ですので、適宜追加してください。</p>
 <p>んで、これをSendTo &quot;%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk&quot; に作成して<br />対象のマークダウンファイル上で送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
+<p>って事で、2014/11/09 インデックスと日記レイアウトの刷新、完了。<br />一応はHTML5 対応出来たって事で。<br />過去ログ？<br /><strong>(∩ﾟдﾟ)アーアーきこえなーい</strong></p>
 <h3>課題</h3>
 <p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p>
-<hr />
-      </body>
+            <hr />
+      <div align="center">
+        <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+        <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
+        <input type="button" class="css-button" value="Prev" onClick="location.href='../2013_11/201311.html'">
+      </div>
+    </div><!-- /#wrapper -->
+  </body>
 </html>
