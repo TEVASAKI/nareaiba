@@ -461,18 +461,17 @@ pre tt {
 /**/
 .css-button{
   height: 50px;
-  width: 130px;
+  width: 85px;
   padding: 0;
   text-align: center;
-  color: #FFFFFF;
-  font-family: 'Arial';
-  font-size: 30px;
-  background-color: #2D5B7F;
+  color: #636f75;
+  font-size: 20px;
+  background-color: #cfe8f4;
   border-width: 4px;
-  border-style: dashed;
-  border-color: #5AB6FF;
+  border-style: outset;
+  border-color: #406375;
   border-radius: 10px;
-  box-shadow: 5px 5px 0px 0px #15648D;
-  text-shadow: 4px 3px 0px #528ECC;
+  box-shadow: 0px 0px 0px 0px #b2a57d;
+  /*text-shadow: 3px 1px 0px #528ECC;*/
 }
 
