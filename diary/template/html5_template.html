@@ -39,17 +39,19 @@
 
     <div id="wrapper">
       <article>
-        <header>
+        
           $for(include-before)$$include-before$$endfor$
-          $if(title)$<h1 class="title">$title$</h1>
-          $if(subtitle)$<h1 class="subtitle">$subtitle$</h1>$endif$
-          $for(author)$<h2 class="author">$author$</h2>$endfor$
-          $if(date)$<h3 class="date">$date$</h3>$endif$
+          $if(title)$
+            <header>
+              <h1 class="title">$title$</h1>
+                $if(subtitle)$<h1 class="subtitle">$subtitle$</h1>$endif$
+                $for(author)$<h2 class="author">$author$</h2>$endfor$
+                $if(date)$<h3 class="date">$date$</h3>$endif$
+            </header>
           $endif$
           $if(toc)$<nav id="$idprefix$TOC">$toc$</nav>$endif$
-        </header>
 $body$
-$for(include-after)$$include-after$$endfor$
+        $for(include-after)$$include-after$$endfor$
       </article>
       <hr />
       <footer>
