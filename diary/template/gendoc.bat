@@ -26,13 +26,14 @@ rem 生成されるHTMLは同じ場所に作られるので、cssはmdから見た相対パス指定で。
 
 if exist "%~d1%~p1%~n1%~x1" (
   set F=%~d1%~p1%~n1
+  set R=%~n1
 ) else (
   echo 処理できるファイルがありません - 「%~d1%~p1%~n1%~x1」
   pause
   goto :EOF
 )
 
-pandoc --template "%~d0%~p0\html5_template.html" -c "../template/markdown-style.css" -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o "%F%.html" "%F%%~x1" -S -V pagetitle="%~n1" -V date-meta="%~t1"
+pandoc --template "%~d0%~p0\html5_template.html" -c "../template/markdown-style.css" -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o "%F%.html" "%F%%~x1" -S -V pagetitle="%~n1" -V date-meta="%~t1" -V title="%R:~0,4%/%R:~4,2%/%R:~6,2%"
 if errorlevel 1 (
   echo pandocの処理に失敗しました
   pause
