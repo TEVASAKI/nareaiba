@@ -38,38 +38,28 @@
     <!-- LapisAnalyze2 End -->
 
     <div id="wrapper">
-      $for(include-before)$
-        $include-before$
-      $endfor$
-      $if(title)$
-        <header>
-          <h1 class="title">$title$</h1>
-          $if(subtitle)$
-            <h1 class="subtitle">$subtitle$</h1>
-          $endif$
-          $for(author)$
-            <h2 class="author">$author$</h2>
-          $endfor$
-          $if(date)$
-            <h3 class="date">$date$</h3>
-          $endif$
-        </header>
-      $endif$
-      $if(toc)$
-        <nav id="$idprefix$TOC">
-          $toc$
-        </nav>
-      $endif$
-      $body$
-      $for(include-after)$
-        $include-after$
-      $endfor$
+      <article>
+        $for(include-before)$$include-before$$endfor$
+        $if(title)$
+          <header>
+            <h1 class="title">$title$</h1>
+            $if(subtitle)$<h1 class="subtitle">$subtitle$</h1>$endif$
+            $for(author)$<h2 class="author">$author$</h2>$endfor$
+            $if(date)$<h3 class="date">$date$</h3>$endif$
+          </header>
+        $endif$
+        $if(toc)$<nav id="$idprefix$TOC">$toc$</nav>$endif$
+        $body$
+        $for(include-after)$$include-after$$endfor$
+      </article>
       <hr />
-      <div align="center">
-        <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
-        <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
-        <input type="button" class="css-button" value="Prev" onClick="location.href='../2013_11/201311.html'">
-      </div>
+      <footer>
+        <div align="center">
+          <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+          <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
+          <input type="button" class="css-button" value="Prev" onClick="location.href='../2013_11/201311.html'">
+        </div>
+      </footer>
     </div><!-- /#wrapper -->
   </body>
 </html>
