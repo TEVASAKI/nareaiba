@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-          <meta name="dcterms.date" content="2014/11/07 11:07">
-        <link rel="shortcut icon" href="../../favicon.ico">
+    <meta name="dcterms.date" content="2014/11/09 10:34">
+    <link rel="shortcut icon" href="../../favicon.ico">
     <title>20141031</title>
     <style type="text/css">code{white-space: pre;}</style>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-              <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+    
+    <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
@@ -29,29 +30,31 @@ code > span.ot { color: #007020; }
 code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }</style>
-              <link rel="stylesheet" href="../template/markdown-style.css">
-            
+    <link rel="stylesheet" href="../template/markdown-style.css">
+    
+    
     <!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 -->
     <link rel="stylesheet" href="../template/highlight/styles/sunburst.css">
     <script src="../template/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <!-- -->
+    <!-- /# -->
 
-    <!-- LapisAnalyze1 start -->
+    <!-- LapisAnalyze1 Start -->
     <script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
-    <!-- LapisAnalyze1 end -->
+    <!-- LapisAnalyze1 End -->
   </head>
   <body>
-    <!-- LapisAnalyze2 start -->
+    <!-- LapisAnalyze2 Start -->
     <div id="tracker" style="position:absolute;visibility:hidden;">
       <script type="text/javascript">sendData();</script>
       <noscript>
         <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
       </noscript>
     </div>
-    <!-- LapisAnalyze2 end -->
+    <!-- LapisAnalyze2 End -->
 
-                <h2 id="section">2014/10/31</h2>
+    <div id="wrapper">
+                        <h2 id="section">2014/10/31</h2>
 <h2 id="usbesxi5.5-">USBメモリにESXi5.5 のインストーラを作成する方法</h2>
 <h3>用意するもの</h3>
 <p>4GBと8GBのUSBメモリを2つ用意して、CentOS6.5 を使って作成します。<br />再帰的に同じメモリにインストール出来ればそれでいいんですが、なんか出来なくなっていた様ですので。</p>
@@ -59,7 +62,10 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 <p>Shuttle社のベアボーンキットである、XG41をホストマシンとして<br />USB(4GB) からブートするESXiサーバーを作成します。</p>
 <h3 id="do">DO</h3>
 <h4 id="nic-">NIC のドライバを手に入れる</h4>
-<p>蟹チップだったので以下のエラーが<br />※ SS消失<br /><code>Realtek 8168 NIC in ESXi 5.5 not detected by default</code></p>
+<p>蟹チップだったので以下のエラーが<br />※ SS消失</p>
+<blockquote>
+<p>Realtek 8168 NIC in ESXi 5.5 not detected by default</p>
+</blockquote>
 <p>そこで、ESXi-Customizer を使ってドライバ組込みのISOファイルを作成する。</p>
 <ul>
 <li><p>ESXi-Customizer</p>
@@ -143,6 +149,12 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 <p>完成した4GBのUSBメモリをXG41にぶっ刺し、そこからブートする。<br />後はインストーラに従って、8GBのUSBメモリを指定してESXiをインストールすればOK!<br /><img src="img001.png" title="ESXi on XG41" alt="サマリー" /></p>
 <p>これで、CentOS6.5 と、NAS4free を一台のホストマシンで同時起動出来るようになりました！<br />素敵ですやん(・∀・)</p>
 <p>以上です。</p>
-<hr />
-      </body>
+            <hr />
+      <div align="center">
+        <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+        <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
+        <input type="button" class="css-button" value="Prev" onClick="location.href='./20141021.html'">
+      </div>
+    </div><!-- /#wrapper -->
+  </body>
 </html>
