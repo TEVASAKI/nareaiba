@@ -41,7 +41,7 @@ pandoc --template "%~d0%~p0\html5_template.html" ^
 -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes ^
 -o "%F%.html" "%F%%~x1" ^
 -S ^
--V pagetitle="%~n1" ^
+-V pagetitle="%R:~0,4%/%R:~4,2%/%R:~6,2%" ^
 -V date-meta="%~t1" ^
 -V title="%R:~0,4%/%R:~4,2%/%R:~6,2%"
 if errorlevel 1 (

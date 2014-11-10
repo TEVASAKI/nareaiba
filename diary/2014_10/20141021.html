@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-    <meta name="dcterms.date" content="2014/11/10 09:36">
+    <meta name="dcterms.date" content="2014/11/10 18:38">
     <link rel="shortcut icon" href="../../favicon.ico">
-    <title>20141021</title>
+    <title>2014/10/21</title>
     <style type="text/css">code{white-space: pre;}</style>
 
     <!--[if lt IE 9]>
@@ -57,8 +57,7 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
       <article>
         <header>
           <h1 class="title">2014/10/21</h1>
-        </header>
-          
+          </header>
 <h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
 <h3>出会いと動機</h3>
 <p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
@@ -133,8 +132,7 @@ cabal install <span class="fu">-</span>fhighlighting pandoc</code></pre>
 <span class="ot">      &lt;article&gt;</span>
 <span class="ot">        $for</span><span class="fl">(</span><span class="ot">include-before</span><span class="fl">)</span><span class="ot">$$include-before$$endfor$$if</span><span class="fl">(</span><span class="ot">title</span><span class="fl">)</span><span class="ot">$&lt;header&gt;</span>
 <span class="ot">          &lt;h1 class=&quot;title&quot;&gt;$title$&lt;/h1</span>&gt;<span class="fu">$if</span>(subtitle)$&lt;h1 <span class="kw">class</span>=<span class="st">&quot;subtitle&quot;</span>&gt;$subtitle$&lt;<span class="ot">/h1&gt;$endif$$for</span><span class="fl">(</span><span class="ot">author</span><span class="fl">)</span><span class="ot">$&lt;h2 class=&quot;author&quot;&gt;$author$&lt;/h2</span>&gt;<span class="fu">$endfor$$if</span>(date)$&lt;h3 <span class="kw">class</span>=<span class="st">&quot;date&quot;</span>&gt;$date$&lt;<span class="ot">/h3&gt;$endif$</span>
-<span class="ot">        &lt;/header</span>&gt;
-          <span class="fu">$endif$$if</span>(toc)$&lt;nav id=<span class="st">&quot;$idprefix$TOC&quot;</span>&gt;$toc$&lt;<span class="ot">/nav&gt;$endif$</span>
+<span class="ot">          $endif$$if</span><span class="fl">(</span><span class="ot">toc</span><span class="fl">)</span><span class="ot">$&lt;nav id=&quot;$idprefix$TOC&quot;&gt;$toc$&lt;/nav</span>&gt;$endif$&lt;<span class="ot">/header&gt;</span>
 <span class="ot">$body$$for</span><span class="fl">(</span><span class="ot">include-after</span><span class="fl">)</span><span class="ot">$$include-after$$endfor$</span>
 <span class="ot">      &lt;/article</span>&gt;
       &lt;footer&gt;
@@ -192,7 +190,14 @@ if exist &quot;%~d1%~p1%~n1%~x1&quot; (
   goto :EOF
 )
 
-pandoc --template &quot;%~d0%~p0\html5_template.html&quot; -c &quot;../template/markdown-style.css&quot; -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o &quot;%F%.html&quot; &quot;%F%%~x1&quot; -S -V pagetitle=&quot;%~n1&quot; -V date-meta=&quot;%~t1&quot; -V title=&quot;%R:~0,4%/%R:~4,2%/%R:~6,2%&quot;
+pandoc --template &quot;%~d0%~p0\html5_template.html&quot; ^
+-c &quot;../template/markdown-style.css&quot; ^
+-f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes ^
+-o &quot;%F%.html&quot; &quot;%F%%~x1&quot; ^
+-S ^
+-V pagetitle=&quot;%R:~0,4%/%R:~4,2%/%R:~6,2%&quot; ^
+-V date-meta=&quot;%~t1&quot; ^
+-V title=&quot;%R:~0,4%/%R:~4,2%/%R:~6,2%&quot;
 if errorlevel 1 (
   echo pandocの処理に失敗しました
   pause
@@ -203,6 +208,7 @@ rem てゆーか、コメント内に引数の&quot;%~d&quot; とか書いてい
 rem これバグじゃねーの</code></pre>
 <p><code>-V</code> オプションで、渡したい項目を指定する様ですので、適宜追加してください。</p>
 <p>ちょっと追加しました。<br />ファイル名を取得してページタイトルに加工して渡す処理追加。<br />これにより、何度も日付を入力する必要が無くなり、<br />HTML5的に正しい、headerタグを挿入する事が可能になりました。</p>
+<p>てか、バッチのエスケープって<code>^</code>なんですね、、初めて知りました(・﹃・)</p>
 <p>んで、これをSendTo “%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk” に作成して<br />対象のマークダウンファイルを送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
 <p>って事で、2014/11/09 インデックスと日記レイアウトの刷新、完了。<br />一応はHTML5 対応出来たって事で。<br />過去ログ？<br /><strong>(∩ﾟдﾟ)アーアーきこえなーい</strong></p>
 <h3>課題</h3>
