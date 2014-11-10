@@ -13,7 +13,7 @@ rem               : ~x          拡張子
 rem               : ~t          ファイルの日付と時刻
 
 rem pandoc option : --template  テンプレート指定。このシェルと同じ場所に置いておく必要がある
-rem               : -c          CSS の指定
+rem               : -c          CSS の指定(Pandocの好きな様に叩き込んでくれ)
 rem               : -f          入力形式指定
 rem               : -o          出力名指定 , 第二引数に入力ファイル名
 rem               : -S          Typography的に正しく出力する(smartMode)
@@ -22,6 +22,7 @@ rem               : -V          テンプレート内の各種Haskell 引数指定
 rem SendTo "%APPDATA%\Microsoft\Windows\SendTo\gendoc.lnk"
 
 rem 生成されるHTMLは同じ場所に作られるので、cssはmdから見た相対パス指定で。
+rem あと、ファイル名からH1タイトルを加工して生成するようにした
 
 
 if exist "%~d1%~p1%~n1%~x1" (

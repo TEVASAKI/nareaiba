@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-    <meta name="dcterms.date" content="2014/11/09 12:21">
+    <meta name="dcterms.date" content="2014/11/10 09:36">
     <link rel="shortcut icon" href="../../favicon.ico">
     <title>20141021</title>
     <style type="text/css">code{white-space: pre;}</style>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <![endif] -->
     
     <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -55,164 +55,163 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 
     <div id="wrapper">
       <article>
-        
-                
-        <h1 id="section">2014/10/21</h1>
-        <h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
-        <h3>出会いと動機</h3>
-        <p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
-        <p>んで冒頭のMarkdown形式について調べていたら、Haskellで書かれたパーサー <strong>Pandoc</strong> の存在を<a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">sky_y</a>さんの投稿で知った訳ですね。</p>
-        <p>ええ、勿論飛びつきましたよ私だって健全な男の子ですもの。</p>
-        <h3>準備</h3>
-        <p>環境はWindows7 pro 64bit<br />環境変数とか色々面倒くさいので、<a href="https://chocolatey.org/">Chocolatey</a> でHaskellプラットフォームとpandocをば。</p>
-        <h4>あると便利なもの</h4>
-        <ul>
-        <li><p>Rapid Environment Editor</p>
-        <ul>
-        <li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
-        </ul></li>
-        </ul>
-        <h4 id="chocolatey-">Chocolatey のインストール</h4>
-        <p>以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。</p>
-        <pre class="bat"><code>@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
-        <h4 id="haskell-platformgkasgow-haskell-compilerghc-">Haskell Platform(Gkasgow Haskell Compiler(GHC)) のインストール</h4>
-        <p><code>choco install xxx</code> の略である <code>cinst</code> を使います。</p>
-        <pre class="bat"><code>cinst HaskellPlatform</code></pre>
-        <p>これで Haskell パッケージ管理コマンド cabal がインストール出来ます。</p>
-        <h4 id="haskell-platform-pandoc-">Haskell Platform のアップデートとPandoc のインストール</h4>
-        <pre class="sourceCode haskell"><code class="sourceCode haskell">cabal update
-        cabal install cabal<span class="fu">-</span>install
-        cabal install <span class="fu">-</span>fhighlighting pandoc</code></pre>
-        <p>ここは滅茶苦茶時間かかりますが、辛抱強くお待ち下さい。<br />(<code>-fhighlighting</code> オプションは要らないかもしれないけど)<br />コマンドプロンプトで、<code>pandoc -v</code> と入力して、バージョン表示されればok.</p>
-        <p><code>cinst pandoc</code> でもインストール出来ますが、これだとバージョンが1.11.1 になってしまいますので、、。</p>
-        <h3>テンプレートの作成</h3>
-        <p>以下のコマンドで、html5テンプレートを作成しておきます。</p>
-        <pre class="sourceCode haskell"><code class="sourceCode haskell">pandoc <span class="fu">-</span><span class="dt">D</span> html5 <span class="fu">&gt;</span> html5_template<span class="fu">.</span>html</code></pre>
-        <p>んでそれを元に不要な部分を削って、自分のページで使いたいヘッダとかCSS とか色々指定しつつ<br />読みやすいように体裁を整えたのが以下。</p>
-        <pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-        <span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span>
-          <span class="kw">&lt;head&gt;</span>
-            <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
-            <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;</span><span class="kw">&gt;</span>
-            <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;TEVA&quot;</span><span class="kw">&gt;</span>
-            $if(date-meta)$<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;dcterms.date&quot;</span><span class="ot"> content=</span><span class="st">&quot;$date-meta$&quot;</span><span class="kw">&gt;</span>$endif$
-            <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../favicon.ico&quot;</span><span class="kw">&gt;</span>
-            <span class="kw">&lt;title&gt;</span>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$<span class="kw">&lt;/title&gt;</span>
-            <span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>code<span class="kw">{white-space:</span> <span class="dt">pre</span><span class="kw">;}&lt;/style&gt;</span>
-        
-            <span class="co">&lt;!--[if lt IE 9]&gt;</span>
-        <span class="co">      &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</span>
-        <span class="co">    &lt;![endif]--&gt;</span>
-            $if(quotes)$<span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>q <span class="kw">{</span> <span class="kw">quotes:</span> <span class="st">&quot;“&quot;</span> <span class="st">&quot;”&quot;</span> <span class="st">&quot;‘&quot;</span> <span class="st">&quot;’&quot;</span><span class="kw">;</span> <span class="kw">}&lt;/style&gt;</span>$endif$
-            $if(highlighting-css)$<span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>$highlighting-css$<span class="kw">&lt;/style&gt;</span>$endif$
-            $for(css)$<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="kw">&gt;</span>$endfor$
-            $if(math)$$math$$endif$
-            $for(header-includes)$$header-includes$$endfor$
-            <span class="co">&lt;!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 --&gt;</span>
-            <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;../template/highlight/styles/sunburst.css&quot;</span><span class="kw">&gt;</span>
-            <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;../template/highlight/highlight.pack.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-            <span class="kw">&lt;script&gt;</span><span class="ot">hljs</span>.<span class="fu">initHighlightingOnLoad</span>();&lt;<span class="ot">/script&gt;</span>
-        <span class="ot">    &lt;!-- /</span># --&gt;
-        
-            &lt;!-- LapisAnalyze1 Start --&gt;
-            &lt;script type=<span class="st">&quot;text/javascript&quot;</span> src=<span class="st">&quot;http://www.xxx.yyy&quot;</span> charset=<span class="st">&quot;UTF-8&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
-        <span class="ot">    &lt;!-- LapisAnalyze1 End --&gt;</span>
-        <span class="ot">  &lt;/head</span>&gt;
-          &lt;body&gt;
-            &lt;!-- LapisAnalyze2 Start --&gt;
-            &lt;div id=<span class="st">&quot;tracker&quot;</span> style=<span class="st">&quot;position:absolute;visibility:hidden;&quot;</span>&gt;
-              &lt;script type=<span class="st">&quot;text/javascript&quot;</span>&gt;<span class="fu">sendData</span>();&lt;<span class="ot">/script&gt;</span>
-        <span class="ot">      &lt;noscript&gt;</span>
-        <span class="ot">        &lt;img src=&quot;http://www.xxx.yyy/</span><span class="st">&quot; width=&quot;</span><span class="dv">0</span><span class="st">&quot; height=&quot;</span><span class="dv">0</span><span class="st">&quot; alt=&quot;</span>tracker<span class="st">&quot;&gt;</span>
-              &lt;<span class="ot">/noscript&gt;</span>
-        <span class="ot">    &lt;/div</span>&gt;
-            &lt;!-- LapisAnalyze2 End --&gt;
-        
-            &lt;div id=<span class="st">&quot;wrapper&quot;</span>&gt;
-              &lt;article&gt;
-                <span class="fu">$for</span>(include-before)$$include-before$$endfor$
-                <span class="fu">$if</span>(title)$
-                  &lt;header&gt;
-                    &lt;h1 <span class="kw">class</span>=<span class="st">&quot;title&quot;</span>&gt;$title$&lt;<span class="ot">/h1&gt;</span>
-        <span class="ot">            $if</span><span class="fl">(</span><span class="ot">subtitle</span><span class="fl">)</span><span class="ot">$&lt;h1 class=&quot;subtitle&quot;&gt;$subtitle$&lt;/h1</span>&gt;$endif$
-                    <span class="fu">$for</span>(author)$&lt;h2 <span class="kw">class</span>=<span class="st">&quot;author&quot;</span>&gt;$author$&lt;<span class="ot">/h2&gt;$endfor$</span>
-        <span class="ot">            $if</span><span class="fl">(</span><span class="ot">date</span><span class="fl">)</span><span class="ot">$&lt;h3 class=&quot;date&quot;&gt;$date$&lt;/h3</span>&gt;$endif$
-                  &lt;<span class="ot">/header&gt;</span>
-        <span class="ot">        $endif$</span>
-        <span class="ot">        $if</span><span class="fl">(</span><span class="ot">toc</span><span class="fl">)</span><span class="ot">$&lt;nav id=&quot;$idprefix$TOC&quot;&gt;$toc$&lt;/nav</span>&gt;$endif$
-                $body$
-                <span class="fu">$for</span>(include-after)$$include-after$$endfor$
-              &lt;<span class="ot">/article&gt;</span>
-        <span class="ot">      &lt;hr /</span>&gt;
-              &lt;footer&gt;
-                &lt;div align=<span class="st">&quot;center&quot;</span>&gt;
-                  &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;Next&quot;</span> onClick=<span class="st">&quot;location.href=&#39;#&#39;&quot;</span>&gt;　
-                  &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;TOP&quot;</span> onClick=<span class="st">&quot;location.href=&#39;../../index.html&#39;&quot;</span>&gt;　
-                  &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;Prev&quot;</span> onClick=<span class="st">&quot;location.href=&#39;#&#39;&quot;</span>&gt;
-                &lt;<span class="ot">/div&gt;</span>
-        <span class="ot">      &lt;/footer</span>&gt;
-            &lt;<span class="ot">/div&gt;&lt;!-- /</span>#wrapper --&gt;
-          &lt;<span class="ot">/body&gt;</span>
-        <span class="ot">&lt;/html</span>&gt;</code></pre>
-        <p>ページのFavicon とかCSS は直接埋め込んでしまえばちゃんと読みに行ってくれます(・∀・)<br />ここではgitHubっぽいCSS をちょいと変更した物を使わせていただいております。<br /><a href="https://gist.github.com/TEVASAKI/9c9da230a6a9f2cda9ce">ここに置いてあります。</a></p>
-        <p><a href="https://highlightjs.org/">Highlight.js</a> の<a href="https://highlightjs.org/static/test.html">テーマ一覧はこちら。</a></p>
-        <p>Pandoc が本来持つSyntax ハイライト機能を使うのであるなら、このスクリプトは不要です。</p>
-        <h3>バッチでラクをする。</h3>
-        <p>んで、Vimなりなんなりでmd 形式のマークダウン文章を作った後、<br />右クリックの送るメニューから一発変換出来るシェルってかバッチを作ります。</p>
-        <p><a href="http://www5d.biglobe.ne.jp/~yggsoft/">YGGDRASILL SOFT!!</a> で公開されていた、gendoc というバッチを参考にさせていただきました！ありがとうございます。</p>
-        <pre class="bat"><code>@echo off
-        
-        rem - - - - - - - - - - - - - - - - - - -
-        rem This script is forked by &#39;gendoc&#39;.
-        rem Thanks by YGGDRASILL SOFT!!
-        rem http://www5d.biglobe.ne.jp/~yggsoft/
-        rem - - - - - - - - - - - - - - - - - - -
-        
-        rem BAT option
-        rem               : ~d          ドライブレター
-        rem               : ~p          パス名
-        rem               : ~n          ファイル名
-        rem               : ~x          拡張子
-        rem               : ~t          ファイルの日付と時刻
-        
-        rem pandoc option
-        rem               : --template  テンプレート指定。このシェルと同じ場所に置いておく必要がある
-        rem               : -f          入力形式指定
-        rem               : -o          出力名指定 , 第二引数に入力ファイル名
-        rem               : -V          テンプレート内のHaskell 引数指定
-        rem               : -c          CSS の指定
-        
-        rem SendTo &quot;%APPDATA%\Microsoft\Windows\SendTo\gendoc.lnk&quot;
-        
-        rem 生成されるHTMLは同じ場所に作られるので、cssはmdから見た相対パス指定で。
-        
-        
-        if exist &quot;%~d1%~p1%~n1%~x1&quot; (
-          set F=%~d1%~p1%~n1
-        ) else (
-          echo 処理できるファイルがありません - 「%~d1%~p1%~n1%~x1」
-          pause
-          goto :EOF
-        )
-        
-        pandoc --template &quot;%~d0%~p0\html5_template.html&quot; -c &quot;../template/markdown-style.css&quot; -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o &quot;%F%.html&quot; &quot;%F%%~x1&quot;  -V pagetitle=&quot;%~n1&quot; -V date-meta=&quot;%~t1&quot;
-        if errorlevel 1 (
-          echo pandocの処理に失敗しました
-          pause
-          goto :EOF
-        )
-        
-        rem てゆーか、コメント内に引数の&quot;%~d&quot; とか書いていたら解釈されるんですが、、、
-        rem これバグじゃねーの</code></pre>
-        <p><code>-V</code> オプションで、渡したい項目を指定する様ですので、適宜追加してください。</p>
-        <p>んで、これをSendTo &quot;%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk&quot; に作成して<br />対象のマークダウンファイル上で送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
-        <p>って事で、2014/11/09 インデックスと日記レイアウトの刷新、完了。<br />一応はHTML5 対応出来たって事で。<br />過去ログ？<br /><strong>(∩ﾟдﾟ)アーアーきこえなーい</strong></p>
-        <h3>課題</h3>
-        <p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p>
-        
+        <header>
+          <h1 class="title">2014/10/21</h1>
+        </header>
+          
+<h2 id="pandocmarkdown-html5">PandocでMarkdown からHTML5へ。テンプレート指定で思った通りの書式にするラクをする(?</h2>
+<h3>出会いと動機</h3>
+<p>Qiitaを始めとして、Markdown書式絶好調な世の中ですが<br />私の様にいまだにHTMLでページ作ってる時代遅れな人間もいるものでして。<br />過去のデータをutf-8化したから次はHTML5化だー<br />、、、と、目的を持ちながらも体系的に学ぶ気にもあまりなれず、出来る限りラクして作りたいなーて思っていた日々な訳です。</p>
+<p>んで冒頭のMarkdown形式について調べていたら、Haskellで書かれたパーサー <strong>Pandoc</strong> の存在を<a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">sky_y</a>さんの投稿で知った訳ですね。</p>
+<p>ええ、勿論飛びつきましたよ私だって健全な男の子ですもの。</p>
+<h3>準備</h3>
+<p>環境はWindows7 pro 64bit<br />環境変数とか色々面倒くさいので、<a href="https://chocolatey.org/">Chocolatey</a> でHaskellプラットフォームとpandocをば。</p>
+<h4>あると便利なもの</h4>
+<ul>
+<li><p>Rapid Environment Editor</p>
+<ul>
+<li>Windows の環境変数いじりに<br /> パスがおかしい所とかをすぐに見つけられます<br /> <code>cinst Devbox-RapidEE</code></li>
+</ul></li>
+</ul>
+<h4 id="chocolatey-">Chocolatey のインストール</h4>
+<p>以下のコードを管理者権限のコマンドプロンプトにペーストして、ベースをインストール。</p>
+<pre class="bat"><code>@powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&quot; &amp;&amp; SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin</code></pre>
+<h4 id="haskell-platformgkasgow-haskell-compilerghc-">Haskell Platform(Gkasgow Haskell Compiler(GHC)) のインストール</h4>
+<p><code>choco install xxx</code> の略である <code>cinst</code> を使います。</p>
+<pre class="bat"><code>cinst HaskellPlatform</code></pre>
+<p>これで Haskell パッケージ管理コマンド cabal がインストール出来ます。</p>
+<h4 id="haskell-platform-pandoc-">Haskell Platform のアップデートとPandoc のインストール</h4>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">cabal update
+cabal install cabal<span class="fu">-</span>install
+cabal install <span class="fu">-</span>fhighlighting pandoc</code></pre>
+<p>ここは滅茶苦茶時間かかりますが、辛抱強くお待ち下さい。<br />(<code>-fhighlighting</code> オプションは要らないかもしれないけど)<br />コマンドプロンプトで、<code>pandoc -v</code> と入力して、バージョン表示されればok.</p>
+<p><code>cinst pandoc</code> でもインストール出来ますが、これだとバージョンが1.11.1 になってしまいますので、、。</p>
+<h3>テンプレートの作成</h3>
+<p>以下のコマンドで、html5テンプレートを作成しておきます。</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">pandoc <span class="fu">-</span><span class="dt">D</span> html5 <span class="fu">&gt;</span> html5_template<span class="fu">.</span>html</code></pre>
+<p>んでそれを元に不要な部分を削って、自分のページで使いたいヘッダとかタイトルとか色々指定しつつ<br /><strong>出力された時に綺麗なソースになるよう</strong>体裁を整えたのが以下。</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;TEVA&quot;</span><span class="kw">&gt;</span>
+    $if(date-meta)$<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;dcterms.date&quot;</span><span class="ot"> content=</span><span class="st">&quot;$date-meta$&quot;</span><span class="kw">&gt;</span>$endif$
+    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../favicon.ico&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;title&gt;</span>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$<span class="kw">&lt;/title&gt;</span>
+    <span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>code<span class="kw">{white-space:</span> <span class="dt">pre</span><span class="kw">;}&lt;/style&gt;</span>
+
+    <span class="co">&lt;!--[if lt IE 9]&gt;</span>
+<span class="co">      &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</span>
+<span class="co">    &lt;![endif] --&gt;</span>
+    $if(quotes)$<span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>q <span class="kw">{</span> <span class="kw">quotes:</span> <span class="st">&quot;“&quot;</span> <span class="st">&quot;”&quot;</span> <span class="st">&quot;‘&quot;</span> <span class="st">&quot;’&quot;</span><span class="kw">;</span> <span class="kw">}&lt;/style&gt;</span>$endif$
+    $if(highlighting-css)$<span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span>$highlighting-css$<span class="kw">&lt;/style&gt;</span>$endif$
+    $for(css)$<span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="kw">&gt;</span>$endfor$
+    $if(math)$$math$$endif$
+    $for(header-includes)$$header-includes$$endfor$
+    <span class="co">&lt;!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 --&gt;</span>
+    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;../template/highlight/styles/sunburst.css&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;../template/highlight/highlight.pack.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+    <span class="kw">&lt;script&gt;</span><span class="ot">hljs</span>.<span class="fu">initHighlightingOnLoad</span>();&lt;<span class="ot">/script&gt;</span>
+<span class="ot">    &lt;!-- /</span># --&gt;
+
+    &lt;!-- LapisAnalyze1 Start --&gt;
+    &lt;script type=<span class="st">&quot;text/javascript&quot;</span> src=<span class="st">&quot;http://www.xxx.yyy&quot;</span> charset=<span class="st">&quot;UTF-8&quot;</span>&gt;&lt;<span class="ot">/script&gt;</span>
+<span class="ot">    &lt;!-- LapisAnalyze1 End --&gt;</span>
+<span class="ot">  &lt;/head</span>&gt;
+  &lt;body&gt;
+    &lt;!-- LapisAnalyze2 Start --&gt;
+    &lt;div id=<span class="st">&quot;tracker&quot;</span> style=<span class="st">&quot;position:absolute;visibility:hidden;&quot;</span>&gt;
+      &lt;script type=<span class="st">&quot;text/javascript&quot;</span>&gt;<span class="fu">sendData</span>();&lt;<span class="ot">/script&gt;</span>
+<span class="ot">      &lt;noscript&gt;</span>
+<span class="ot">        &lt;img src=&quot;http://www.xxx.yyy&quot; width=&quot;0&quot; height=&quot;0&quot; alt=&quot;tracker&quot;&gt;</span>
+<span class="ot">      &lt;/noscript</span>&gt;
+    &lt;<span class="ot">/div&gt;</span>
+<span class="ot">    &lt;!-- LapisAnalyze2 End --&gt;</span>
+
+<span class="ot">    &lt;div id=&quot;wrapper&quot;&gt;</span>
+<span class="ot">      &lt;article&gt;</span>
+<span class="ot">        $for</span><span class="fl">(</span><span class="ot">include-before</span><span class="fl">)</span><span class="ot">$$include-before$$endfor$$if</span><span class="fl">(</span><span class="ot">title</span><span class="fl">)</span><span class="ot">$&lt;header&gt;</span>
+<span class="ot">          &lt;h1 class=&quot;title&quot;&gt;$title$&lt;/h1</span>&gt;<span class="fu">$if</span>(subtitle)$&lt;h1 <span class="kw">class</span>=<span class="st">&quot;subtitle&quot;</span>&gt;$subtitle$&lt;<span class="ot">/h1&gt;$endif$$for</span><span class="fl">(</span><span class="ot">author</span><span class="fl">)</span><span class="ot">$&lt;h2 class=&quot;author&quot;&gt;$author$&lt;/h2</span>&gt;<span class="fu">$endfor$$if</span>(date)$&lt;h3 <span class="kw">class</span>=<span class="st">&quot;date&quot;</span>&gt;$date$&lt;<span class="ot">/h3&gt;$endif$</span>
+<span class="ot">        &lt;/header</span>&gt;
+          <span class="fu">$endif$$if</span>(toc)$&lt;nav id=<span class="st">&quot;$idprefix$TOC&quot;</span>&gt;$toc$&lt;<span class="ot">/nav&gt;$endif$</span>
+<span class="ot">$body$$for</span><span class="fl">(</span><span class="ot">include-after</span><span class="fl">)</span><span class="ot">$$include-after$$endfor$</span>
+<span class="ot">      &lt;/article</span>&gt;
+      &lt;footer&gt;
+      &lt;hr /&gt;
+        &lt;div align=<span class="st">&quot;center&quot;</span>&gt;
+          &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;Next&quot;</span> onClick=<span class="st">&quot;location.href=&#39;#&#39;&quot;</span>&gt;　
+          &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;TOP&quot;</span> onClick=<span class="st">&quot;location.href=&#39;../../index.html&#39;&quot;</span>&gt;　
+          &lt;input type=<span class="st">&quot;button&quot;</span> <span class="kw">class</span>=<span class="st">&quot;css-button&quot;</span> value=<span class="st">&quot;Prev&quot;</span> onClick=<span class="st">&quot;location.href=&#39;../2013_11/201311.html&#39;&quot;</span>&gt;
+        &lt;<span class="ot">/div&gt;</span>
+<span class="ot">      &lt;/footer</span>&gt;
+    &lt;<span class="ot">/div&gt;&lt;!-- /</span>#wrapper --&gt;
+  &lt;<span class="ot">/body&gt;</span>
+<span class="ot">&lt;/html</span>&gt;</code></pre>
+<p>ページのFavicon とかCSS は直接埋め込んでしまえばちゃんと読みに行ってくれます(・∀・)<br />ここではgitHubっぽいCSS をちょいと変更した物を使わせていただいております。<br /><a href="https://gist.github.com/TEVASAKI/9c9da230a6a9f2cda9ce">ここに置いてあります。</a></p>
+<p><a href="https://highlightjs.org/">Highlight.js</a> の<a href="https://highlightjs.org/static/test.html">テーマ一覧はこちら。</a></p>
+<p>Pandoc が本来持つSyntax ハイライト機能を使うのであるなら、このスクリプトは不要です。</p>
+<h3>バッチでラクをする。</h3>
+<p>んで、Vimなりなんなりでmd 形式のマークダウン文章を作った後、<br />右クリックの送るメニューから一発変換出来るシェルってかバッチを作ります。</p>
+<p><a href="http://www5d.biglobe.ne.jp/~yggsoft/">YGGDRASILL SOFT!!</a> で公開されていた、gendoc というバッチを参考にさせていただきました！ありがとうございます。</p>
+<pre class="bat"><code>@echo off
+
+rem - - - - - - - - - - - - - - - - - - -
+rem This script is forked by &#39;gendoc&#39;.
+rem Thanks by YGGDRASILL SOFT!!
+rem http://www5d.biglobe.ne.jp/~yggsoft/
+rem - - - - - - - - - - - - - - - - - - -
+
+rem BAT option    : ~d          ドライブレター
+rem               : ~p          パス名
+rem               : ~n          ファイル名
+rem               : ~x          拡張子
+rem               : ~t          ファイルの日付と時刻
+
+rem pandoc option : --template  テンプレート指定。このシェルと同じ場所に置いておく必要がある
+rem               : -c          CSS の指定(Pandocの好きな様に叩き込んでくれ)
+rem               : -f          入力形式指定
+rem               : -o          出力名指定 , 第二引数に入力ファイル名
+rem               : -S          Typography的に正しく出力する(smartMode)
+rem               : -V          テンプレート内の各種Haskell 引数指定
+
+rem SendTo &quot;%APPDATA%\Microsoft\Windows\SendTo\gendoc.lnk&quot;
+
+rem 生成されるHTMLは同じ場所に作られるので、cssはmdから見た相対パス指定で。
+rem あと、ファイル名からH1タイトルを加工して生成するようにした
+
+
+if exist &quot;%~d1%~p1%~n1%~x1&quot; (
+  set F=%~d1%~p1%~n1
+  set R=%~n1
+) else (
+  echo 処理できるファイルがありません - 「%~d1%~p1%~n1%~x1」
+  pause
+  goto :EOF
+)
+
+pandoc --template &quot;%~d0%~p0\html5_template.html&quot; -c &quot;../template/markdown-style.css&quot; -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o &quot;%F%.html&quot; &quot;%F%%~x1&quot; -S -V pagetitle=&quot;%~n1&quot; -V date-meta=&quot;%~t1&quot; -V title=&quot;%R:~0,4%/%R:~4,2%/%R:~6,2%&quot;
+if errorlevel 1 (
+  echo pandocの処理に失敗しました
+  pause
+  goto :EOF
+)
+
+rem てゆーか、コメント内に引数の&quot;%~d&quot; とか書いていたら解釈されるんですが、、、
+rem これバグじゃねーの</code></pre>
+<p><code>-V</code> オプションで、渡したい項目を指定する様ですので、適宜追加してください。</p>
+<p>ちょっと追加しました。<br />ファイル名を取得してページタイトルに加工して渡す処理追加。<br />これにより、何度も日付を入力する必要が無くなり、<br />HTML5的に正しい、headerタグを挿入する事が可能になりました。</p>
+<p>んで、これをSendTo “%APPDATA%¥Microsoft¥Windows¥SendTo¥gendoc.lnk” に作成して<br />対象のマークダウンファイルを送ってやれば、同じファイル名のHTMLが作成されます！<br /><strong>素晴らしい！！</strong></p>
+<p>って事で、2014/11/09 インデックスと日記レイアウトの刷新、完了。<br />一応はHTML5 対応出来たって事で。<br />過去ログ？<br /><strong>(∩ﾟдﾟ)アーアーきこえなーい</strong></p>
+<h3>課題</h3>
+<ul>
+<li><p>openSuse13.2 とCentOS6.5 も使っているので、同じような仕組みを作りたいなーと<br />シェルが使えるからもう少し簡単だと思いますが、さーどうしましょうかねー。</p></li>
+<li><p>code表示がずれる件は、テンプレートの“$body$” にインデントをかけていた事が原因でした。<br />右に4つインデントをかけると、それに伴いpreタグも一緒に4つずれる、と。</p></li>
+<li><p><code>-S</code>オプションを指定しても出力されるHTMLソースがきったいない時は、テンプレートの変数の位置を調整するとあっけなく修正出来たりします。</p></li>
+</ul>
       </article>
-      <hr />
       <footer>
+      <hr />
         <div align="center">
           <input type="button" class="css-button" value="Next" onClick="location.href='./20141031.html'">　
           <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
