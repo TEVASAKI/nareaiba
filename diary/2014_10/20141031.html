@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-    <meta name="dcterms.date" content="2014/11/09 12:22">
+    <meta name="dcterms.date" content="2014/11/10 09:31">
     <link rel="shortcut icon" href="../../favicon.ico">
     <title>20141031</title>
     <style type="text/css">code{white-space: pre;}</style>
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <![endif] -->
     
     <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -55,110 +55,114 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 
     <div id="wrapper">
       <article>
-        
-                
-        <h1 id="section">2014/10/31</h1>
-        <h2 id="usbesxi5.5-">USBメモリにESXi5.5 のインストーラを作成する方法</h2>
-        <h3>用意するもの</h3>
-        <p>4GBと8GBのUSBメモリを2つ用意して、CentOS6.5 を使って作成します。<br />再帰的に同じメモリにインストール出来ればそれでいいんですが、なんか出来なくなっていた様ですので。</p>
-        <h3 id="to">TO</h3>
-        <p>Shuttle社のベアボーンキットである、XG41をホストマシンとして<br />USB(4GB) からブートするESXiサーバーを作成します。</p>
-        <h3 id="do">DO</h3>
-        <h4 id="nic-">NIC のドライバを手に入れる</h4>
-        <p>蟹チップだったので以下のエラーが<br />※ SS消失</p>
-        <blockquote>
-        <p>Realtek 8168 NIC in ESXi 5.5 not detected by default</p>
-        </blockquote>
-        <p>そこで、ESXi-Customizer を使ってドライバ組込みのISOファイルを作成する。</p>
-        <ul>
-        <li><p>ESXi-Customizer</p>
-        <ul>
-        <li><a href="http://www.v-front.de/p/esxi-customizer.html">VMware Front Experience</a></li>
-        </ul></li>
-        <li><p>ドライバ 【VMware_bootbank_net-r8168_8.013.00-3vmw.510.0.0.799733】 (下記のうちどれかからGET)</p>
-        <ul>
-        <li><a href="http://www.vladan.fr/realtek-8169-nics-not-detected-under-esxi-5-5/">ESX virtualization</a></li>
-        <li><a href="http://www.tinkertry.com/install-esxi-5-5-with-realtek-8111-or-8168-nic/">TinkerTry IT @ home</a></li>
-        <li><a href="http://miketabor.com/add-realtek-r8168-to-esxi-5-5/">Mike Tabor</a></li>
-        </ul></li>
-        </ul>
-        <p>で、<code>ESXi-Customizer.cmd</code> を実行して、オリジナルのESXiイメージとドライバを選択して<br />出力先の名前を決めて完了。</p>
-        <h4 id="usbboot">USBメモリのフォーマットとBootフラグの設定</h4>
-        <p>CD-R ドライブが付いていないので、BootableなUSBメモリを作る。<br />以降の作業は作業用Linuxホストにて行います。<br />なんかsyslinux が必要なので。</p>
-        <h4 id="usb">USBメモリ内にパーティションを作成</h4>
-        <p><code>fdisk -l</code></p>
-        <blockquote>
-        <p>ディスク /dev/sda: 21.5 GB, 21474836480 バイト <strong>← これはOSの入ったHDD</strong><br />ヘッド 255, セクタ 63, シリンダ 2610<br />Units = シリンダ数 of 16065 * 512 = 8225280 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x000bf29c</p>
-        <p>-------- 省略 --------</p>
-        <p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト <strong>← これがUSBメモリ</strong><br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
-        </blockquote>
-        <p>/dev/sdb がUSBメモリだとする。</p>
-        <ol>
-        <li><code>fdisk /dev/sdb/</code></li>
-        </ol>
-        <ul>
-        <li>d ← パーティションを削除</li>
-        <li><p>n ← パーティションを作成</p>
-        <ul>
-        <li>p ← Primary を選択</li>
-        <li>1 ← パーティションNoを指定。1番。</li>
-        <li>Enter ← シリンダ指定。デフォルトの1。</li>
-        <li>Enter ← 最終シリンダ指定。デフォルト。</li>
-        </ul></li>
-        <li><p>t ← パーティションのタイプ指定</p>
-        <ul>
-        <li>c ← FAT32 を示す<code>c</code> を指定</li>
-        </ul></li>
-        <li><p>a ← Bootable 指定</p>
-        <ul>
-        <li>1 ← 1番パーティションを指定</li>
-        </ul></li>
-        <li><p>p ← パーティション設定を確認</p></li>
-        </ul>
-        <blockquote>
-        <p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト<br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
-        <p>デバイス ブート 始点 終点 ブロック Id システム<br />/dev/sdb1 * 1 1022 3928537 c W95 FAT32 (LBA)</p>
-        </blockquote>
-        <p>、、、OKですね(・∀・)<br />では、wを押下して書き込みます。</p>
-        <h4 id="fat32-">FAT32 でフォーマット</h4>
-        <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkfs.vfat</span> -F 32 -n ESXi-Installer /dev/sdb1</code></pre>
-        <p>明示的にフォーマットする必要があるみたいですね。</p>
-        <h3 id="syslinux-">syslinux とか組込む</h3>
-        <p>syslinux でブート用のシステムをUSBメモリに組み込む。<br />そんで、ブート用のMBRを書き込む。</p>
-        <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">syslinux</span> /dev/sdb1
-        <span class="kw">dd</span> if=/usr/share/syslinux/mbr.bin of=/dev/sdb bs=440 count=1</code></pre>
-        <h4 id="esxiusb">ESXiインストーラの中身をUSBメモリにコピー</h4>
-        <p>イメージファイルをそのままマウントして、中身を全部コピーする。</p>
-        <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> /mnt/usb
-        <span class="kw">mount</span> /dev/sdb1 /mnt/usb
-        <span class="kw">mount</span> -o loop /home/USER/iso/ESXi-xxx.iso /media
-        <span class="kw">cp</span> -r /media -T /mnt/usb</code></pre>
-        <h4 id="syslinux.cfg-">syslinux.cfg の作成</h4>
-        <p>コピーしたUSB内のisolinux.cfg からsyslinux.cfg をコピーし、中身をちょいと修正</p>
-        <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /mnt/usb
-        <span class="kw">cp</span> isolinux.cfg syslinux.cfg
-        <span class="kw">vi</span> syslinux.cfg</code></pre>
-        <blockquote>
-        <p>DEFAULT mboot.c32 ← <strong>ここをmenu32.c32 からmboot.c32 に書き換える</strong><br />MENU TITLE ESXi-5.5.0-20140302001-standard Boot Menu<br />NOHALT 1<br />PROMPT 0<br />TIMEOUT 80<br />LABEL install<br /> KERNEL mboot.c32<br /> APPEND -c boot.cfg<br /> MENU LABEL ESXi-5.5.0-20140302001-standard ^Installer<br />LABEL hddboot<br /> LOCALBOOT 0x80<br /> MENU LABEL ^Boot from local disk<br />LABEL comment0<br /> MENU LABEL<br />LABEL comment1<br /> MENU LABEL +------------------------------------------------------+<br />LABEL comment2<br /> MENU LABEL | Customized by ESXi-Customizer 2.7.2 |<br />LABEL comment3<br /> MENU LABEL | <a href="http://esxi-customizer.v-front.de" class="uri">http://esxi-customizer.v-front.de</a> |<br />LABEL comment4<br /> MENU LABEL +------------------------------------------------------+</p>
-        </blockquote>
-        <h3>後始末</h3>
-        <p>USB メモリとイメージをumountしておく。</p>
-        <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">umount</span> /mnt/usb
-        <span class="kw">umount</span> /media</code></pre>
-        <h2 id="esxi-">ESXi のインストール</h2>
-        <p>完成した4GBのUSBメモリをXG41にぶっ刺し、そこからブートする。<br />後はインストーラに従って、8GBのUSBメモリを指定してESXiをインストールすればOK!<br /><img src="img001.png" title="ESXi on XG41" alt="サマリー" /></p>
-        <p>これで、CentOS6.5 と、NAS4free を一台のホストマシンで同時起動出来るようになりました！<br />素敵ですやん(・∀・)</p>
-        <p>以上です。</p>
-        
+        <header>
+          <h1 class="title">2014/10/31</h1>
+        </header>
+          
+<h2 id="usbesxi5.5-">USBメモリにESXi5.5 のインストーラを作成する方法</h2>
+<h3>用意するもの</h3>
+<p>4GBと8GBのUSBメモリを2つ用意して、CentOS6.5 を使って作成します。<br />再帰的に同じメモリにインストール出来ればそれでいいんですが、なんか出来なくなっていた様ですので。</p>
+<h3 id="to">TO</h3>
+<p>Shuttle社のベアボーンキットである、XG41をホストマシンとして<br />USB(4GB) からブートするESXiサーバーを作成します。</p>
+<h3 id="do">DO</h3>
+<h4 id="nic-">NIC のドライバを手に入れる</h4>
+<p>蟹チップだったので以下のエラーが<br />※ SS消失</p>
+<blockquote>
+<p>Realtek 8168 NIC in ESXi 5.5 not detected by default</p>
+</blockquote>
+<p>そこで、ESXi-Customizer を使ってドライバ組込みのISOファイルを作成する。</p>
+<ul>
+<li><p>ESXi-Customizer</p>
+<ul>
+<li><a href="http://www.v-front.de/p/esxi-customizer.html">VMware Front Experience</a></li>
+</ul></li>
+<li><p>ドライバ 【VMware_bootbank_net-r8168_8.013.00-3vmw.510.0.0.799733】 (下記のうちどれかからGET)</p>
+<ul>
+<li><a href="http://www.vladan.fr/realtek-8169-nics-not-detected-under-esxi-5-5/">ESX virtualization</a></li>
+<li><a href="http://www.tinkertry.com/install-esxi-5-5-with-realtek-8111-or-8168-nic/">TinkerTry IT @ home</a></li>
+<li><a href="http://miketabor.com/add-realtek-r8168-to-esxi-5-5/">Mike Tabor</a></li>
+</ul></li>
+</ul>
+<p>で、<code>ESXi-Customizer.cmd</code> を実行して、オリジナルのESXiイメージとドライバを選択して<br />出力先の名前を決めて完了。</p>
+<h4 id="usbboot">USBメモリのフォーマットとBootフラグの設定</h4>
+<p>CD-R ドライブが付いていないので、BootableなUSBメモリを作る。<br />以降の作業は作業用Linuxホストにて行います。<br />なんかsyslinux が必要なので。</p>
+<h4 id="usb">USBメモリ内にパーティションを作成</h4>
+<p><code>fdisk -l</code></p>
+<blockquote>
+<p>ディスク /dev/sda: 21.5 GB, 21474836480 バイト <strong>← これはOSの入ったHDD</strong><br />ヘッド 255, セクタ 63, シリンダ 2610<br />Units = シリンダ数 of 16065 * 512 = 8225280 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x000bf29c</p>
+<p>——– 省略 ——–</p>
+<p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト <strong>← これがUSBメモリ</strong><br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
+</blockquote>
+<p>/dev/sdb がUSBメモリだとする。</p>
+<ol>
+<li><code>fdisk /dev/sdb/</code></li>
+</ol>
+<ul>
+<li>d ← パーティションを削除</li>
+<li><p>n ← パーティションを作成</p>
+<ul>
+<li>p ← Primary を選択</li>
+<li>1 ← パーティションNoを指定。1番。</li>
+<li>Enter ← シリンダ指定。デフォルトの1。</li>
+<li>Enter ← 最終シリンダ指定。デフォルト。</li>
+</ul></li>
+<li><p>t ← パーティションのタイプ指定</p>
+<ul>
+<li>c ← FAT32 を示す<code>c</code> を指定</li>
+</ul></li>
+<li><p>a ← Bootable 指定</p>
+<ul>
+<li>1 ← 1番パーティションを指定</li>
+</ul></li>
+<li><p>p ← パーティション設定を確認</p></li>
+</ul>
+<blockquote>
+<p>ディスク /dev/sdb: 4026 MB, 4026531840 バイト<br />ヘッド 124, セクタ 62, シリンダ 1022<br />Units = シリンダ数 of 7688 * 512 = 3936256 バイト<br />セクタサイズ (論理 / 物理): 512 バイト / 512 バイト<br />I/O size (minimum/optimal): 512 bytes / 512 bytes<br />ディスク識別子: 0x6f20736b</p>
+<p>デバイス ブート 始点 終点 ブロック Id システム<br />/dev/sdb1 * 1 1022 3928537 c W95 FAT32 (LBA)</p>
+</blockquote>
+<p>、、、OKですね(・∀・)<br />では、wを押下して書き込みます。</p>
+<h4 id="fat32-">FAT32 でフォーマット</h4>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkfs.vfat</span> -F 32 -n ESXi-Installer /dev/sdb1</code></pre>
+<p>明示的にフォーマットする必要があるみたいですね。</p>
+<h3 id="syslinux-">syslinux とか組込む</h3>
+<p>syslinux でブート用のシステムをUSBメモリに組み込む。<br />そんで、ブート用のMBRを書き込む。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">syslinux</span> /dev/sdb1
+<span class="kw">dd</span> if=/usr/share/syslinux/mbr.bin of=/dev/sdb bs=440 count=1</code></pre>
+<h4 id="esxiusb">ESXiインストーラの中身をUSBメモリにコピー</h4>
+<p>イメージファイルをそのままマウントして、中身を全部コピーする。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> /mnt/usb
+<span class="kw">mount</span> /dev/sdb1 /mnt/usb
+<span class="kw">mount</span> -o loop /home/USER/iso/ESXi-xxx.iso /media
+<span class="kw">cp</span> -r /media -T /mnt/usb</code></pre>
+<h4 id="syslinux.cfg-">syslinux.cfg の作成</h4>
+<p>コピーしたUSB内のisolinux.cfg からsyslinux.cfg をコピーし、中身をちょいと修正</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /mnt/usb
+<span class="kw">cp</span> isolinux.cfg syslinux.cfg
+<span class="kw">vi</span> syslinux.cfg</code></pre>
+<blockquote>
+<p>DEFAULT mboot.c32 ← <strong>ここをmenu32.c32 からmboot.c32 に書き換える</strong><br />MENU TITLE ESXi-5.5.0-20140302001-standard Boot Menu<br />NOHALT 1<br />PROMPT 0<br />TIMEOUT 80<br />LABEL install<br /> KERNEL mboot.c32<br /> APPEND -c boot.cfg<br /> MENU LABEL ESXi-5.5.0-20140302001-standard ^Installer<br />LABEL hddboot<br /> LOCALBOOT 0x80<br /> MENU LABEL ^Boot from local disk<br />LABEL comment0<br /> MENU LABEL<br />LABEL comment1<br /> MENU LABEL +——————————————————+<br />LABEL comment2<br /> MENU LABEL | Customized by ESXi-Customizer 2.7.2 |<br />LABEL comment3<br /> MENU LABEL | <a href="http://esxi-customizer.v-front.de" class="uri">http://esxi-customizer.v-front.de</a> |<br />LABEL comment4<br /> MENU LABEL +——————————————————+</p>
+</blockquote>
+<h3>後始末</h3>
+<p>USB メモリとイメージをumountしておく。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">umount</span> /mnt/usb
+<span class="kw">umount</span> /media</code></pre>
+<h2 id="esxi-">ESXi のインストール</h2>
+<p>完成した4GBのUSBメモリをXG41にぶっ刺し、そこからブートする。<br />後はインストーラに従って、8GBのUSBメモリを指定してESXiをインストールすればOK!<br /><img src="img001.png" title="ESXi on XG41" alt="サマリー" /></p>
+<p>これで、CentOS6.5 と、NAS4free を一台のホストマシンで同時起動出来るようになりました！<br />素敵ですやん(・∀・)</p>
+<p>以上です。</p>
       </article>
       <footer>
+<<<<<<< HEAD
         <hr />
+=======
+      <hr />
+      </footer>
+>>>>>>> edit1109
         <div align="center">
           <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
           <input type="button" class="css-button" value="TOP" onClick="location.href='../../index.html'">　
           <input type="button" class="css-button" value="Prev" onClick="location.href='./20141021.html'">
         </div>
-      </footer>
     </div><!-- /#wrapper -->
   </body>
 </html>
