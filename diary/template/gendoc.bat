@@ -36,7 +36,14 @@ if exist "%~d1%~p1%~n1%~x1" (
   goto :EOF
 )
 
-pandoc --template "%~d0%~p0\html5_template.html" -c "../template/markdown-style.css" -f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes -o "%F%.html" "%F%%~x1" -S -V pagetitle="%~n1" -V date-meta="%~t1" -V title="%R:~0,4%/%R:~4,2%/%R:~6,2%"
+pandoc --template "%~d0%~p0\html5_template.html" ^
+-c "../template/markdown-style.css" ^
+-f markdown_github+footnotes+definition_lists+pandoc_title_block+header_attributes ^
+-o "%F%.html" "%F%%~x1" ^
+-S ^
+-V pagetitle="%~n1" ^
+-V date-meta="%~t1" ^
+-V title="%R:~0,4%/%R:~4,2%/%R:~6,2%"
 if errorlevel 1 (
   echo pandoc‚Ìˆ—‚É¸”s‚µ‚Ü‚µ‚½
   pause
