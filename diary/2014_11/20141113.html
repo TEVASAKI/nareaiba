@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="TEVA">
+    <meta name="dcterms.date" content="2014/11/13 12:52">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <title>2014/11/13</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif] -->
+    
+    <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }</style>
+    <link rel="stylesheet" href="../template/markdown-style.css">
+    
+    
+    <!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 -->
+    <link rel="stylesheet" href="../template/highlight/styles/sunburst.css">
+    <script src="../template/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- /# -->
+
+    <!-- LapisAnalyze1 Start -->
+    <script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+    <!-- LapisAnalyze1 End -->
+  </head>
+  <body>
+    <!-- LapisAnalyze2 Start -->
+    <div id="tracker" style="position:absolute;visibility:hidden;">
+      <script type="text/javascript">sendData();</script>
+      <noscript>
+        <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+      </noscript>
+    </div>
+    <!-- LapisAnalyze2 End -->
+
+    <div id="wrapper">
+      <article>
+        <header>
+          <h1 class="title">2014/11/13</h1>
+          </header>
+<h2 id="nexus72012-lolipop-">Nexus7(2012) にLolipop ば入れる！</h2>
+<h3 id="nexus6-">Nexus6 はまだか</h3>
+<p>えー、我慢出来なくなって、ムシャクシャしてやりました。<br />環境はNexus7 (2012) WiFiモデルです。</p>
+<h3>ブートローダアンロックの準備と実行</h3>
+<p>Nexus7 のファクトリーイメージを取得しておくと、安心です。<br /><a href="https://developers.google.com/android/nexus/images">Factory Images “nakasi” for Nexus7(Wi-Fi)</a><br />今回もChocolatey を使って環境を作ります。ホストはWindows7 pro 64bit です。</p>
+<h4 id="java.jdk-7.0.60.1-android-sdk-23.0.2-">Java.JDK 7.0.60.1 と、android SDK 23.0.2 をインストール</h4>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">cinst java<span class="fu">.</span>jdk
+cinst android<span class="fu">-</span>sdk</code></pre>
+<ol>
+<li><p>インストールが完了したら、Winメニューから “Android SDK Manager” -&gt; “SDK Manager” と進み、“Android 4.4W.2(API 20)” を選択してそのまま右下の ‘Install 17 packages’ をクリック(数は適当)</p></li>
+<li><p>Accept License で同意。(ちょいと時間かかります)</p></li>
+<li><p>システム変数PATHに、以下を追加</p></li>
+</ol>
+<blockquote>
+<p>C:\Users\foo\AppData\Local\Android\android-sdk\platform-tools<br />C:\Users\foo\AppData\Local\Android\android-sdk\tools</p>
+</blockquote>
+<p>ここでも、Rapid Environment Editor が役に立ちますね。</p>
+<pre class="sourceCode haskell"><code class="sourceCode haskell">cinst <span class="dt">Devbox</span><span class="fu">-</span><span class="dt">RapidEE</span></code></pre>
+<p>Android SDK をインストールしている間に、Nexus7(2012)のUSBデバッグを、開発者オプションから有効にしておきましょう。<br />もしNexus7 のUSBドライバが自動で入らなかったら以下からDLして、デバイスマネージャから指定してインストールしておく。<a href="http://developer.android.com/sdk/win-usb.html#download">Google USB Driver</a><br />で、完了したらUSBでホストに接続して、デバッグを許可する。<br />そして以下のうちどちらかでブートローダを表示させる。</p>
+<ul>
+<li>電源 + volDown 同時押しで起動</li>
+<li>コマンドプロンプトから <code>adb reboot bootloader</code></li>
+</ul>
+<h4 id="-">ブートローダ アン・ローック！！</h4>
+<p><strong>以下のコマンドをプロンプトで打ち込むと、ユーザーデータが消去されます！</strong><br /><strong>よく準備してから叩き込んで下さい！</strong></p>
+<pre><code>fastboot oem unlock</code></pre>
+<blockquote>
+<p>(bootloader) erasing userdata…<br />(bootloader) erasing userdata done<br />(bootloader) erasing cache…<br />(bootloader) erasing cache done<br />(bootloader) unlocking…<br />(bootloader) Bootloader is unlocked now.<br />OKAY [189.221s]<br />finished. total time: 189.224s</p>
+</blockquote>
+<h3>さーアンロック状態だー</h3>
+<p>再起動すると、android version は4.4.4のままでした。<br />当たり前か：P</p>
+<h4 id="twrp-team-win-recovery-project-rom">TWRP (Team Win Recovery Project) の実機への焼きこみ(ROM焼き)</h4>
+<p>Android 標準のリカバリーモードでも、まあ、いいっちゃいいらしいんですが<br />どうせならこっち使ったほうがバックアップとかも出来る高性能リカバリなんだぜ？</p>
+<p>と、いう訳で TWRP というカスタムリカバリROM を焼いていきます。<br />ホストマシンとNexus7 は、まだUSBで繋がったままです。</p>
+<ol>
+<li><a href="http://teamw.in/twrp_view_all_devices">TeamWin</a> からカスタムリカバリのDL</li>
+</ol>
+<ul>
+<li>openrecovery-twrp-2.8.0.0-grouper.img</li>
+<li><strong>openrecovery-twrp-2.8.1.0-grouper.img では起動できませんでした</strong></li>
+</ul>
+<ol>
+<li>ブートローダのアンロック</li>
+</ol>
+<ul>
+<li>電源 + volDown 同時押しで起動</li>
+<li>コマンドプロンプトから <code>adb reboot bootloader</code></li>
+</ul>
+<ol>
+<li>openrecovery-twrp-2.8.0.0-grouper.img のあるディレクトリで以下のコマンドをぶっ叩く(あ、慎重に)</li>
+</ol>
+<pre><code>fastboot boot openrecovery-twrp-2.8.0.0-grouper.img</code></pre>
+<blockquote>
+<p>creating boot image…<br />creating boot image - 8192 bytes<br />downloading ‘boot.img’…<br />OKAY [ 0.013s]<br />booting…<br />OKAY [ 0.018s]<br />finished. total time: 0.033s</p>
+</blockquote>
+<p>こんな表示が出ると、OKです。</p>
+<ol>
+<li><code>adb reboot bootloader</code> でもう一度再起動する。</li>
+</ol>
+<p>そして、ここがわかりにくい所だったんですが<br />ブートローダ画面でいつまで待っていても、TWRPは起動してくれません！<br />ボリュームボタンを何回か押すと、図の位置に <strong>Recovery Mode</strong> と表示されます。<br />そこで電源ボタン(決定) を押して初めて、TWRP が起動してきます！<br /><img src="./img001_thumb.png" alt="img001_thumb.png" /></p>
+<h3 id="android5.0-lolipop-">Android5.0 Lolipop 書き込み！</h3>
+<ul>
+<li>と、ここで Nexus7(2012) Wi-Fi版のファクトリーイメージがリークされたっつーリンクを発見（</li>
+<li><a href="http://dl.google.com/dl/android/aosp/nakasi-lrx21p-factory-93daa4d3.tgz">ここから</a> tgzを拾ってきて<code>tar zxvf nakasi-lrx21p-factory-93daa4d3.tgz</code> で展開する。<br />中にある<code>flash-all.bat</code> を起動すると、Lolipop が立ち上がります！<br />中身はこんな感じ。怪しい所も無さそうですね。</li>
+</ul>
+<pre class="bat"><code>@ECHO OFF
+:: Copyright 2012 The Android Open Source Project
+::
+:: Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+:: you may not use this file except in compliance with the License.
+:: You may obtain a copy of the License at
+::
+::      http://www.apache.org/licenses/LICENSE-2.0
+::
+:: Unless required by applicable law or agreed to in writing, software
+:: distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+:: WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+:: See the License for the specific language governing permissions and
+:: limitations under the License.
+
+PATH=%PATH%;&quot;%SYSTEMROOT%\System32&quot;
+fastboot oem unlock
+fastboot erase boot
+fastboot erase cache
+fastboot erase recovery
+fastboot erase system
+fastboot erase userdata
+fastboot flash bootloader bootloader-grouper-4.23.img
+fastboot reboot-bootloader
+ping -n 10 127.0.0.1 &gt;nul
+fastboot -w update image-nakasi-lrx21p.zip
+
+echo Press any key to exit...
+pause &gt;nul
+exit</code></pre>
+<h3>出来上がり</h3>
+<p>んで、キターー！(・∀・)<br /><img src="./img003_thumb.png" alt="img003_thumb.png" /></p>
+<h4>簡単に触ってみての所感</h4>
+<ul>
+<li>wifi接続にwps使えへんのかい、、、</li>
+<li>タップアンドゴー？NFCを使ってアカウントデータを転送する機能らしい。<br />Nexus5と合わせてみましたが、ここはすんなり行きました。</li>
+<li>お、2つ目のアカウントも同期してくれましたね</li>
+<li>同期するアプリも選べました</li>
+<li>後でもう少しまとめます。<br />13日に発表されるかもしれないので、取り急ぎ記事にしてみました、ﾏﾙ。</li>
+</ul>
+      </article>
+      <footer>
+        <hr />
+        <div align="center">
+          <input type="button" class="css-button" value="TOP" onClick="location.href='#wrapper'">
+        </div>
+        <div align="center">
+          <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+          <input type="button" class="css-button" value="INDEX" onClick="location.href='../../index.html'">　
+          <input type="button" class="css-button" value="Prev" onClick="location.href='../2014_10/20141031.html'">
+        </div>
+      </footer>
+    </div><!-- /#wrapper -->
+  </body>
+</html>
