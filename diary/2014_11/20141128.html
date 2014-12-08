@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="TEVA">
+    <meta name="dcterms.date" content="2014/11/28 04:11">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <title>2014/11/28</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif] -->
+    
+    <style type="text/css">table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }</style>
+    <link rel="stylesheet" href="../template/markdown-style.css">
+    
+    
+    <!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 -->
+    <link rel="stylesheet" href="../template/highlight/styles/sunburst.css">
+    <script src="../template/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- /# -->
+
+    <!-- LapisAnalyze1 Start -->
+    <script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+    <!-- LapisAnalyze1 End -->
+  </head>
+  <body>
+    <!-- LapisAnalyze2 Start -->
+    <div id="tracker" style="position:absolute;visibility:hidden;">
+      <script type="text/javascript">sendData();</script>
+      <noscript>
+        <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+      </noscript>
+    </div>
+    <!-- LapisAnalyze2 End -->
+
+    <div id="wrapper">
+      <article>
+        <header>
+          <h1 class="title">2014/11/28</h1>
+          </header>
+<h2 id="zsh-build">ZSH の最新版をbuildする。</h2>
+<p>はい、こんにちは。<br />普段使うプログラムは、出来るだけ最新版なStableなん使いたいですよね！<br />それなのにCentOSときたら <code>yum</code> で拾ってくるバージョンは4.3.10!?<br /><strong>いやだ！もっと新しいのん使いたい！</strong></p>
+<p>と、いうわけでタイトルです。</p>
+<p>あー、<a href="https://ja.opensuse.org/">Suseたん</a>可愛いですよ<a href="https://ja.opensuse.org/">Suseたん</a>。<br />パッケージはなんでもありますよ。<br /><a href="http://keepass.info/">Keepass</a>や、<a href="https://github.com/Guake/guake">Guake</a>なんてマニアックでありながら個人的に必須なものだって1Clickインストール出来ますのよ。<br />ノートPCに32bit版を入れればまだまだ戦える、うん。</p>
+<p>えー、いきなり話がずれましたが、今回はCentOSでやります。<br />OpenSuse でも同じ手順で出来ましたので、ご報告までに。</p>
+<p>ユーザーシェルを変更する為、念の為にコンソールに直接ログインしておく事<br />それかもう一つセッション作成しておく。<br />あるいはtmux とかscreen で、、、もういいですね(・﹃・)</p>
+<p>環境はCentOS6.5 をminimal install している状態です。</p>
+<h3>全体の流れ</h3>
+<ol>
+<li>yodl のビルドの為に <code>icmake</code> を作る</li>
+<li>yodl のマニュアル作成の為に latex パッケージをインストール</li>
+<li>yodl インストール</li>
+<li>ZSH のビルド</li>
+<li>ログインシェルの変更</li>
+<li>バージョンの確認</li>
+<li>おまけ：最新版のyodl が使いたかったら最新版のGCCを持ってきな！！</li>
+</ol>
+<p>順番にやっていきます。</p>
+<h3 id="icmake-build">icmake build</h3>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">yum</span> groupinstall <span class="st">&#39;Development tools&#39;</span>
+<span class="kw">yum</span> install git
+<span class="kw">mkdir</span> src
+<span class="kw">cd</span> src
+<span class="kw">git</span> clone git://git.code.sf.net/p/icmake/code icmake
+<span class="kw">cd</span> icmake/icmake</code></pre>
+<p>INSTALL.im を編集すればインストール先を変更出来るぽいけど、よくわかっていないのでデフォルトでいっちゃいます。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./icm_bootstrap</span> /
+<span class="kw">su</span>
+<span class="kw">./icm_install</span> strip all /</code></pre>
+<p>バージョンの確認</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">icmake</span> --version</code></pre>
+<blockquote>
+<p>Make Utility Version 7.21.01<br />Copyright (c) GPL 1992-2014. NO WARRANTY.</p>
+</blockquote>
+<h3 id="yodl-build">yodl build</h3>
+<p>yodl のソースを拾ってきて、展開して中へ。<br />実はtar のオプションは、<code>xf</code> だけでOKなんですって！<br />gz とかbz2 とか自動判定してくれるんですって！！</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> http://downloads.sourceforge.net/project/yodl/yodl/3.03.0/yodl_3.03.0.orig.tar.gz
+<span class="kw">tar</span> xf yodl_3.03.0.orig.tar.gz
+<span class="kw">cd</span> yodl-3.03.0</code></pre>
+<p>これもINSTALL.im を編集すればインストール先を変更出来るぽいけど、デフォルトでいっちゃいます。<br />※ 本当に必要なのは<code>programs</code> と<code>macros</code> だけです。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./build</span> programs
+<span class="kw">./build</span> man
+<span class="co"># ここで、manual をビルドするのに latex が必要になるのでインストール</span>
+<span class="kw">yum</span> install latex2html
+<span class="kw">./build</span> manual
+<span class="kw">./build</span> macros
+
+<span class="kw">su</span>
+<span class="kw">./build</span> install programs /
+<span class="kw">./build</span> install man /
+<span class="kw">./build</span> install manual /
+<span class="kw">./build</span> install macros /
+<span class="kw">./build</span> install docs /</code></pre>
+<p>完了。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">yodl</span> --version</code></pre>
+<blockquote>
+<p>yodl version 3.04.00</p>
+</blockquote>
+<h3 id="zsh-build-1">ZSH build</h3>
+<p>いよいよ本番。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> clone git://git.code.sf.net/p/zsh/code zsh
+<span class="kw">./Util/preconfig</span>
+<span class="kw">./configure</span> --prefix=/usr/local --enable-locale --enable-multibyte
+<span class="kw">make</span> clean
+<span class="kw">make</span> -j 4
+<span class="kw">su</span>
+<span class="kw">porg</span> -lD make install</code></pre>
+<p>どこにインストールされたのかなーっと。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">which</span> zsh</code></pre>
+<blockquote>
+<p>/usr/local/bin/zsh</p>
+</blockquote>
+<p>次にシェル候補に載っているか確認。<br />無ければ上記アドレスを追加。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">vi</span> /etc/shells</code></pre>
+<h3 id="shell">ログインShellの変更</h3>
+<p>root とユーザーの両方に作業が必要。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">chsh</span></code></pre>
+<blockquote>
+<p>root / userFoo のシェルを変更します。<br />新しいシェル [/bin/bash]: /usr/local/bin/zsh<br />シェルを変更しました。</p>
+</blockquote>
+<p>ここでログインし直すと変更されている、はず。<br />バージョンの確認をしてみましょう。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">echo</span> <span class="ot">$ZSH_VERSION</span></code></pre>
+<blockquote>
+<p>5.0.7-dev-0</p>
+</blockquote>
+<p>OKですね！ お疲れ様でした！！(・∀・)</p>
+<p>後はもう、<a href="https://github.com/TEVASAKI/dotfiles/blob/master/zshrc">zshrc</a> を好きなだけ弄んでくだされば結構です、はい。<br />ZSH はデキる子なので調教のしがいがあると思います(意味深</p>
+<p>chsh後に「以前使っていた設定ファイルの所有者が実行権が」どうとか怒られてまともにログイン出来ない場合、私の場合<strong>selinuxが悪さしていました。</strong><br />元々ZSH を別ルートで入れていた場合に発生しやすい様です。</p>
+<p>もしそうなったら冒頭で述べた通り、別セッションから<code>chsh</code> で元のシェルに戻してあげて下さい。<br />慌てる事はありません。きっと、大丈夫です。</p>
+<p><strong>きっと。</strong></p>
+<h2>おまけ</h2>
+<h3 id="yodl-gcc">最新版のyodl が使いたかったら最新版のGCCを持ってきな！！</h3>
+<p>と、いうわけで。<br />yodl だけGCCを最新の4.9以降にしないとビルド出来ない様になっているわけです。<br />CentOS6.5 デフォルトのGCC4.47 では、yodl-3.03.0 までしか作れません。<br />↓ こんなエラーですね。</p>
+<blockquote>
+<p>g++ –std=c++11 -o tmp/install/usr/bin/yodlverbinsert -O2 -Wall -g src/verbinsert/verbinsert.cc<br />cc1plus: error: unrecognized command line option “-std=c++11”<br />system - failure of system call (status 256)</p>
+</blockquote>
+<p>ってことで、サクッとGCCをアップデートしてやりましょう。</p>
+<p><strong>makeに二時間かけて。</strong></p>
+<p>精神衛生上、失敗した時の為にも<code>ccache</code> を仕込んでおくと幸せになれるかもしれない。</p>
+<h3 id="gcc-">GCC バージョンアップ</h3>
+<p>こっからは全てroot 権限でやっていきます。<br />わっかりにくいGCC <a href="https://gcc.gnu.org/mirrors.html">本家ミラー</a>から、ソースを拾ってきて、伸張しましょう。<br />そして準備スクリプトが同梱されているのでそれも実行。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-4.9.2/gcc-4.9.2.tar.gz
+<span class="kw">tar</span> xf gcc-4.9.2.tar.gz -C /usr/local/src
+<span class="kw">cd</span> /usr/local/src/gcc-4.9.2
+<span class="kw">./contrib/download_prerequisites</span></code></pre>
+<p>下記パッケージがダウンロードされました。<br />mpfr-2.4.2.tar.bz2<br />gmp-4.3.2.tar.bz2<br />mpc-0.8.1.tar.gz<br />isl-0.12.2.tar.bz2<br />cloog-0.18.1.tar.gz</p>
+<p>あと、これも。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">yum</span> install glibc-devel.i686
+<span class="kw">yum</span> install gcc-c++.x86_64</code></pre>
+<p>ビルド用のフォルダを作らないとトラブるそうな。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> build
+<span class="kw">cd</span> build
+<span class="kw">../configure</span> [--disable/--enable]-multilib
+<span class="co"># build 以下にMakefileが作成されます。</span>
+<span class="kw">make</span> -j 4</code></pre>
+<p><code>--disable-multilib</code> か、<code>--enable-multilib</code> を指定しないと以下のエラーが。</p>
+<blockquote>
+<p>configure: error: I suspect your system does not have 32-bit developement libraries (libc and headers). If you have them, rerun configure with –enable-multilib. If you do not have them, and want to build a 64-bit-only compiler, rerun configure with –disable-multilib.</p>
+</blockquote>
+<p>これでビルドが始まります。<br />二時間ぐらいかかります（<br />コーヒーでも飲んでのんびり放っておきましょう。<br />寝る前に仕掛けるのもいいでしょう。</p>
+<p>おはようございます、無事終了していましたか？<br />ではインストールしてあげます。</p>
+<p><code>paco</code> も<code>porg</code> に名前変わったんですねー</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">porg</span> -lD make install</code></pre>
+<p>で、最後に表示されたメッセージが以下。</p>
+<blockquote>
+<p>Libraries have been installed in:<br /> /usr/local/lib/../lib64</p>
+<p>If you ever happen to want to link against installed libraries<br />in a given directory, LIBDIR, you must either use libtool, and<br />specify the full pathname of the library, or use the ‘-LLIBDIR’<br />flag during linking and do at least one of the following:</p>
+<ul>
+<li>add LIBDIR to the ‘LD_LIBRARY_PATH’ environment variable<br /> during execution</li>
+<li>add LIBDIR to the ‘LD_RUN_PATH’ environment variable<br /> during linking</li>
+<li>use the -Wl,-rpath ‘-Wl,LIBDIR’ linker flag</li>
+<li>have your system administrator add LIBDIR to ‘/etc/ld.so.conf’</li>
+</ul>
+<p>See any operating system documentation about shared libraries for<br />more information, such as the ld(1) and ld.so(8) manual pages.</p>
+</blockquote>
+<p>一応再起動しておきましょう。</p>
+<h3>バージョンの確認</h3>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">gcc</span> --version</code></pre>
+<blockquote>
+<p>gcc (GCC) 4.9.2<br />Copyright (C) 2014 Free Software Foundation, Inc.<br />This is free software; see the source for copying conditions. There is NO<br />warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+</blockquote>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">g++</span> --version</code></pre>
+<blockquote>
+<p>g++ (GCC) 4.9.2<br />Copyright (C) 2014 Free Software Foundation, Inc.<br />This is free software; see the source for copying conditions. There is NO<br />warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+</blockquote>
+<p>って事で、4.47 -&gt; 4.92 にバージョンアップ完了であります。</p>
+<h3 id="libstdc.so.6-">libstdc++.so.6 を最新版で置き換える。</h3>
+<p>/usr/lib64/libstdc++.so.6 は、同ディレクトリにある libstdc++.so.6.0.13 にリンクされているので<br />今回のバージョンアップで作成されたlibstdc++.so.6.0.20 に張り直しておきます。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /usr/lib64
+<span class="kw">cp</span> -p /usr/local/lib64/libstdc++.so.6.0.20 .
+<span class="kw">ln</span> -s -f libstdc++.so.6.0.20 libstdc++.so.6</code></pre>
+<h3 id="yodl-build-">yodl の最新版をbuild する！</h3>
+<p>これで準備は整いました。<br />wget の代わりにgitリポジトリより最新版ソースを取得して、後は上記手順と同じです。</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> clone git://git.code.sf.net/p/yodl/code yodl
+<span class="kw">--</span> 略 --</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">yodl</span> --version</code></pre>
+<blockquote>
+<p>yodl version 3.04.00</p>
+</blockquote>
+<p>お疲れ様でした！(・∀・)ﾉ</p>
+      </article>
+      <footer>
+        <hr />
+        <div align="center">
+          <input type="button" class="css-button" value="TOP" onClick="location.href='#wrapper'">
+        </div>
+        <div align="center">
+          <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+          <input type="button" class="css-button" value="INDEX" onClick="location.href='../../index.html'">　
+          <input type="button" class="css-button" value="Prev" onClick="location.href='../2014_11/20141113.html'">
+        </div>
+      </footer>
+    </div><!-- /#wrapper -->
+  </body>
+</html>
