@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-    <meta name="dcterms.date" content="2014/11/13 12:52">
+    <meta name="dcterms.date" content="2014/12/12 07:37">
     <link rel="shortcut icon" href="../../favicon.ico">
     <title>2014/11/13</title>
     <style type="text/css">code{white-space: pre;}</style>
@@ -92,6 +92,8 @@ cinst android<span class="fu">-</span>sdk</code></pre>
 <h4 id="twrp-team-win-recovery-project-rom">TWRP (Team Win Recovery Project) の実機への焼きこみ(ROM焼き)</h4>
 <p>Android 標準のリカバリーモードでも、まあ、いいっちゃいいらしいんですが<br />どうせならこっち使ったほうがバックアップとかも出来る高性能リカバリなんだぜ？</p>
 <p>と、いう訳で TWRP というカスタムリカバリROM を焼いていきます。<br />ホストマシンとNexus7 は、まだUSBで繋がったままです。</p>
+<p><strong>バックアップをするつもりが無ければ、Abdroid5.0 Lolipop書き込み！まで手順を飛ばしても大丈夫です。</strong></p>
+<p>さて、手順は以下。</p>
 <ol>
 <li><a href="http://teamw.in/twrp_view_all_devices">TeamWin</a> からカスタムリカバリのDL</li>
 </ol>
@@ -117,12 +119,18 @@ cinst android<span class="fu">-</span>sdk</code></pre>
 <ol>
 <li><code>adb reboot bootloader</code> でもう一度再起動する。</li>
 </ol>
-<p>そして、ここがわかりにくい所だったんですが<br />ブートローダ画面でいつまで待っていても、TWRPは起動してくれません！<br />ボリュームボタンを何回か押すと、図の位置に <strong>Recovery Mode</strong> と表示されます。<br />そこで電源ボタン(決定) を押して初めて、TWRP が起動してきます！<br /><img src="./img001_thumb.png" alt="img001_thumb.png" /></p>
+<p>そして、ここがわかりにくい所だったんですが<br />ブートローダ画面でいつまで待っていても、TWRPは起動してくれません！<br />ボリュームボタンを何回か押すと、図の位置に <strong>Recovery Mode</strong> と表示されます。<br />そこで電源ボタン(決定) を押して初めて、TWRP が起動してきます！<br /><img src="./img001_thumb.png" alt="img001" /></p>
+<p>文鎮化しない為にも、現状のファクトリーリセットされた状態をバックアップしておきましょう。</p>
+<p>このデータはメニューの<code>Wipe</code> で完全に消さない限り残ります。<br /><img src="./img002_thumb.png" alt="img002" /></p>
 <h3 id="android5.0-lolipop-">Android5.0 Lolipop 書き込み！</h3>
 <ul>
 <li>と、ここで Nexus7(2012) Wi-Fi版のファクトリーイメージがリークされたっつーリンクを発見（</li>
-<li><a href="http://dl.google.com/dl/android/aosp/nakasi-lrx21p-factory-93daa4d3.tgz">ここから</a> tgzを拾ってきて<code>tar zxvf nakasi-lrx21p-factory-93daa4d3.tgz</code> で展開する。<br />中にある<code>flash-all.bat</code> を起動すると、Lolipop が立ち上がります！<br />中身はこんな感じ。怪しい所も無さそうですね。</li>
+<li><p><a href="https://developers.google.com/android/nexus/images">ここから</a> tgzを拾ってきて<code>tar zxvf nakasi-lrx21p-factory-93daa4d3.tgz</code> で展開する。</p>
+<blockquote>
+<p><code>Factory Images &quot;nakasi&quot; for Nexus 7 (Wi-Fi)</code> ですね。</p>
+</blockquote></li>
 </ul>
+<p>中にある<code>flash-all.bat</code> を起動すると、Lolipop が立ち上がります！<br />中身はこんな感じ。怪しい所も無さそうですね。</p>
 <pre class="bat"><code>@ECHO OFF
 :: Copyright 2012 The Android Open Source Project
 ::
@@ -154,7 +162,7 @@ echo Press any key to exit...
 pause &gt;nul
 exit</code></pre>
 <h3>出来上がり</h3>
-<p>んで、キターー！(・∀・)<br /><img src="./img003_thumb.png" alt="img003_thumb.png" /></p>
+<p>んで、キターー！(・∀・)<br /><img src="./img003_thumb.png" alt="img003" /></p>
 <h4>簡単に触ってみての所感</h4>
 <ul>
 <li>wifi接続にwps使えへんのかい、、、</li>
