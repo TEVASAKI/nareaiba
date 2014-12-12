@@ -142,7 +142,7 @@ define("FOOTFILE", "./skin/foot.txt");		//フッタ
 
 /* 管理者用パスワード。必ず変更して下さい。*/
 
-define("ADMINPASS", "*l3pMfxDWGUuJhFr26iLa49etXgYAH");
+define("ADMINPASS", "*");
 
 
 
