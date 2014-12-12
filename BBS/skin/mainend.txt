@@ -1,6 +1,0 @@
-<?$dat.='</div>
-</td></tr></table>
-</td></tr>
-</table>
-<p>
-';?>
