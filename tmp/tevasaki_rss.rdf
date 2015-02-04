@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:admin="http://webns.net/mvcb/"
+  xml:lang="ja">
+  <channel rdf:about="http://www3.pf-x.net/~tevasaki/tevasaki_rss.rdf">
+    <title>Maple馴れ合い場</title>
+    <link>http://www3.pf-x.net/~tevasaki/</link>
+    <dc:date>2006-07-19T23:03:42+09:00</dc:date>
+    <description>日記内偽リンク集的扱いのRSSフィード</description>
+    <admin:generatorAgent rdf:resource="http://www.infomaker.jp/editorlite/?v=0.92b" />
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2005_02/2mon.html#brother#he20050223"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna1#he20060414"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna2#he20050421"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2005_11/11mon_ahead.html#tools#he20051110"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2005_12/12mon_back.html#bat_file#he20051216"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flight#he20060205"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flyteva#he20060206"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#memobat#he20060206"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#cygwin#he20060723"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#irfanview#he20060626"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#exploser#he20060703"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#foobar#he20060709"/>
+        <rdf:li rdf:resource="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#fenrir#he20060719"/>
+      </rdf:Seq>
+    </items>
+  </channel>
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2005_02/2mon.html#brother#he20050223">
+    <title>真のブラザーとはこーゆー事だ</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2005_02/2mon.html#brother</link>
+    <dc:date>2005-02-23</dc:date>
+    <description>義兄弟の契り。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna1#he20060414">
+    <title>スナが主催してくれたイベント記録1</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna1</link>
+    <dc:date>2006-04-14</dc:date>
+    <description>狩り狩り狩り、、、そして戦果を自慢しあえ！勝者を決めろ！！</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna2#he20050421">
+    <title>スナが主催してくれたイベント記録2</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2005_04/4mon.html#suna2</link>
+    <dc:date>2005-04-21</dc:date>
+    <description>別鯖にて狩り、、、そしてビンゴ！</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2005_11/11mon_ahead.html#tools#he20051110">
+    <title>まあ使っとけってゆーツール達</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2005_11/11mon_ahead.html#tools</link>
+    <dc:date>2005-11-10</dc:date>
+    <description>ブラウザ、メーラー、ダウンローダー、アンチウィルス、ファイアーウォール、PCの詳細レポート出力、Debian辞典(何</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2005_12/12mon_back.html#bat_file#he20051216">
+    <title>バッチファイルに関して　：　複数のプログラムを一気に起動させるバッチ</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2005_12/12mon_back.html#bat_file</link>
+    <dc:date>2005-12-16</dc:date>
+    <description>せっかくPC使ってるんだから、そんな作業は自動化させてしまおうよハニーって事ですわ。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flight#he20060205">
+    <title>紹介したいツール　：　Flight Over Sea</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flight</link>
+    <dc:date>2006-02-05</dc:date>
+    <description>果てしなく続く青い海を飛んでいく気持ちよさが味わえるスクリーンセーバーのご紹介。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flyteva#he20060206">
+    <title>番外編　：　飛ぶ俺(Flash)</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#flyteva</link>
+    <dc:date>2006-02-06</dc:date>
+    <description>「飛ぶ俺」Flash初作品。第23回紅白Flash祭り選考外作品(何</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#memobat#he20060206">
+    <title>バッチファイルに関して　：　新規ドキュメントの自動作成バッチ</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_02/2mon_ahead.html#memobat</link>
+    <dc:date>2006-02-06</dc:date>
+    <description>アイコンをクリックするだけでその場所にテキストファイルが作られるのだよ。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#cygwin#he20060723">
+    <title>リファレンス　：　Cygwin日本語化</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#cygwin</link>
+    <dc:date>2006-07-23</dc:date>
+    <description>bash,viの日本語入力を可能にする方法。同時に標準出力の文字化けを治してみる。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#irfanview#he20060626">
+    <title>便利ツール　：　Irfanview</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_06/6mon_ahead.html#irfanview</link>
+    <dc:date>2006-06-26</dc:date>
+    <description>アイコンも簡単に作成できちゃう、透過も簡単。ただの画像ビュアーじゃなかったのね…(´･ω･`)</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#exploser#he20060703">
+    <title>便利ツール　：　発色弾</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#exploser</link>
+    <dc:date>2006-07-03</dc:date>
+    <description>爆発エフェクトを追加して、戦闘シーンに華をっ！</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#foobar#he20060709">
+    <title>便利ツール　：　foobar2000</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#foobar</link>
+    <dc:date>2006-07-09</dc:date>
+    <description>めっちゃ軽くてプレイリスト管理が素敵で暴力的にシンプルなfoobar2000のご紹介。</description>
+  </item>
+
+  <item rdf:about="http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#fenrir#he20060719">
+    <title>便利ツール　：　Fenrir</title>
+    <link>http://www3.pf-x.net/~tevasaki/diary/2006_07/7mon_ahead.html#fenrir</link>
+    <dc:date>2006-07-19</dc:date>
+    <description>えー世の中にプログラムランチャは数あれど、Fenrirほどのインパクトと軽量さとカスタマイズ性を秘めたもんは無いでしょう。いやまじで。</description>
+  </item>
+
+</rdf:RDF>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<rdf:RDF
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:sy="http://purl.org/rss/modules/syndication/"
+  xml:lang="ja">
+<channel rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>Maple馴れ合い場</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>MapleStoryでの出会いとかを大事にするのがモットーの馴れ合い場。たまにPC技術提供とか。</description>
+  <dc:date>2010-07-21T04:21:00+09:00</dc:date>
+ <items>
+  <rdf:Seq>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+   <rdf:li rdf:resource="http://www5.pf-x.net/~tevasaki/"/>
+  </rdf:Seq>
+ </items>
+</channel>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>明日って今日さ（</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>今日が前回の翌日なのです(正気に戻れ<br /><br />Flashでスライドショーも作ってみたよー</description>
+  <dc:date>2010-07-21T04:21:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>ネタが一杯</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>明日！明日やります！</description>
+  <dc:date>2010-07-17T13:00:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>俺は一体何を目指しているのかがサッパリ分からないという現状</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>RSSの更新忘れてた！！<br /><br />えーと、初投資戦のお話と<br />大型二種の学科受かったよー　ってお話。</description>
+  <dc:date>2010-07-9T17:17:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>月は無慈悲な夜の女王</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>一眼レフによる、夜空の撮影に成功したー！<br />もっと綺麗に写したい！<br /><br />月と星の光跡写真を2枚UPしております。<br />お目汚し失礼(･Θ･)<br /><br />鋭意練習中って事で、ここはどうかひとつ穏便に。</description>
+  <dc:date>2010-06-22T03:24:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>遊びまくり(チャットメイン)</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>広大なこの仮想世界で<br />みみっちい遊び方を堪能する俺の生き様（</description>
+  <dc:date>2010-06-20T21:53:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>少し落ち着いてはやぶさギャー</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>ふう。少しは落ち着いたので<br />深宇宙を鋭意航行中のIKAROSに視点を変えて、、、<br /><br />ギャー(</description>
+  <dc:date>2010-06-19T21:13:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>はやぶさギャー2</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>Live映像とかギャー<br />ちょっと落ち着いたのでUPしてみたぜギャー</description>
+  <dc:date>2010-06-14T21:13:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>はやぶさギャー</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>はやぶさギャー<br />地球に帰還ギャー<br />当時最新画像UPギャー</description>
+  <dc:date>2010-06-13T23:50:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>一次合格</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>とりあえず一次面接受かって余裕が出来て<br />DOLに復帰してボスさんから洗礼を受けて<br />今夜釣りに行ってきますわベイベッってお話。</description>
+  <dc:date>2010-06-10T19:42:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>全ページ整理</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>過去日記へのリンクを全部整理してやったぜチェケラ</description>
+  <dc:date>2010-06-7T13:15:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>Release GET！</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>一眼レフ用のレリーズげっとおお！<br /><br />わーいこれ欲しかったんだーヽ(´∀`)ﾉ</description>
+  <dc:date>2010-06-6T17:14:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>祝☆野口さん帰還！</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>我等がヒーロー野口さんの帰還記念記事。<br /><br />今まで、こんな事書いたことなかったなーって<br />ふと、思い返してみたり。</description>
+  <dc:date>2010-06-3T03:04:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>WinXPクリーンインストール完了</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>OSのインストールより、MTU,RWINの設定に苦労したってお話。<br />ちょっと長いかも（</description>
+  <dc:date>2010-05-31T03:30:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>ちょっと浮気してやめた。</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>DebianとUbuntuにちょっとだけ浮気して、<br />すぐ戻ってきちゃったって話（</description>
+  <dc:date>2010-05-28T01:13:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>昨今のWEBページ事情について</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>ハゲがっ<br />って思った事。</description>
+  <dc:date>2010-05-25T18:15:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>ソースからインストールしたのんをアンインストール</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>長いタイトルだ（<br /><br />ちょっとカジッタ知識を恥ずかしげも無く公開。<br /><br />どこかの誰かが、これで幸せになれたらいいなという願いを込めて。</description>
+  <dc:date>2010-05-24T01:43:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>Firefoxを自分でビルド</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>自分で使うプログラムは自分で作れる！<br />っていうのが楽しみだと思うんです。<br /><br />と、いうわけでFirefoxのビルドが成功したよって話。</description>
+  <dc:date>2010-05-22T18:25:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>NmapのジョークSplash</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>localhostの状態を確認する為、<br />アノNmapをコンパイルして作成した時のネタ。</description>
+  <dc:date>2010-05-20T8:24:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>OpenSSH + Xming 大成功</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>OpenSSHを最新版にしようと、デフォルトで入っていたのをいきなり削除してインストールしなおす、、、と<br />色々なリンクをも切られてしまってエライ苦労します＿|￣|○<br />Zlibも最新版に。<br />OpenSSL1.0.0は、なんかコンパイル通らん。<br /><br />ずっとやってみたかったリモートログイン環境、完成っと。</description>
+  <dc:date>2010-05-19T03:07:00+09:00</dc:date>
+</item>
+<item rdf:about="http://www5.pf-x.net/~tevasaki/">
+ <title>Plamo Linux 良さゲ。</title>
+ <link>http://www5.pf-x.net/~tevasaki/</link>
+ <description>WinXPに飽きたのでPlamoLinuxをインストールしてみた。<br />Slackware系の伝統的なLinuxなので、いい勉強になるかなと。<br />起承転結で（何</description>
+  <dc:date>2010-05-16T03:05:00+09:00</dc:date>
+</item>
+</rdf:RDF>
