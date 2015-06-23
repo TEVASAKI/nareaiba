@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="TEVA">
-    <meta name="dcterms.date" content="2014/11/28 04:11">
+    <meta name="dcterms.date" content="2015/02/04 17:45">
     <link rel="shortcut icon" href="../../favicon.ico">
     <title>2014/11/28</title>
     <style type="text/css">code{white-space: pre;}</style>
@@ -61,7 +61,7 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 <h2 id="zsh-build">ZSH の最新版をbuildする。</h2>
 <p>はい、こんにちは。<br />普段使うプログラムは、出来るだけ最新版なStableなん使いたいですよね！<br />それなのにCentOSときたら <code>yum</code> で拾ってくるバージョンは4.3.10!?<br /><strong>いやだ！もっと新しいのん使いたい！</strong></p>
 <p>と、いうわけでタイトルです。</p>
-<p>あー、<a href="https://ja.opensuse.org/">Suseたん</a>可愛いですよ<a href="https://ja.opensuse.org/">Suseたん</a>。<br />パッケージはなんでもありますよ。<br /><a href="http://keepass.info/">Keepass</a>や、<a href="https://github.com/Guake/guake">Guake</a>なんてマニアックでありながら個人的に必須なものだって1Clickインストール出来ますのよ。<br />ノートPCに32bit版を入れればまだまだ戦える、うん。</p>
+<p>あー、<a href="https://ja.opensuse.org/">Suseたん</a>可愛いですよ<a href="https://ja.opensuse.org/">Suseたん</a>。<br />パッケージはなんでもありますよ。<br /><a href="http://keepass.info/">Keepass</a>や、<a href="https://github.com/Guake/guake">Guake</a>なんてマニアックでありながら個人的に必須なものだって<a href="http://software.opensuse.org/search">1Clickインストール</a>出来ますのよ。<br />ノートPCに32bit版を入れればまだまだ戦える、うん。</p>
 <p>えー、いきなり話がずれましたが、今回はCentOSでやります。<br />OpenSuse でも同じ手順で出来ましたので、ご報告までに。</p>
 <p>ユーザーシェルを変更する為、念の為にコンソールに直接ログインしておく事<br />それかもう一つセッション作成しておく。<br />あるいはtmux とかscreen で、、、もういいですね(・﹃・)</p>
 <p>環境はCentOS6.5 をminimal install している状態です。</p>
@@ -170,10 +170,10 @@ code > span.er { color: #ff0000; font-weight: bold; }</style>
 <p>ビルド用のフォルダを作らないとトラブるそうな。</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> build
 <span class="kw">cd</span> build
-<span class="kw">../configure</span> [--disable/--enable]-multilib
+<span class="kw">../configure</span> --disable-multilib
 <span class="co"># build 以下にMakefileが作成されます。</span>
 <span class="kw">make</span> -j 4</code></pre>
-<p><code>--disable-multilib</code> か、<code>--enable-multilib</code> を指定しないと以下のエラーが。</p>
+<p><code>--disable-multilib</code> を指定しないと以下のエラーが。</p>
 <blockquote>
 <p>configure: error: I suspect your system does not have 32-bit developement libraries (libc and headers). If you have them, rerun configure with –enable-multilib. If you do not have them, and want to build a 64-bit-only compiler, rerun configure with –disable-multilib.</p>
 </blockquote>
