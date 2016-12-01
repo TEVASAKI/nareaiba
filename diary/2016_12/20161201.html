@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="TEVA">
+    <meta name="dcterms.date" content="20161201">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <title>2016/12/01</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif] -->
+    
+    <style type="text/css">div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */</style>
+    
+    
+    
+    <!-- Pandoc 本来が持つSyntax highlight だけでいいのなら、不要 -->
+    <link rel="stylesheet" href="../template/highlight/styles/sunburst.css">
+    <script src="../template/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- /# -->
+
+    <!-- LapisAnalyze1 Start -->
+    <script type="text/javascript" src="http://www5.pf-x.net/~tevasaki/analysis/lapis/tracker.js" charset="UTF-8"></script>
+    <!-- LapisAnalyze1 End -->
+  </head>
+  <body>
+    <!-- LapisAnalyze2 Start -->
+    <div id="tracker" style="position:absolute;visibility:hidden;">
+      <script type="text/javascript">sendData();</script>
+      <noscript>
+        <img src="http://www5.pf-x.net/~tevasaki/analysis/lapis/write.php/img/" width="0" height="0" alt="tracker">
+      </noscript>
+    </div>
+    <!-- LapisAnalyze2 End -->
+
+    <div id="wrapper">
+      <article>
+        <header>
+          <h1 class="title">2016/12/01</h1>
+          </header>
+<h2>ゴロゴロしながら書いている</h2>
+<p>こんばんは。PF-X.net様がいきなり閉鎖してしまってすっかりHTMLコーディングから離れてしまい、せっかくのOpenSuseたんも単なるマルチメディアマッシーンと化している今日この頃。<br />
+どうもTEVAです。</p>
+<p>寮住まいにより、PS3も無い為、すっげ健全な生活をしておりますよ？<br />
+PS4でMHF-Zやりたいなぁ<br />
+Vita買ったけど、ラグ酷すぎてやる気ゼロ助ですしお寿司。</p>
+<p>あ、マルチメディアといえば、寝る前にいっつもYouTube観ながら寝ているんですけど、VirtualDJ free でMixしたお気に入りの曲をMP3Tubeみたいにしたいなーと思って。<br />
+あの、あれ、あれでやってみました。ffmpegで。</p>
+<p>画像を一枚指定して、曲長とピッタリのダミーデータ作ってどーのこーの。</p>
+<p>以下、シェルスクリプト。</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<span class="va">CMDNAME=</span><span class="kw">`</span><span class="fu">basename</span> <span class="va">$0</span><span class="kw">`</span>
+
+<span class="kw">if</span><span class="bu"> [</span> <span class="va">$#</span> <span class="ot">-ne</span> 6<span class="bu"> ]</span>; <span class="kw">then</span>
+    <span class="bu">echo</span> <span class="st">&quot;Usage: </span><span class="va">$CMDNAME</span><span class="st"> [-i image] [-s sound] [-o output]&quot;</span> <span class="op">1&gt;&amp;2</span>
+    <span class="bu">exit</span> 1
+<span class="kw">fi</span>
+
+<span class="kw">while</span> <span class="bu">getopts</span> i:s:o: OPT
+<span class="kw">do</span>
+    <span class="kw">case</span> <span class="va">$OPT</span><span class="kw"> in</span>
+        <span class="st">&quot;i&quot;</span> <span class="kw">)</span> <span class="va">image=</span><span class="st">&quot;</span><span class="va">$OPTARG</span><span class="st">&quot;</span><span class="kw">;;</span>
+        <span class="st">&quot;s&quot;</span> <span class="kw">)</span> <span class="va">sound=</span><span class="st">&quot;</span><span class="va">$OPTARG</span><span class="st">&quot;</span><span class="kw">;;</span>
+        <span class="st">&quot;o&quot;</span> <span class="kw">)</span> <span class="va">output=</span><span class="st">&quot;</span><span class="va">$OPTARG</span><span class="st">&quot;</span><span class="kw">;;</span>
+        * <span class="kw">)</span> <span class="bu">echo</span> <span class="st">&quot;Usage: </span><span class="va">$CMDNAME</span><span class="st"> [-i image] [-s sound] [-o output]&quot;</span> <span class="op">1&gt;&amp;2</span>
+        <span class="bu">exit</span> 1<span class="kw">;;</span>
+    <span class="kw">esac</span>
+<span class="kw">done</span>
+
+<span class="va">dur=</span><span class="kw">`</span><span class="ex">ffmpeg</span> -i <span class="va">$sound</span> <span class="op">2&gt;&amp;1</span> <span class="kw">|</span> <span class="fu">grep</span> Duration <span class="kw">|</span> <span class="fu">sed</span> -e s/Duration:<span class="dt">\ </span>// -e s/,.*//<span class="kw">`</span>
+
+<span class="ex">ffmpeg</span> -f image2 -r 1 -loop 1 -t <span class="va">$dur</span> -i <span class="va">$image</span> temp.mp4 -s 1920x1080 -vcodec libx264 -y -threads 0
+<span class="ex">ffmpeg</span> -i temp.mp4 -i <span class="va">$sound</span> <span class="va">$output</span> -acodec libfaac -threads 0
+<span class="fu">rm</span> temp.mp4
+
+<span class="bu">exit</span>
+
+<span class="co"># -i で画像指定</span>
+<span class="co"># -s で音声指定</span>
+<span class="co"># -o で出力先指定</span></code></pre></div>
+<p>あとは、わかるね？</p>
+<p>楽しい。</p>
+      </article>
+      <footer>
+        <hr />
+        <div align="center">
+          <input type="button" class="css-button" value="TOP" onClick="location.href='#wrapper'">
+        </div>
+        <div align="center">
+          <input type="button" class="css-button" value="Next" onClick="location.href='#'">　
+          <input type="button" class="css-button" value="INDEX" onClick="location.href='../../index.html'">　
+          <input type="button" class="css-button" value="Prev" onClick="location.href='../2014_12/20141212.html'">
+        <div align="center">
+          <input type="button" class="css-button" value="BBS" onClick="location.href='../../BBS/index.php'">
+        </div>
+        </div>
+      </footer>
+    </div><!-- /#wrapper -->
+  </body>
+</html>
